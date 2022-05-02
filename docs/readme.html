@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readme.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<ul>
+<li><a href="#constructor">Constructor</a></li>
+<li><a href="#config-file-parameters">Config file parameters</a></li>
+<li><a href="#method-setconfig">Method setConfig</a></li>
+<li><a href="#method-settable">Method setTable</a></li>
+<li><a href="#method-setprimarykey">Method setPrimaryKey</a></li>
+<li><a href="#method-setcolumns">Method setColumns</a></li>
+<li><a href="#method-setrelation">Method setRelation</a></li>
+<li><a href="#method-addwhere">Method addWhere</a></li>
+<li><a href="#method-setcolumnsinfo">Method setColumnsInfo</a>
+<ul>
+<li><a href="#available-parameters">Available parameters</a></li>
+<li><a href="#set-field-name">Set field name</a></li>
+<li><a href="#field-types-and-samples">Field types and samples</a>
+<ul>
+<li><a href="#number-field-type">Number field type</a></li>
+<li><a href="#range-field">Range field</a></li>
+<li><a href="#make-a-field-required">Make a field <strong>required</strong></a></li>
+<li><a href="#make-a-field-invisible">Make a field <strong>Invisible</strong></a></li>
+<li><a href="#checkbox-field">Checkbox field</a></li>
+<li><a href="#date-field-with-default-value-in-add-page">Date field with default value in Add page</a></li>
+<li><a href="#datetime-field-with-default-value-in-add-page">Datetime field with default value in Add page</a></li>
+<li><a href="#dropdown-field-type">Dropdown field type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#library-exceptions">Library Exceptions</a></li>
+</ul>
+<h1 id="constructor">Constructor</h1>
+<p>You can save all config parameters into <code>KpaCrud.php</code> file in <code>App\Config</code> folder.</p>
+<pre class="hljs"><code><div>$crud = <span class="hljs-keyword">new</span> KpaCrud(); <span class="hljs-comment">//loads default configuration</span>
+</div></code></pre>
+<p>Loads default parameters with <code>configDefaultName</code> as the config collection parameters. If you would like to load another collection, you can indicate it in constructor.</p>
+<p>With this sample you KpaCrud library loads <code>listView</code> defined parameters.</p>
+<pre class="hljs"><code><div>$crud = <span class="hljs-keyword">new</span> KpaCrud(<span class="hljs-string">'listView'</span>); <span class="hljs-comment">//loads listView configuration</span>
+</div></code></pre>
+<h1 id="config-file-parameters">Config file parameters</h1>
+<p>In the file <code>App\Config\KpaCrud.php</code> you can can store parameters collections identified with a name and the collection parameter used as default.</p>
+<table>
+<thead>
+<tr>
+<th>Param name</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>editable</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Defines if row has edit button</td>
+</tr>
+<tr>
+<td>removable</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Defines if row has delete button</td>
+</tr>
+<tr>
+<td><strong>Table tools</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+</tr>
+<tr>
+<td>lang</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center"></td>
+<td>Defines the URL of JS file language for Datatables JQuery tool</td>
+</tr>
+<tr>
+<td>sortable</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Defines if table has enabled the sortable feature</td>
+</tr>
+<tr>
+<td>filterable</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Defines if table has enabled the searching tool</td>
+</tr>
+<tr>
+<td>paging</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Defines if table has enabled the paging tools</td>
+</tr>
+<tr>
+<td>numerate</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Defines library numerate rows</td>
+</tr>
+<tr>
+<td><strong>Table features</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+</tr>
+<tr>
+<td>pagingType</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center"></td>
+<td>Determines the paging type, values are: <code>numbers</code>, <code>simple</code>, <code>simple_numbers</code>, <code>full</code>, <code>full_numbers</code>, <code>first_last_numbers</code></td>
+</tr>
+<tr>
+<td>defaultPageSize</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center"></td>
+<td>Determines the page size set as default</td>
+</tr>
+<tr>
+<td>rememberState</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">false</td>
+<td>Defines if table remembers last order column, search, etc</td>
+</tr>
+<tr>
+<td><strong>Right toolbar</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+</tr>
+<tr>
+<td>add_button</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Enables add button in top right toolbar</td>
+</tr>
+<tr>
+<td>recycled_button</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Enables trash buttons in top right toolbar (Empty trash, show trash)</td>
+</tr>
+<tr>
+<td>exportXLS</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Enables export XLS button in top right toolbar</td>
+</tr>
+<tr>
+<td>print</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Enables print button in top right toolbar</td>
+</tr>
+<tr>
+<td><strong>Left toolbar</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+</tr>
+<tr>
+<td>multidelete</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Enables the multi select feature in table list to remove item or to move to trash if softDelete is enabled</td>
+</tr>
+<tr>
+<td>deletepermanent</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Enables the multi select feature in table list to remove item permanently if softDelete is enabled</td>
+</tr>
+<tr>
+<td><strong>Model features</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+</tr>
+<tr>
+<td>useSoftDeletes</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">true</td>
+<td>Enables the soft delete feature, then items are mark as delete and they can use trash view</td>
+</tr>
+<tr>
+<td>showTimestamps</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">false</td>
+<td>Enables to show fields created_at and updated_at in view page</td>
+</tr>
+<tr>
+<td>createdField</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">'created_at'</td>
+<td>Name of created_at field into database</td>
+</tr>
+<tr>
+<td>updatedField</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">'updated_at'</td>
+<td>Name of update_at field into database</td>
+</tr>
+<tr>
+<td>deletedField</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">'deleted_at'</td>
+<td>Name of deleted_at field into database</td>
+</tr>
+</tbody>
+</table>
+<p>In config file you can define the default collection with <code>configDefaultName</code>.</p>
+<p>The KpaCrud config file provided, are defined <code>onlyView</code>, <code>listView</code> and <code>default</code> (acts as fullView ).</p>
+<h1 id="method-setconfig">Method setConfig</h1>
+<p>You can set config parameters after object Library is created. The function setConfig can change all config parameters if you set a collection name as a parameter.</p>
+<pre class="hljs"><code><div>$crud-&gt;setConfig(<span class="hljs-string">'onlyView'</span>);
+</div></code></pre>
+<p>even, you can change only a <a href="#config-file-parameters">parameter</a>, like:</p>
+<pre class="hljs"><code><div>$crud-&gt;setConfig([<span class="hljs-string">'editable'</span>=&gt;<span class="hljs-keyword">false</span>]);                     <span class="hljs-comment">// Sets editable configuration to false</span>
+$crud-&gt;setConfig([<span class="hljs-string">'editable'</span>=&gt;<span class="hljs-keyword">false</span>,<span class="hljs-string">'removable'</span>=&gt;<span class="hljs-keyword">false</span>]);  <span class="hljs-comment">//Sets editable and removable config parameter to false </span>
+</div></code></pre>
+<h1 id="method-settable">Method setTable</h1>
+<p>This method sets table name to generate CRUD pages, when you set table name, method can detect primary key. By default, <code>setTable</code> doesn't detect primary key.
+To load automatically primary key, you need to set <code>true</code> the <code>loadPrimaryKeys</code> function flag, like this sample:</p>
+<pre class="hljs"><code><div>$crud-&gt;setTable(<span class="hljs-string">'news'</span>, <span class="hljs-keyword">true</span>);    <span class="hljs-comment">// Primary key autoload feature</span>
+</div></code></pre>
+<p>otherwise, you can only specify table name.</p>
+<pre class="hljs"><code><div>$crud-&gt;setTable(<span class="hljs-string">'news'</span>);
+</div></code></pre>
+<h1 id="method-setprimarykey">Method setPrimaryKey</h1>
+<p>This method adds primary key to CRUD Library, you can use it if you doesn't use
+automatic primary key load. You can call function for every key, if your table has more than
+a primary key.</p>
+<pre class="hljs"><code><div>$crud = <span class="hljs-keyword">new</span> KpaCrud();
+
+$crud-&gt;setTable(<span class="hljs-string">'tokens'</span>);
+$crud-&gt;setPrimaryKey(<span class="hljs-string">'tokenid'</span>);
+$crud-&gt;setPrimaryKey(<span class="hljs-string">'subject'</span>);
+</div></code></pre>
+<blockquote>
+<p><a href="#library-exceptions"><img class="emoji" alt="warning" src="data:image/png;base64,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" /> Exception</a></p>
+<p>If the primary key string field doesn't exists, method will throw an exception</p>
+</blockquote>
+<h1 id="method-setcolumns">Method setColumns</h1>
+<p>This method will permit to set columns that will be shown in CRUD Page view or CRUD Trash view if enabled.</p>
+<pre class="hljs"><code><div>$crud = <span class="hljs-keyword">new</span> KpaCrud(<span class="hljs-string">'listView'</span>);        <span class="hljs-comment">// loads listView configuration</span>
+$crud-&gt;setTable(<span class="hljs-string">'news'</span>);                <span class="hljs-comment">// load news table</span>
+$crud-&gt;setPrimaryKey(<span class="hljs-string">'id'</span>);             <span class="hljs-comment">// set primary key to id field</span>
+$crud-&gt;setColumns([<span class="hljs-string">'id'</span>, <span class="hljs-string">'title'</span>, <span class="hljs-string">'data_pub'</span>]); <span class="hljs-comment">// set fields to show in listView</span>
+</div></code></pre>
+<blockquote>
+<p><a href="#library-exceptions"><img class="emoji" alt="warning" src="data:image/png;base64,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" /> Exception</a></p>
+<p>Function throws this</p>
+<ul>
+<li>Table is null or not defined</li>
+<li>Table doesn't exists in database</li>
+<li>Field doesn't exists in table</li>
+</ul>
+</blockquote>
+<h1 id="method-setrelation">Method setRelation</h1>
+<p>With this method you can set a relation 1=&gt;N from a table to another one, for CRUD operations.</p>
+<pre class="hljs"><code><div>  $crud = <span class="hljs-keyword">new</span> KpaCrud(<span class="hljs-string">'listView'</span>);                          <span class="hljs-comment">// loads listView configuration    </span>
+ 
+  $crud-&gt;setTable(<span class="hljs-string">'auth_groups_users'</span>);                     <span class="hljs-comment">// set table name</span>
+ 
+  $crud-&gt;setPrimaryKey(<span class="hljs-string">'group_id'</span>);                         <span class="hljs-comment">// set primary key</span>
+  $crud-&gt;setPrimaryKey(<span class="hljs-string">'user_id'</span>);                          <span class="hljs-comment">// set primary key</span>
+ 
+ <span class="hljs-comment">// function setRelation($fieldName, $relatedTable, $relatedField, $display_as = null)</span>
+
+ <span class="hljs-comment">// display_as is the column name to show in edit / view mode</span>
+ <span class="hljs-comment">// if not set, relatedfield is shown</span>
+  $crud-&gt;setRelation(<span class="hljs-string">'group_id'</span>, <span class="hljs-string">'auth_groups'</span>, <span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>);
+  $crud-&gt;setRelation(<span class="hljs-string">'user_id'</span>, <span class="hljs-string">'users'</span>, <span class="hljs-string">'id'</span>, <span class="hljs-string">'username'</span>);
+</div></code></pre>
+<p>The display_as parameter is to indicated the field name from related table, to show instead relatedField. If parameter is null, will show first upper case related field name</p>
+<p>They can display more than a relation, like example.</p>
+<h1 id="method-addwhere">Method addWhere</h1>
+<p>This method permits to filter data show in the KpaCrud admin table. You can
+set filter as an associative array, or you can set SQL where expression as string.</p>
+<blockquote>
+<p><img class="emoji" alt="warning" src="data:image/png;base64,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" /> <strong>WARNING!!</strong></p>
+<p>If you use parameters with this function, you need to check it to avoid SQL injection</p>
+</blockquote>
+<h1 id="method-setcolumnsinfo">Method setColumnsInfo</h1>
+<h2 id="available-parameters">Available parameters</h2>
+<p>The function setColumnsInfo permits to customize every database field.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td style="text-align:center"><code>string</code></td>
+<td>Field name to show user in pages</td>
+</tr>
+<tr>
+<td>type</td>
+<td style="text-align:center"><code>string</code></td>
+<td>Availables field types are: DEFAULT_FIELD_TYPE, INVISIBLE_FIELD_TYPE, EMAIL_FIELD_TYPE, CHECKBOX_FIELD_TYPE,NUMBER_FIELD_TYPE, RANGE_FIELD_TYPE, DATE_FIELD_TYPE, DATETIME_FIELD_TYPE, TEXTAREA_FIELD_TYPE <a href="#field-types-and-samples">(Check field types)</a></td>
+</tr>
+<tr>
+<td>default</td>
+<td style="text-align:center"><code>string</code></td>
+<td>Field default value in add page</td>
+</tr>
+<tr>
+<td>check_value</td>
+<td style="text-align:center"><code>string,bool,integer</code></td>
+<td>Value stored when a checkbox is checked. <strong>DEFAULT=1</strong></td>
+</tr>
+<tr>
+<td>uncheck_value</td>
+<td style="text-align:center"><code>string,bool,integer</code></td>
+<td>Value stored when a checkbox is unchecked. <strong>DEFAULT=0</strong></td>
+</tr>
+<tr>
+<td>html_atts</td>
+<td style="text-align:center"><code>array[string]</code></td>
+<td>Others html attributes to add to field, like: required, placeholder, pattern, title, min, max, step...</td>
+</tr>
+<tr>
+<td>options</td>
+<td style="text-align:center"><code>array</code></td>
+<td>Options to show in a dropdown field</td>
+</tr>
+</tbody>
+</table>
+<h2 id="set-field-name">Set field name</h2>
+<p>You can set the field name with the properties associative array like this sample:</p>
+<pre class="hljs"><code><div><span class="hljs-string">'dbfieldname'</span> =&gt; [
+    <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Field name to show'</span>,
+],
+</div></code></pre>
+<p>or you can set it directly, but in this last version, you can only set the name for a db field.</p>
+<pre class="hljs"><code><div><span class="hljs-string">'dbfieldname'</span> =&gt; <span class="hljs-string">'Field name to show'</span>,
+</div></code></pre>
+<h2 id="field-types-and-samples">Field types and samples</h2>
+<h3 id="number-field-type">Number field type</h3>
+<pre class="hljs"><code><div><span class="hljs-string">'dbfieldname'</span> =&gt; [
+    <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Demo number field'</span>,
+    <span class="hljs-string">'type'</span> =&gt; KpaCrud::NUMBER_FIELD_TYPE,
+    <span class="hljs-string">'default'</span> =&gt; <span class="hljs-string">'25'</span>,
+    <span class="hljs-string">'html_atts'</span> =&gt; [
+        <span class="hljs-string">'min="1"'</span>,
+        <span class="hljs-string">'max="50"'</span>,
+    ]
+],
+</div></code></pre>
+<h3 id="range-field">Range field</h3>
+<pre class="hljs"><code><div><span class="hljs-string">'dbfieldname'</span> =&gt; [
+    <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Demo text field'</span>,
+    <span class="hljs-string">'type'</span> =&gt; KpaCrud::RANGE_FIELD_TYPE,
+    <span class="hljs-string">'default'</span> =&gt; <span class="hljs-string">'25'</span>,
+    <span class="hljs-string">'html_atts'</span> =&gt; [        <span class="hljs-comment">// html_atts are optional, but useful to costumize page</span>
+        <span class="hljs-string">'min="1"'</span>,
+        <span class="hljs-string">'max="50"'</span>,
+        <span class="hljs-string">'step="5"'</span>,
+    ]
+],
+</div></code></pre>
+<h3 id="make-a-field-required">Make a field <strong>required</strong></h3>
+<pre class="hljs"><code><div><span class="hljs-string">'dbfieldname'</span> =&gt; [
+    <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Demo text field'</span>,
+    <span class="hljs-string">'html_atts'</span> =&gt; [
+        <span class="hljs-string">"required"</span>, 
+        <span class="hljs-string">"placeholder=\"Add your info here\""</span>
+    ],
+],
+</div></code></pre>
+<h3 id="make-a-field-invisible">Make a field <strong>Invisible</strong></h3>
+<p>This field will be invisible in all views</p>
+<pre class="hljs"><code><div><span class="hljs-string">'dbfieldname'</span> =&gt; [
+    <span class="hljs-string">'type'</span> =&gt; KpaCrud::INVISIBLE_FIELD_TYPE
+],
+</div></code></pre>
+<h3 id="checkbox-field">Checkbox field</h3>
+<pre class="hljs"><code><div><span class="hljs-string">'dbfieldname'</span> =&gt; [
+    <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'Demo text field'</span>,
+    <span class="hljs-string">'type'</span> =&gt; KpaCrud::CHECKBOX_FIELD_TYPE, 
+    <span class="hljs-string">'check_value'</span> =&gt; <span class="hljs-string">'1'</span>,   <span class="hljs-comment">// By default check_value=1. You can omit it is equal</span>
+    <span class="hljs-string">'uncheck_value'</span> =&gt; <span class="hljs-string">'0'</span>  <span class="hljs-comment">// By default uncheck_value=0    </span>
+],
+</div></code></pre>
+<h3 id="date-field-with-default-value-in-add-page">Date field with default value in Add page</h3>
+<pre class="hljs"><code><div><span class="hljs-string">'dbfieldtype'</span> =&gt; [
+    <span class="hljs-string">'type'</span> =&gt; KpaCrud::DATE_FIELD_TYPE,
+    <span class="hljs-string">'default'</span> =&gt; <span class="hljs-string">'1-2-2022'</span>  <span class="hljs-comment">// you can set default date for add page</span>
+],
+</div></code></pre>
+<h3 id="datetime-field-with-default-value-in-add-page">Datetime field with default value in Add page</h3>
+<pre class="hljs"><code><div><span class="hljs-string">'dbfieldtype'</span> =&gt; [
+    <span class="hljs-string">'type'</span> =&gt; KpaCrud::DATETIME_FIELD_TYPE,
+    <span class="hljs-string">'default'</span> =&gt; <span class="hljs-string">'1-2-2022 15:43'</span>  <span class="hljs-comment">// you can set default date for add page</span>
+],
+</div></code></pre>
+<h3 id="dropdown-field-type">Dropdown field type</h3>
+<p>You can create a custom dropdown item, to control values introduced in a field by user. You can define dropdown values with an associative array.</p>
+<p>To make an identic checkbox with a dropdown, you can set item-value only, like this.</p>
+<table><tr><td><pre>
+'active' => [
+    'type' => KpaCrud::DROPDOWN_FIELD_TYPE,
+    'options' => ["Disabled", "Active"],
+    'html_atts'=>[
+        "required",
+    ]
+],
+</pre></td><td><pre>
+'active' => [
+    'type' => KpaCrud::DROPDOWN_FIELD_TYPE,
+    'options' => ["0"=>"Disabled", "1"=>"Active"],
+    'html_atts'=>[
+        "required",
+    ]
+],
+</pre></td></tr></table>
+<p>This samples generates</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"data_active"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"data_active"</span> <span class="hljs-attr">required</span>=<span class="hljs-string">""</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"0"</span>&gt;</span>Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>&gt;</span>Active<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</div></code></pre>
+<p>If you need to show a select value item in a dropdown, you can do it easily adding a null index item. Like this sample.</p>
+<pre class="hljs"><code><div><span class="hljs-string">'active'</span> =&gt; [
+    <span class="hljs-string">'type'</span> =&gt; KpaCrud::DROPDOWN_FIELD_TYPE,
+    <span class="hljs-string">'options'</span> =&gt; [<span class="hljs-string">""</span>=&gt;<span class="hljs-string">"Select option"</span>,<span class="hljs-string">"Disabled"</span>,<span class="hljs-string">"Active"</span>],
+    <span class="hljs-string">'html_atts'</span>=&gt;[
+        <span class="hljs-string">"required"</span>,
+    ]
+],
+</div></code></pre>
+<p>This samples generates</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"data_active"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"data_active"</span> <span class="hljs-attr">required</span>=<span class="hljs-string">""</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">""</span> <span class="hljs-attr">selected</span>=<span class="hljs-string">"selected"</span>&gt;</span>Select option<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"0"</span>&gt;</span>Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>&gt;</span>Active<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</div></code></pre>
+<h1 id="library-exceptions">Library Exceptions</h1>
+<table>
+<thead>
+<tr>
+<th>Exception ID</th>
+<th>Exception</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, 4, 8</td>
+<td>Table name is null</td>
+<td></td>
+</tr>
+<tr>
+<td>2, 5, 9</td>
+<td>Table not exists in DB</td>
+<td></td>
+</tr>
+<tr>
+<td>3, 6</td>
+<td>Field name not exists</td>
+<td>You try to set a field name as ID or show as a column in list view, and this field doesn't exists</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Field type unknown</td>
+<td>Check available field types in documentation</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ID Field name set to null</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "name": "siensis/kpacrud",
+    "description": "KpaCrud Library permits to generate automatically CRUD pages from a DB table",
+    "license": "MIT",
+    "authors": [{
+        "name": "JmFxR",
+        "email": "dev@siensis.com"
+    }],
+    "minimum-stability": "dev",
+    "require": {}
+}

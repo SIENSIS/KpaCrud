@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdocumentor
+        configVersion="3"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://www.phpdoc.org"
+        xsi:noNamespaceSchemaLocation="https://docs.phpdoc.org/latest/phpdoc.xsd"
+>
+    <title>SIENSIS KpaCrud</title>
+    <paths>
+        <output>docs</output>
+        <cache>.phpdoc</cache>
+    </paths>
+
+    <version number="1.3.0.1">
+        <folder>latest</folder>
+        <api>
+            <source dsn=".">
+                <path>src</path>
+            </source>
+            <extensions>
+                <extension>php</extension>
+            </extensions>
+            <include-source>true</include-source>
+            <markers>
+                <marker>TODO</marker>
+                <marker>FIX</marker>
+                <marker>FIXED</marker>
+                <marker>DONE</marker>
+            </markers>
+        </api>
+    </version>
+
+</phpdocumentor>

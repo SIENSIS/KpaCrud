@@ -1,0 +1,95 @@
+# SIENSIS KpaCrud v1.3.0.2a Build 20220502
+
+## Done
+
+- Added globally TODO and changes.log file in markdown format
+- Added SQL_SEPARATOR as constant KpaCrud 
+- Added DEFAULT_FIELD_TYPE field type as constant as KpaCrud
+- Added INVISIBLE_FIELD_TYPE field type as constant as KpaCrud
+- Added CHECK_VALUE as constant KpaCrud
+- Added UNCHECK_VALUE as constant KpaCrud
+- Added custom type in setColumnInfo (email, invisible)
+- Added email type with validation
+- Added javascript validation inputs
+- Added sample controller and views intro KpaCrud src
+- Added extra html atts to add and edit view. Ex: required, pattern, placeholder, min, max..
+- Added number field type and NUMBER_FIELD_TYPE constant
+- Added range field type and RANGE_FIELD_TYPE constant
+- Added date and datetime field type, DATE_FIELD_TYPE and DATETIME_FIELD_TYPE constant
+- Added textarea field type, TEXTAREA_FIELD_TYPE constant
+- Added helper function str_ends_with (PHP 8 incorpores this function)
+- Added dropdown field type
+ 
+## Fixed
+- Fixed created_at date when add item
+- Fixed configDefaultName variable error. (Thanks A.Carrillo)
+- Fixed error when error in ADD item. Now showns error and filled erroneous form
+- Fixed field type in setColumnsInfo, throwns exception if type value no valid
+- Fixed minor errors 
+
+__Version 1.3.0.2a (Build:20220502)__
+
+# SIENSIS KpaCrud v1.3.0.1a Build 20220412
+
+
+## Done
+
+- Added where filter when select info from a table 
+- Updated KpaCrud documentation
+- Added documentation samples 
+- Added config profile with full features 
+- Added view to sample 
+- Added and documented TODOs and DONE tasks
+- Added phpdoc.dist.xml
+
+## Fixed
+
+- Fixed minor errors 
+
+__Version 1.3.0.1a (Build:20220412)__
+
+
+# SIENSIS KpaCrud v1.3a Build 20220408
+
+## Done 
+- KpaCrud configuration in config files
+- Added sample controller 
+- Added doc config 
+- Added doc sample controller 
+- Added sample config 
+## Fixed
+- Fixed minor errors 
+ 
+__Version 1.3a Build 20220408__
+
+
+# SIENSIS KpaCrud v1.2a Build 20220407
+ 
+## DONE
+  - KpaCrud library 
+ 
+__Version 1.2a Build 20220407__
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
