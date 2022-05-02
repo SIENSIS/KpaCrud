@@ -1,3 +1,6 @@
+- [Install](#install)
+  - [Install with composer](#install-with-composer)
+  - [Install manually](#install-manually)
 - [Constructor](#constructor)
 - [Config file parameters](#config-file-parameters)
 - [Method setConfig](#method-setconfig)
@@ -19,6 +22,88 @@
     - [Datetime field with default value in Add page](#datetime-field-with-default-value-in-add-page)
     - [Dropdown field type](#dropdown-field-type)
 - [Library Exceptions](#library-exceptions)
+
+# Install 
+
+## Install with composer
+
+**Option 1:**
+
+You need to add SIENSIS repository
+
+```dos
+> composer config repositories.kpacrud vcs https://github.com/SIENSIS/KpaCrud.git
+
+> composer require siensis/kpcrud:dev-master
+```
+
+**Option 2:**
+
+or modify `composer.json`, add repository
+
+```json
+    "repositories": {
+        "kpacrud": {
+            "type": "vcs",
+            "url": "https://github.com/SIENSIS/KpaCrud.git"
+        }
+    },
+``` 
+and add the package to require items intoo `composer.json`
+
+```json
+    "require": {
+        "siensis/kpacrud": "dev-master"
+    },
+```
+**Finally**
+
+Execute `composer update` command to update your project settings
+
+```dos
+> composer update
+```
+
+> :bulb: **Idea**
+> 
+> If you have any  problem, probably you need to update you composer, executing:
+> 
+> composer self-update --2
+
+## Install manually
+
+Download KpaCrud project and extract into your project in a ThirdPary folder, with this structure:
+
+> :file_folder: app
+> 
+> :file_folder: public
+> 
+> :file_folder: tests
+> 
+> :file_folder: vendor
+> 
+> :file_folder: ThirdParty
+> 
+> |---- :file_folder:  SIENSIS
+> 
+> |---- |---:file_folder: KpaCrud
+
+
+Then you need modify autoload config file `app/Config/Autoload.php` and add your new PSR4 package path.
+
+```php
+public $psr4 = [
+    APP_NAMESPACE => APPPATH, // For custom app namespace
+    'Config'      => APPPATH . 'Config',
+    'SIENSIS\KpaCrud' => ROOTPATH . 'ThirdParty'.DIRECTORY_SEPARATOR.'SIENSIS'.DIRECTORY_SEPARATOR.'KpaCrud'.DIRECTORY_SEPARATOR.'src'
+];
+```
+
+> :bulb: **Idea**
+> 
+> Constant **`DIRECTORY_SEPARATOR`** is used to prevent path problems in Linux or Windows servers
+> 
+
 
 # Constructor
 
