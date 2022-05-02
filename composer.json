@@ -6,6 +6,6 @@
         "name": "JmFxR",
         "email": "dev@siensis.com"
     }],
-    
+    "minimum-stability": "dev",
     "require": {}
 }
