@@ -81,7 +81,7 @@ Download KpaCrud project and extract into your project in a ThirdPary folder, wi
 > :file_folder: tests
 > 
 > :file_folder: vendor
-> 
+>  
 > :file_folder: ThirdParty
 > 
 > |---- :file_folder:  SIENSIS
