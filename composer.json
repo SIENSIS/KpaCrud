@@ -14,7 +14,6 @@
         "crud",
         "database"
     ],
-
     "autoload": {
         "psr-4": {
             "SIENSIS\\KpaCrud\\": "src"
