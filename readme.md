@@ -36,7 +36,7 @@
 
 **Option 1:**
 
-You need to add SIENSIS repository
+You need to add `SIENSIS/KpaCrud` require with composer tool.
 
 ```dos
 > composer require siensis/kpcrud:dev-master
