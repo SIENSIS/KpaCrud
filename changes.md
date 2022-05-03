@@ -5,7 +5,7 @@
 - Added composer compatibility
 - Added install instructions
 - Added projecte to Github
-- 
+  
 __Version 1.4a (Build:20220502)__
 # SIENSIS KpaCrud v1.3.0.2a Build 20220502
 
