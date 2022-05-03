@@ -19,6 +19,5 @@
 		"psr-4": {
 			"SIENSIS\\KpaCrud\\": "src"
 		}
-	},
-	"minimum-stability": "dev"
+	}
 } 
