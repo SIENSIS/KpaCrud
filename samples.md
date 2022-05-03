@@ -1,19 +1,102 @@
-- [Sample simple table (setColumnsInfo)](#sample-simple-table-setcolumnsinfo)
-- [Sample simple table (addWhere + setConfig)](#sample-simple-table-addwhere--setconfig)
+- [Sample simple table CRUD](#sample-simple-table-crud)
+- [Sample simple table customized (addWhere + setConfig)](#sample-simple-table-customized-addwhere--setconfig)
+- [How to custom columns with setColumnsInfo](#how-to-custom-columns-with-setcolumnsinfo)
 - [How to set table multikey](#how-to-set-table-multikey)
 - [How to set relation 1<=>N](#how-to-set-relation-1n)
 - [How to set relation N<=>M](#how-to-set-relation-nm)
 
 
-# Sample simple table (setColumnsInfo)
+# Sample simple table CRUD
 
 ```php
-    $crud = new KpaCrud(); //loads default configuration
+    $crud = new KpaCrud();                          // loads default configuration    
+    $crud->setConfig('onlyView');                   // sets configuration to onlyView
+                                                    // set into config file
+    $crud->setTable('news');                        // set table name
+    $crud->setPrimaryKey('id');                     // set primary key
+    $crud->setColumns(['id', 'title', 'data_pub']); // set columns/fields to show
+    $crud->setColumnsInfo([                         // set columns/fields name
+            'id' => ['name'=>'Code'],
+            'title' => ['name'=>'News titular'],
+            'data_pub' => ['name'=>'Publication date','type'=>KpaCrud::DATETIME_FIELD_TYPE],
+    ]);
+    $crud->addWhere('news.data_pub>="2022-04-02 21:03:48"'); // show filtered data
+    $data['output'] = $crud->render();              // renders view
+    return view('sample', $data);
+```
 
-    $crud->setTable('users');
+# Sample simple table customized (addWhere + setConfig)
+
+```php
+    $crud = new KpaCrud('listView'); //loads listView configuration
+
+    /**
+     * $crud = new KpaCrud('listView');  Loads KpaCrud listView defined in Config\KpaCrud.php 
+     * 
+     * $crud->setConfig('onlyView');  Set all KpaCrud configuration to onlyView defined
+     * in Config\KpaCrud.php file 
+     */
+
+    /**
+     * $crud->setTable('news', true);    // Primary key autoload feature 
+     * 
+     * or manual primary key set
+     */
+    $crud->setTable('news');
     $crud->setPrimaryKey('id');
 
-    $crud->setColumns(['id', 'email', 'username']);
+    /**
+     * setColumns([column_name1,column_name2,column_name2])
+     */
+    $crud->setColumns(['id', 'title', 'data_pub']);
+
+    /**
+     * addWhere ($expression)  or addWhere ($key, $value)
+     * 
+     * @example 
+     *      addWhere('news.id','20'); 
+     *      - Adds as a filter news ID equal to 20
+     * @example 
+     *      addWhere('news.data_pub>="2022-04-02 21:03:48"');    
+     *      - Adds as a filter data_pub for news are after 2022-04-02 21:03:48
+     * 
+     * This function adds a filter when KpaCrud gets items
+     */
+    $crud->addWhere('news.data_pub>="2022-04-02 21:03:48"');
+    
+    /**
+     * setColumnsInfo ([column_name1 => title1, column_name2 => title2, column_name3 => title3])
+     * 
+     * Column name by default is shown with first upper case, if you like to change its name
+     * you can use setColumnsInfo, to associate a title to a column_name. You can easily
+     * set with an array with all your titles
+     * 
+     */
+    $crud->setColumnsInfo([
+        'id' => ['name' => 'Codi', 'type' => 'text'],
+        'title' => 'Titol',
+        'data_pub' => ['name' => 'Data publicació'],
+    ]);
+
+    /**
+     * setConfig(config_array) or setConfig(config_collection_name)
+     * 
+     * This function permits to set parametres to configure your CRUD, you
+     * can call function to set parameters individually if you need
+     * 
+     */
+
+    $crud->setConfig('onlyView');               // Loads onlyView collection
+    $crud->setConfig(["editable" => false,]);   // set editable config parameter to false
+
+    $data['output'] = $crud->render();
+
+    return view('\SIENSIS\KpaCrud\Views\sample\sample', $data);
+```
+
+# How to custom columns with setColumnsInfo
+
+```php
 
     /**
      * Available options:
@@ -100,80 +183,9 @@
         'status_message' => ['type' => KpaCrud::INVISIBLE_FIELD_TYPE],
 
     ]);
-
-    $data['output'] = $crud->render();
-
-    return view('\SIENSIS\KpaCrud\Views\sample\sample', $data);
 ```
 
-# Sample simple table (addWhere + setConfig)
 
-```php
-    $crud = new KpaCrud('listView'); //loads listView configuration
-
-    /**
-     * $crud = new KpaCrud('listView');  Loads KpaCrud listView defined in Config\KpaCrud.php 
-     * 
-     * $crud->setConfig('onlyView');  Set all KpaCrud configuration to onlyView defined
-     * in Config\KpaCrud.php file 
-     */
-
-    /**
-     * $crud->setTable('news', true);    // Primary key autoload feature 
-     * 
-     * or manual primary key set
-     */
-    $crud->setTable('news');
-    $crud->setPrimaryKey('id');
-
-    /**
-     * setColumns([column_name1,column_name2,column_name2])
-     */
-    $crud->setColumns(['id', 'title', 'data_pub']);
-
-    /**
-     * addWhere ($expression)  or addWhere ($key, $value)
-     * 
-     * @example 
-     *      addWhere('news.id','20'); 
-     *      - Adds as a filter news ID equal to 20
-     * @example 
-     *      addWhere('news.data_pub>="2022-04-02 21:03:48"');    
-     *      - Adds as a filter data_pub for news are after 2022-04-02 21:03:48
-     * 
-     * This function adds a filter when KpaCrud gets items
-     */
-    $crud->addWhere('news.data_pub>="2022-04-02 21:03:48"');
-    
-    /**
-     * setColumnsInfo ([column_name1 => title1, column_name2 => title2, column_name3 => title3])
-     * 
-     * Column name by default is shown with first upper case, if you like to change its name
-     * you can use setColumnsInfo, to associate a title to a column_name. You can easily
-     * set with an array with all your titles
-     * 
-     */
-    $crud->setColumnsInfo([
-        'id' => ['name' => 'Codi', 'type' => 'text'],
-        'title' => 'Titol',
-        'data_pub' => ['name' => 'Data publicació'],
-    ]);
-
-    /**
-     * setConfig(config_array) or setConfig(config_collection_name)
-     * 
-     * This function permits to set parametres to configure your CRUD, you
-     * can call function to set parameters individually if you need
-     * 
-     */
-
-    $crud->setConfig('onlyView');               // Loads onlyView collection
-    $crud->setConfig(["editable" => false,]);   // set editable config parameter to false
-
-    $data['output'] = $crud->render();
-
-    return view('\SIENSIS\KpaCrud\Views\sample\sample', $data);
-```
 
 # How to set table multikey
 
