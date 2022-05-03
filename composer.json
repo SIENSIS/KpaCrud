@@ -4,8 +4,32 @@
     "license": "MIT",
     "authors": [{
         "name": "JmFxR",
-        "email": "dev@siensis.com"
+        "email": "dev@siensis.com",
+        "homepage": "http://siensis.com",
+        "role": "Developer"
     }],
+    "keywords": [
+		"codeigniter",
+		"crud",
+		"database"
+	],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+		"php": "^7.3 || ^8.0"
+	},
+    "require-dev": {
+		"codeigniter4/codeigniter4": "dev-develop",
+		"codeigniter4/codeigniter4-standard": "^1.0"
+	},
+    "autoload": {
+		"psr-4": {
+			"SIENSIS\\KpaCrud\\": "src"
+		},
+	},
+    "repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/codeigniter4/CodeIgniter4"
+		}
+	],
 }
