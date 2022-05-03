@@ -24,12 +24,12 @@
     "autoload": {
 		"psr-4": {
 			"SIENSIS\\KpaCrud\\": "src"
-		},
+		}
 	},
     "repositories": [
 		{
 			"type": "vcs",
 			"url": "https://github.com/codeigniter4/CodeIgniter4"
 		}
-	],
+	]
 }
