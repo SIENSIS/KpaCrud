@@ -26,9 +26,9 @@
 
 # KpaCrud Library
 
-- [Controller samples](samples.md)
-- [TODO](todo.md)
+- [Samples and how to's](samples.md)
 - [Change list](changes.md)
+- [TODO](todo.md)
   
 # Install 
 
