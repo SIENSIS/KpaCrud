@@ -39,24 +39,12 @@
 You need to add SIENSIS repository
 
 ```dos
-> composer config repositories.kpacrud vcs https://github.com/SIENSIS/KpaCrud.git
-
 > composer require siensis/kpcrud:dev-master
 ```
 
 **Option 2:**
 
-or modify `composer.json`, add repository
-
-```json
-    "repositories": {
-        "kpacrud": {
-            "type": "vcs",
-            "url": "https://github.com/SIENSIS/KpaCrud.git"
-        }
-    },
-``` 
-and add the package to require items intoo `composer.json`
+or modify `composer.json` and add the package to require items into `composer.json`
 
 ```json
     "require": {
