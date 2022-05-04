@@ -1,3 +1,10 @@
+
+## TODO
+- [ ] Add additional function/button for every item in table list
+- [ ] Disable js/css header feature
+- [ ] Add command to install sample and controller sample to project
+
+
 ## DONE
 
 - [x] Add config class @done(22-04-7 12:36)
@@ -15,6 +22,4 @@
 - [x] Add Exceptions to readme.md
 - [x] Add addWhere to readme.md
 
-## TODO
-- [ ] Add additional function/button for every item in table list
 
