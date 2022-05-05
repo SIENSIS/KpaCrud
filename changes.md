@@ -3,7 +3,7 @@
 ## Done
 
 - Fixed add/edit redirect
-- Fixed configuration load problem in app folder
+- Fixed configuration load problem if config file in app/config folder
 
 __Version 1.4.1a (Build:20220502)__
 
