@@ -4,6 +4,8 @@
 
 - Fixed add/edit redirect
 - Fixed configuration load problem if config file in app/config folder
+- Added add and edit callback
+- Added a method that permits to hide some CSS+JS files
 
 __Version 1.4.1a (Build:20220502)__
 

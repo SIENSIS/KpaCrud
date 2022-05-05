@@ -20,6 +20,10 @@ use SIENSIS\KpaCrud\Libraries\KpaCrud;
 class KpaCrudSampleController extends BaseController
 {
 
+    public function hashPassword($postData){
+        $postData['data_password']=password_hash($postData['data_password'], PASSWORD_DEFAULT);
+        return $postData;
+    }
     public function demo_simpleTable_full()
     {
         $crud = new KpaCrud(); //loads default configuration
@@ -28,6 +32,9 @@ class KpaCrudSampleController extends BaseController
         $crud->setPrimaryKey('id');
 
         $crud->setColumns(['id', 'email', 'username']);
+
+        $crud->addPostAddCallBack(array($this,'hashPassword'));
+        $crud->addPostEditCallBack(array($this,'hashPassword'));
 
         /**
          * Available options:

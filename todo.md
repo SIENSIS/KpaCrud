@@ -2,11 +2,12 @@
 ## TODO
 - [ ] Add additional function/button for every item in table list
 - [ ] Add command to install sample and controller sample to project
-- [ ] Add callback post
 
 
 ## DONE
 
+- [x] Add callback post edit @done (22-05-05 20:35)
+- [x] Add callback post add @done (22-05-05 20:35)
 - [x] Disable js/css header feature @done (22-05-05 19:15)
 - [x] Add config class @done(22-04-7 12:36)
 - [x] Add where clause to filter items before sending to view @done(22-04-12 12:30) .

@@ -5,6 +5,7 @@
 - [How to set relation 1<=>N](#how-to-set-relation-1n)
 - [How to set relation N<=>M](#how-to-set-relation-nm)
 - [How to change bootstrap, jquery or CSS/JS head links](#how-to-change-bootstrap-jquery-or-cssjs-head-links)
+- [How to set a callback](#how-to-set-a-callback)
 
 
 # Sample simple table CRUD
@@ -252,19 +253,6 @@
 
 # How to change bootstrap, jquery or CSS/JS head links
 
-If you need to hide CSS/JS from head, you can use `hideHeadLink` function. Every link has its own id, the availables ones are:
-
-
-| ID                  | Description                            |
-| ------------------- | -------------------------------------- |
-| js-query            | JQuery Javascript CDN                  |
-| js-bootstrap        | Bootstrap JS file                      |
-| js-datatables       | Datatables plugin JS file              |
-| js-datatables-boot  | Datatables JS file for bootstrap theme |
-| css-bootstrap       | Bootstrap CSS file                     |
-| css-datatables-boot | Datatables CSS for bootstrap theme     |
-| css-fontawesome     | Fontawesome CSS file                   |
-
 If you would like to include links into the app view file, you need to hide all CSS+JS files with this call.
 ```php
 $crud->hideHeadLink([
@@ -276,4 +264,28 @@ $crud->hideHeadLink([
     'css-datatables-boot',
     'css-fontawesome'
 ]);
+```
+
+# How to set a callback
+
+You need to declare the callback function, like:
+
+```php
+    public function hashPassword($postData){
+        $postData['data_password']=password_hash($postData['data_password'], PASSWORD_DEFAULT);
+        return $postData;
+    }
+```
+In this sample, database field name is `password` then post data field is `data_password`.
+
+Then you need to set the crud callback in your controller.
+
+```php
+    $crud = new KpaCrud(); //loads default configuration
+
+    $crud->setTable('users');
+    $crud->setPrimaryKey('id');
+
+    $crud->addPostAddCallBack(array($this,'hashPassword'));
+    $crud->addPostEditCallBack(array($this,'hashPassword'));
 ```

@@ -210,14 +210,14 @@ class KpaCrud
      * @var array<string,object>
      */
     protected $relations = array();
-    
+
     /**
      * hidden_head_links - Boolean to indicate if necessary to load CSS array in all CRUD views.
      *
      * @var boolean
      */
     protected $hidden_head_links = [];
-        
+
     /**
      * model - BD Model to access database and operate with it.
      *
@@ -283,13 +283,16 @@ class KpaCrud
      */
     protected $output = null;
 
+    public $postEditCallBack = null;
+    public $postAddCallBack = null;
+
     public function __construct($configName = null)
     {
         helper('SIENSIS\KpaCrud\Helpers\crudrender');
         $configFile = config('kpacrud');
 
-        $default=$configFile->configDefaultName;
-        $this->config = $configFile->$configName??$configFile->$default;
+        $default = $configFile->configDefaultName;
+        $this->config = $configFile->$configName ?? $configFile->$default;
 
         $this->request = \Config\Services::request();
 
@@ -297,16 +300,16 @@ class KpaCrud
             'js-jquery' => 'https://code.jquery.com/jquery-3.6.0.min.js',
             'js-bootstrap' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
 
-            'js-datatables' =>'https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js',
+            'js-datatables' => 'https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js',
 
-            'js-datatables-boot'=>'https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js',    // Required by BOOTSTRAP Theme
+            'js-datatables-boot' => 'https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js',    // Required by BOOTSTRAP Theme
         ];
 
         $this->css_files = [
             'css-bootstrap' => 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css',
 
             // 'https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css',   // Classic theme
-            'css-datatables-boot'=> 'https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css',  // Bootstrap them
+            'css-datatables-boot' => 'https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css',  // Bootstrap them
 
 
             'css-fontawesome' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css'
@@ -342,8 +345,8 @@ class KpaCrud
     {
         if (is_string($config)) {
             $configFile = config('kpacrud');
-            $default=$configFile->configDefaultName;
-            $config = $configFile->$config??$configFile->$default;
+            $default = $configFile->configDefaultName;
+            $config = $configFile->$config ?? $configFile->$default;
         }
         $this->config['policy'] =  $config['policy'] ??  $this->config['policy'] ?? 'default';
         //row tools
@@ -630,29 +633,50 @@ class KpaCrud
         $this->model->addWhere($key, $value);
     }
 
-/**
- * hideHeadLinks - Hides links to CSS or JS libraries used by KpaCrud. 
- * <pre>
- *  Available values are:
- *      - 'js-jquery' 
- *      - 'js-bootstrap'
- *      - 'js-datatables'
- *      - 'js-datatables-boot'
- *      - 'css-bootstrap'
- *      - 'css-datatables-boot'
- *      - 'css-fontawesome'
- * </pre>
- *
- * @param  array<string> $items     Head link ID to hide
- * 
- * @since 1.4.1a
- * @version 1.4.1a
- */
-    public function hideHeadLink ($items){
-        $this->hidden_head_links=$items;
+    /**
+     * hideHeadLinks - Hides links to CSS or JS libraries used by KpaCrud. 
+     * <pre>
+     *  Available values are:
+     *      - 'js-jquery' 
+     *      - 'js-bootstrap'
+     *      - 'js-datatables'
+     *      - 'js-datatables-boot'
+     *      - 'css-bootstrap'
+     *      - 'css-datatables-boot'
+     *      - 'css-fontawesome'
+     * </pre>
+     *
+     * @param  array<string> $items     Head link ID to hide
+     * 
+     * @since 1.4.1a
+     * @version 1.4.1a
+     */
+    public function hideHeadLink($items)
+    {
+        $this->hidden_head_links = $items;
     }
-
-
+    /**
+     * addPostAddCallback - Adds a callback function that was fired when user post the add form
+     *
+     * @param  [mixed] $callbackFunc    Callback function data information (namespace, class, function name....)
+     * 
+     * @since 1.4.1a
+     */
+    public function addPostAddCallBack($callbackFunc)
+    {
+        $this->postAddCallBack = $callbackFunc;
+    }
+    /**
+     * addPostEditCallBack - Adds a callback function that was fired when user post the edit form
+     *
+     * @param  [mixed] $callbackFunc    Callback function data information (namespace, class, function name....)
+     * 
+     * @since 1.4.1a
+     */
+    public function addPostEditCallBack($callbackFunc)
+    {
+        $this->postEditCallBack = $callbackFunc;
+    }
 
     /**
      * @ignore
@@ -724,7 +748,11 @@ class KpaCrud
         $data['tableFields'] = $this->data_fields;
 
         if ($this->request->getPost('op') == 'add') {
-            $newID = $this->model->addItem($this->request->getPost(), $this->data_fields);
+            $postData = $this->request->getPost();
+            if ($this->postAddCallBack !== null) {
+                $postData =  call_user_func($this->postAddCallBack, $postData);
+            }
+            $newID = $this->model->addItem($postData, $this->data_fields);
             $data['newID'] = $newID;
             $view = 'SIENSIS\KpaCrud\Views\add';
             if ($newID < 0) {
@@ -797,7 +825,11 @@ class KpaCrud
 
         if ($data['data'] != null) {
             if ($this->request->getPost('op') == 'edit') {
-                $updated = $this->model->updateItem($this->request->getPost(), $this->data_fields, $this->request->getGet(), $this->data_columns);
+                $postData = $this->request->getPost();
+                if ($this->postAddCallBack !== null) {
+                    $postData =  call_user_func($this->postEditCallBack, $postData);
+                }
+                $updated = $this->model->updateItem($postData, $this->data_fields, $this->request->getGet(), $this->data_columns);
 
                 if ($updated) {
                     $id = implode(', ', $queryIDs);

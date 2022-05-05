@@ -22,6 +22,8 @@
     - [Date field with default value in Add page](#date-field-with-default-value-in-add-page)
     - [Datetime field with default value in Add page](#datetime-field-with-default-value-in-add-page)
     - [Dropdown field type](#dropdown-field-type)
+- [Method hideHeadLink](#method-hideheadlink)
+- [Method addPostAddCallBack and addPostEditCallBack](#method-addpostaddcallback-and-addposteditcallback)
 - [Library Exceptions](#library-exceptions)
 
 # KpaCrud Library
@@ -409,7 +411,34 @@ This samples generates
     <option value="1">Active</option>
 </select>
 ```
-  
+# Method hideHeadLink
+If you need to hide CSS/JS from head, you can use `hideHeadLink` function. Every link has its own id, the availables ones are:
+
+
+| ID                  | Description                            |
+| ------------------- | -------------------------------------- |
+| js-query            | JQuery Javascript CDN                  |
+| js-bootstrap        | Bootstrap JS file                      |
+| js-datatables       | Datatables plugin JS file              |
+| js-datatables-boot  | Datatables JS file for bootstrap theme |
+| css-bootstrap       | Bootstrap CSS file                     |
+| css-datatables-boot | Datatables CSS for bootstrap theme     |
+| css-fontawesome     | Fontawesome CSS file                   |
+
+See [Samples file](samples.md) for a sample
+
+# Method addPostAddCallBack and addPostEditCallBack
+
+If you need to get post data to change anythig before `KpaCrud` uses this info to store it in database, you need to set an add or edit callback. 
+
+The function will receive post data and they must return post data modified.
+
+Post data fields will use the name according this structure: 
+
+> data_ + DATABASE_FIELD_NAME
+
+See [Samples file](samples.md) for a sample
+
 # Library Exceptions
 
 
