@@ -1,3 +1,12 @@
+# SIENSIS KpaCrud v1.4.1a Build 202205
+
+## Done
+
+- Fixed add/edit redirect
+- Fixed configuration load problem in app folder
+
+__Version 1.4.1a (Build:20220502)__
+
 # SIENSIS KpaCrud v1.4a Build 20220503
 
 ## Done
@@ -7,6 +16,7 @@
 - Added install instructions
   
 __Version 1.4a (Build:20220502)__
+
 # SIENSIS KpaCrud v1.3.0.2a Build 20220502
 
 ## Done

@@ -215,13 +215,13 @@ class KpaCrud
      *
      * @var boolean
      */
-    protected $add_css = true;
+    public $add_css = true;
     /**
      * add_js - Boolean to indicate if necessary to load JS array in all CRUD views.
      *
      * @var boolean
      */
-    protected $add_js = true;
+    public $add_js = true;
     /**
      * model - BD Model to access database and operate with it.
      *
@@ -292,7 +292,8 @@ class KpaCrud
         helper('SIENSIS\KpaCrud\Helpers\crudrender');
         $configFile = config('kpacrud');
 
-        $this->config = $configFile->config($configName);
+        $default=$configFile->configDefaultName;
+        $this->config = $configFile->$configName??$configFile->$default;
 
         $this->request = \Config\Services::request();
 
@@ -315,8 +316,8 @@ class KpaCrud
             'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css'
         ];
 
-        $this->add_css = true;
-        $this->add_js = true;
+        $this->add_css = false;
+        $this->add_js = false;
 
         $this->setConfig($this->config);
     }
@@ -348,8 +349,10 @@ class KpaCrud
     {
         if (is_string($config)) {
             $configFile = config('kpacrud');
-            $config = $configFile->config($config);
+            $default=$configFile->configDefaultName;
+            $config = $configFile->$config??$configFile->$default;
         }
+        $this->config['policy'] =  $config['policy'] ??  $this->config['policy'] ?? 'default';
         //row tools
         $this->config['editable'] =  $config['editable'] ??  $this->config['editable'] ?? true;
         $this->config['removable'] = $config['removable'] ?? $this->config['removable'] ?? true;
@@ -692,7 +695,7 @@ class KpaCrud
 
             $response = \Config\Services::response();
             $response
-                ->redirect($this->request->getPath())
+                ->redirect(base_url($this->request->getPath()))
                 ->send();
             return null;
         }
@@ -750,7 +753,7 @@ class KpaCrud
 
                 $response = \Config\Services::response();
                 $response
-                    ->redirect($this->request->getPath())
+                    ->redirect(base_url($this->request->getPath()))
                     ->send();
                 return null;
             } else {
@@ -760,7 +763,7 @@ class KpaCrud
         } else { //item not exists
             $response = \Config\Services::response();
             $response
-                ->redirect($this->request->getPath())
+                ->redirect(base_url($this->request->getPath()))
                 ->send();
         }
 
@@ -796,7 +799,7 @@ class KpaCrud
 
                 $response = \Config\Services::response();
                 $response
-                    ->redirect($this->request->getPath())
+                    ->redirect(base_url($this->request->getPath()))
                     ->send();
                 return null;
             } else {
@@ -808,7 +811,7 @@ class KpaCrud
             d($queryIDs);
             $response = \Config\Services::response();
             $response
-                ->redirect($this->request->getPath())
+                ->redirect(base_url($this->request->getPath()))
                 ->send();
         }
     }
@@ -840,7 +843,7 @@ class KpaCrud
 
         $response = \Config\Services::response();
         $response
-            ->redirect($this->request->getPath())
+            ->redirect(base_url($this->request->getPath()))
             ->send();
         return null;
     }

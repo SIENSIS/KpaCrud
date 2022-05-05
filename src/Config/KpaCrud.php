@@ -58,8 +58,7 @@ class KpaCrud extends BaseConfig
      */
 
     public $default = [
-
-
+        'policy' => 'default',
         //row tools
         'editable' => true,
         'removable' => true,
@@ -112,6 +111,7 @@ class KpaCrud extends BaseConfig
      * 
      */
     public $listView = [
+        'policy' => 'default',
         'editable' => false,
         'removable' => false,
 
@@ -149,6 +149,7 @@ class KpaCrud extends BaseConfig
      * 
      */
     public $onlyView = [
+        'policy' => 'default',
         'editable' => false,
         'removable' => false,
 
@@ -176,7 +177,7 @@ class KpaCrud extends BaseConfig
         'updatedField' =>   'updated_at',
         'deletedField' =>  'deleted_at',
     ];
-    
+
     /**
      * Constructor
      *
