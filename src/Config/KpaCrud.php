@@ -192,24 +192,4 @@ class KpaCrud extends BaseConfig
             $this->configDefaultName = $name;
     }
 
-    /**
-     * Returns deafult configuration or configuration group 
-     * 
-     * @param  string $name        Config name collection to get, if null returns default defined by 
-     * @return array<string,mixed>
-     */
-    public function config($name = null)
-    {
-        if ($name == null) $policy = $this->configDefaultName;
-
-        $props = get_object_vars($this);
-
-        if (isset($props[$name]) && is_array($props[$name])) {
-            $props[$name]["configName"] = $name;
-            return (array) $props[$name];
-        } else {
-            $props[$this->configDefaultName]["configName"] = $this->configDefaultName;
-            return (array) $props[$this->configDefaultName];
-        }
-    }
 }
