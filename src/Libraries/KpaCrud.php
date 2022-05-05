@@ -316,8 +316,8 @@ class KpaCrud
             'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css'
         ];
 
-        $this->add_css = false;
-        $this->add_js = false;
+        $this->add_css = true;
+        $this->add_js = true;
 
         $this->setConfig($this->config);
     }
