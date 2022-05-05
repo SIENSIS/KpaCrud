@@ -24,6 +24,16 @@ class KpaCrudSampleController extends BaseController
     {
         $crud = new KpaCrud(); //loads default configuration
 
+        $crud->hideHeadLink([
+            // 'js-jquery', 
+        // 'js-bootstrap',
+        'js-datatables',
+        'js-datatables-boot',
+        // 'css-bootstrap',         
+        'css-datatables-boot',
+        // 'css-fontawesome'
+    ]);
+
         $crud->setTable('users');
         $crud->setPrimaryKey('id');
 

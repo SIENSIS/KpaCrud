@@ -4,6 +4,7 @@
 - [How to set table multikey](#how-to-set-table-multikey)
 - [How to set relation 1<=>N](#how-to-set-relation-1n)
 - [How to set relation N<=>M](#how-to-set-relation-nm)
+- [How to change bootstrap, jquery or CSS/JS head links](#how-to-change-bootstrap-jquery-or-cssjs-head-links)
 
 
 # Sample simple table CRUD
@@ -247,4 +248,32 @@
         'users__username' => 'Usuari',
         'users__email' => 'eMail',
     ]);
+```
+
+# How to change bootstrap, jquery or CSS/JS head links
+
+If you need to hide CSS/JS from head, you can use `hideHeadLink` function. Every link has its own id, the availables ones are:
+
+
+| ID                  | Description                            |
+| ------------------- | -------------------------------------- |
+| js-query            | JQuery Javascript CDN                  |
+| js-bootstrap        | Bootstrap JS file                      |
+| js-datatables       | Datatables plugin JS file              |
+| js-datatables-boot  | Datatables JS file for bootstrap theme |
+| css-bootstrap       | Bootstrap CSS file                     |
+| css-datatables-boot | Datatables CSS for bootstrap theme     |
+| css-fontawesome     | Fontawesome CSS file                   |
+
+If you would like to include links into the app view file, you need to hide all CSS+JS files with this call.
+```php
+$crud->hideHeadLink([
+    'js-jquery', 
+    'js-bootstrap',
+    'js-datatables',
+    'js-datatables-boot',
+    'css-bootstrap',         
+    'css-datatables-boot',
+    'css-fontawesome'
+]);
 ```

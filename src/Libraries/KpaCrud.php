@@ -210,18 +210,14 @@ class KpaCrud
      * @var array<string,object>
      */
     protected $relations = array();
+    
     /**
-     * add_css - Boolean to indicate if necessary to load CSS array in all CRUD views.
+     * hidden_head_links - Boolean to indicate if necessary to load CSS array in all CRUD views.
      *
      * @var boolean
      */
-    public $add_css = true;
-    /**
-     * add_js - Boolean to indicate if necessary to load JS array in all CRUD views.
-     *
-     * @var boolean
-     */
-    public $add_js = true;
+    protected $hidden_head_links = [];
+        
     /**
      * model - BD Model to access database and operate with it.
      *
@@ -298,26 +294,23 @@ class KpaCrud
         $this->request = \Config\Services::request();
 
         $this->js_files = [
-            'https://code.jquery.com/jquery-3.6.0.min.js',
-            'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
+            'js-jquery' => 'https://code.jquery.com/jquery-3.6.0.min.js',
+            'js-bootstrap' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
 
-            'https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js',
+            'js-datatables' =>'https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js',
 
-            'https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js',    // Required by BOOTSTRAP Theme
+            'js-datatables-boot'=>'https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js',    // Required by BOOTSTRAP Theme
         ];
 
         $this->css_files = [
-            'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css',
+            'css-bootstrap' => 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css',
 
             // 'https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css',   // Classic theme
-            'https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css',  // Bootstrap them
+            'css-datatables-boot'=> 'https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css',  // Bootstrap them
 
 
-            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css'
+            'css-fontawesome' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css'
         ];
-
-        $this->add_css = true;
-        $this->add_js = true;
 
         $this->setConfig($this->config);
     }
@@ -637,6 +630,27 @@ class KpaCrud
         $this->model->addWhere($key, $value);
     }
 
+/**
+ * hideHeadLinks - Hides links to CSS or JS libraries used by KpaCrud. 
+ * <pre>
+ *  Available values are:
+ *      - 'js-jquery' 
+ *      - 'js-bootstrap'
+ *      - 'js-datatables'
+ *      - 'js-datatables-boot'
+ *      - 'css-bootstrap'
+ *      - 'css-datatables-boot'
+ *      - 'css-fontawesome'
+ * </pre>
+ *
+ * @param  array<string> $items     Head link ID to hide
+ * 
+ * @since 1.4.1a
+ * @version 1.4.1a
+ */
+    public function hideHeadLink ($items){
+        $this->hidden_head_links=$items;
+    }
 
 
 
@@ -1000,11 +1014,14 @@ class KpaCrud
         $data['_relations'] = $this->relations;
         $data['_sortable_columns'] = $this->sortable_columns;
 
+        $data['_hidden_head_links'] = $this->hidden_head_links;
+
+
         $data['primaryKey'] = $this->model->getPrimaryKey();
         $data['config'] = $this->config;
 
-        $data['js_files'] = $this->add_js ? $this->js_files : [];
-        $data['css_files'] = $this->add_css ? $this->css_files : [];
+        $data['js_files'] = $this->js_files;
+        $data['css_files'] = $this->css_files;
 
         return $data;
     }

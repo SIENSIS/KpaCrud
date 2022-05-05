@@ -20,8 +20,8 @@
 
 use SIENSIS\KpaCrud\Libraries\KpaCrud;
 
-renderCSS($css_files);
-renderJS($js_files);
+renderCSS($css_files,$_hidden_head_links);
+renderJS($js_files,$_hidden_head_links);
 
 if (!isset($oldForm))
     $oldForm = null;
