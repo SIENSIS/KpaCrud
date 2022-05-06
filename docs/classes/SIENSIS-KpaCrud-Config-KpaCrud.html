@@ -220,13 +220,6 @@
 </dt>
 <dd>Constructor</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/SIENSIS-KpaCrud-Config-KpaCrud.html#method_config">config()</a>
-    <span>
-                                &nbsp;: array&lt;string, mixed&gt;    </span>
-</dt>
-<dd>Returns deafult configuration or configuration group</dd>
-
         </dl>
 
 
@@ -313,6 +306,7 @@
         <span class="phpdocumentor-signature__type">array&lt;string, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$default</span>
      = <span class="phpdocumentor-signature__default-value">[
+    &#039;policy&#039; =&gt; &#039;default&#039;,
     //row tools
     &#039;editable&#039; =&gt; true,
     &#039;removable&#039; =&gt; true,
@@ -415,7 +409,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Config/KpaCrud.php"><a href="files/src-config-kpacrud.html"><abbr title="src/Config/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">113</span>
 
     </aside>
 
@@ -425,7 +419,7 @@
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">array&lt;string, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$listView</span>
-     = <span class="phpdocumentor-signature__default-value">[&#039;editable&#039; =&gt; false, &#039;removable&#039; =&gt; false, &#039;sortable&#039; =&gt; true, &#039;filterable&#039; =&gt; false, &#039;paging&#039; =&gt; false, &#039;numerate&#039; =&gt; false, &#039;pagingType&#039; =&gt; &#039;full_numbers&#039;, &#039;defaultPageSize&#039; =&gt; 10, &#039;rememberState&#039; =&gt; false, &#039;add_button&#039; =&gt; false, &#039;recycled_button&#039; =&gt; false, &#039;exportXLS&#039; =&gt; true, &#039;print&#039; =&gt; true, &#039;multidelete&#039; =&gt; false, &#039;deletepermanent&#039; =&gt; false, &#039;useSoftDeletes&#039; =&gt; false, &#039;showTimestamps&#039; =&gt; false, &#039;useTimestamps&#039; =&gt; false, &#039;createdField&#039; =&gt; &#039;created_at&#039;, &#039;updatedField&#039; =&gt; &#039;updated_at&#039;, &#039;deletedField&#039; =&gt; &#039;deleted_at&#039;]</span></code>
+     = <span class="phpdocumentor-signature__default-value">[&#039;policy&#039; =&gt; &#039;default&#039;, &#039;editable&#039; =&gt; false, &#039;removable&#039; =&gt; false, &#039;sortable&#039; =&gt; true, &#039;filterable&#039; =&gt; false, &#039;paging&#039; =&gt; false, &#039;numerate&#039; =&gt; false, &#039;pagingType&#039; =&gt; &#039;full_numbers&#039;, &#039;defaultPageSize&#039; =&gt; 10, &#039;rememberState&#039; =&gt; false, &#039;add_button&#039; =&gt; false, &#039;recycled_button&#039; =&gt; false, &#039;exportXLS&#039; =&gt; true, &#039;print&#039; =&gt; true, &#039;multidelete&#039; =&gt; false, &#039;deletepermanent&#039; =&gt; false, &#039;useSoftDeletes&#039; =&gt; false, &#039;showTimestamps&#039; =&gt; false, &#039;useTimestamps&#039; =&gt; false, &#039;createdField&#039; =&gt; &#039;created_at&#039;, &#039;updatedField&#039; =&gt; &#039;updated_at&#039;, &#039;deletedField&#039; =&gt; &#039;deleted_at&#039;]</span></code>
 
     
     
@@ -472,7 +466,7 @@
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">array&lt;string, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$onlyView</span>
-     = <span class="phpdocumentor-signature__default-value">[&#039;editable&#039; =&gt; false, &#039;removable&#039; =&gt; false, &#039;sortable&#039; =&gt; true, &#039;filterable&#039; =&gt; true, &#039;paging&#039; =&gt; true, &#039;numerate&#039; =&gt; false, &#039;pagingType&#039; =&gt; &#039;full_numbers&#039;, &#039;defaultPageSize&#039; =&gt; 10, &#039;rememberState&#039; =&gt; false, &#039;add_button&#039; =&gt; false, &#039;recycled_button&#039; =&gt; false, &#039;exportXLS&#039; =&gt; true, &#039;print&#039; =&gt; true, &#039;multidelete&#039; =&gt; false, &#039;deletepermanent&#039; =&gt; false, &#039;useSoftDeletes&#039; =&gt; false, &#039;showTimestamps&#039; =&gt; false, &#039;useTimestamps&#039; =&gt; false, &#039;createdField&#039; =&gt; &#039;created_at&#039;, &#039;updatedField&#039; =&gt; &#039;updated_at&#039;, &#039;deletedField&#039; =&gt; &#039;deleted_at&#039;]</span></code>
+     = <span class="phpdocumentor-signature__default-value">[&#039;policy&#039; =&gt; &#039;default&#039;, &#039;editable&#039; =&gt; false, &#039;removable&#039; =&gt; false, &#039;sortable&#039; =&gt; true, &#039;filterable&#039; =&gt; true, &#039;paging&#039; =&gt; true, &#039;numerate&#039; =&gt; false, &#039;pagingType&#039; =&gt; &#039;full_numbers&#039;, &#039;defaultPageSize&#039; =&gt; 10, &#039;rememberState&#039; =&gt; false, &#039;add_button&#039; =&gt; false, &#039;recycled_button&#039; =&gt; false, &#039;exportXLS&#039; =&gt; true, &#039;print&#039; =&gt; true, &#039;multidelete&#039; =&gt; false, &#039;deletepermanent&#039; =&gt; false, &#039;useSoftDeletes&#039; =&gt; false, &#039;showTimestamps&#039; =&gt; false, &#039;useTimestamps&#039; =&gt; false, &#039;createdField&#039; =&gt; &#039;created_at&#039;, &#039;updatedField&#039; =&gt; &#039;updated_at&#039;, &#039;deletedField&#039; =&gt; &#039;deleted_at&#039;]</span></code>
 
     
     
@@ -513,7 +507,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Config/KpaCrud.php"><a href="files/src-config-kpacrud.html"><abbr title="src/Config/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">186</span>
+    <span class="phpdocumentor-element-found-in__line">187</span>
 
     </aside>
 
@@ -555,51 +549,6 @@
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_config">
-        config()
-        <a href="classes/SIENSIS-KpaCrud-Config-KpaCrud.html#method_config" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Config/KpaCrud.php"><a href="files/src-config-kpacrud.html"><abbr title="src/Config/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">200</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Returns deafult configuration or configuration group</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">config</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$name</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Config name collection to get, if null returns default defined by</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span>
             &mdash;
         
     

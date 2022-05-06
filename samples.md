@@ -5,7 +5,7 @@
 - [How to set relation 1<=>N](#how-to-set-relation-1n)
 - [How to set relation N<=>M](#how-to-set-relation-nm)
 - [How to change bootstrap, jquery or CSS/JS head links](#how-to-change-bootstrap-jquery-or-cssjs-head-links)
-- [How to set a callback](#how-to-set-a-callback)
+- [How to set a callback to store hashed password](#how-to-set-a-callback-to-store-hashed-password)
 
 
 # Sample simple table CRUD
@@ -266,13 +266,24 @@ $crud->hideHeadLink([
 ]);
 ```
 
-# How to set a callback
+# How to set a callback to store hashed password
 
 You need to declare the callback function, like:
 
 ```php
-    public function hashPassword($postData){
-        $postData['data_password']=password_hash($postData['data_password'], PASSWORD_DEFAULT);
+    /* hashNewPassword - used to store hash password in add form */
+    public function hashNewPassword($postData)
+    {
+        $postData['data_password_hash'] = password_hash($postData['data_password_hash'], PASSWORD_DEFAULT);
+        return $postData;
+    }
+    /* hashEditPassword - used to store hashed password if user change it in edit form */
+    public function hashEditPassword($postData)
+    {
+        if($postData['data_password_hash']!=$postData['olddata_password_hash']) {
+            // field has a new value. You new to generate new password
+            $postData['data_password_hash'] = password_hash($postData['data_password_hash'], PASSWORD_DEFAULT);
+        } // else field not changed, you can update with the same value
         return $postData;
     }
 ```
@@ -286,6 +297,6 @@ Then you need to set the crud callback in your controller.
     $crud->setTable('users');
     $crud->setPrimaryKey('id');
 
-    $crud->addPostAddCallBack(array($this,'hashPassword'));
-    $crud->addPostEditCallBack(array($this,'hashPassword'));
+    $crud->addPostAddCallBack(array($this, 'hashNewPassword'));
+    $crud->addPostEditCallBack(array($this, 'hashEditPassword'));
 ```

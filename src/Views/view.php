@@ -67,7 +67,7 @@ renderJS($js_files,$_hidden_head_links);
             $colname = $_data_columns[$dbfield->Field]['name'] ?? ucfirst($dbfield->Field);
             $coltype = $_data_columns[$dbfield->Field]['type'] ?? KpaCrud::DEFAULT_FIELD_TYPE;
 
-            if ($coltype != KpaCrud::INVISIBLE_FIELD_TYPE) {
+            if ($coltype != KpaCrud::INVISIBLE_FIELD_TYPE && $coltype != KpaCrud::PASSWORD_FIELD_TYPE) {
                 if (isset($_relations[$dbfield->Field])) {      // IF RELATED field
                     $displayAs = $_relations[$dbfield->Field]['relatedTable'] . KpaCrud::SQL_TABLE_SEPARATOR . $_relations[$dbfield->Field]['display_as'];
 

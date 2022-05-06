@@ -1,4 +1,4 @@
-# SIENSIS KpaCrud v1.4.1a Build 202205
+# SIENSIS KpaCrud v1.4.1a Build 20220506
 
 ## Done
 
@@ -6,8 +6,9 @@
 - Fixed configuration load problem if config file in app/config folder
 - Added add and edit callback
 - Added a method that permits to hide some CSS+JS files
+- Added password field type and PASSWORD_FIELD_TYPE constant
 
-__Version 1.4.1a (Build:20220502)__
+__Version 1.4.1a (Build:20220506)__
 
 # SIENSIS KpaCrud v1.4a Build 20220503
 

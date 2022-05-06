@@ -21,6 +21,7 @@
     - [Checkbox field](#checkbox-field)
     - [Date field with default value in Add page](#date-field-with-default-value-in-add-page)
     - [Datetime field with default value in Add page](#datetime-field-with-default-value-in-add-page)
+    - [Password field type](#password-field-type)
     - [Dropdown field type](#dropdown-field-type)
 - [Method hideHeadLink](#method-hideheadlink)
 - [Method addPostAddCallBack and addPostEditCallBack](#method-addpostaddcallback-and-addposteditcallback)
@@ -360,6 +361,13 @@ This field will be invisible in all views
     'default' => '1-2-2022 15:43'  // you can set default date for add page
 ],
 ```
+### Password field type
+
+This type permits to hide content data in edit page or new page. All fields typed as password are always hidden in view or delete views.
+
+Password field type in the edit page adds a hidden form field to check programatically if user has changed the value. This feature permits you to combine with edit and new callback to store passwords hashed in you DB.
+
+See [Samples file](samples.md)
 
 ### Dropdown field type
 

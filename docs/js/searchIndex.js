@@ -11,11 +11,6 @@ Search.appendIndex(
             "summary": "Constructor",
             "url": "classes/SIENSIS-KpaCrud-Config-KpaCrud.html#method___construct"
         },                {
-            "fqsen": "\\SIENSIS\\KpaCrud\\Config\\KpaCrud\u003A\u003Aconfig\u0028\u0029",
-            "name": "config",
-            "summary": "Returns\u0020deafult\u0020configuration\u0020or\u0020configuration\u0020group",
-            "url": "classes/SIENSIS-KpaCrud-Config-KpaCrud.html#method_config"
-        },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Config\\KpaCrud\u003A\u003A\u0024configDefaultName",
             "name": "configDefaultName",
             "summary": "configDefaultName\u0020\u002D\u0020Determines\u0020default\u0020config\u0020collection\u0020to\u0020use",
@@ -40,6 +35,16 @@ Search.appendIndex(
             "name": "KpaCrudSampleController",
             "summary": "KpaCrudSampleController\u0020\u002D\u0020Is\u0020a\u0020sample\u0020controller,\u0020to\u0020view\u0020how\u0020to\u0020use\u0020KpaCrud\u0020Library.",
             "url": "classes/SIENSIS-KpaCrud-Controllers-KpaCrudSampleController.html"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Controllers\\KpaCrudSampleController\u003A\u003AhashNewPassword\u0028\u0029",
+            "name": "hashNewPassword",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Controllers-KpaCrudSampleController.html#method_hashNewPassword"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Controllers\\KpaCrudSampleController\u003A\u003AhashEditPassword\u0028\u0029",
+            "name": "hashEditPassword",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Controllers-KpaCrudSampleController.html#method_hashEditPassword"
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Controllers\\KpaCrudSampleController\u003A\u003Ademo_simpleTable_full\u0028\u0029",
             "name": "demo_simpleTable_full",
@@ -146,6 +151,21 @@ Search.appendIndex(
             "summary": "addWhere\u0020\u002D\u0020Adds\u0020where\u0020clause\u0020to\u0020database\u0020query,\u0020usefull\u0020to\u0020show\u0020filtered\u0020data",
             "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addWhere"
         },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AhideHeadLink\u0028\u0029",
+            "name": "hideHeadLink",
+            "summary": "hideHeadLinks\u0020\u002D\u0020Hides\u0020links\u0020to\u0020CSS\u0020or\u0020JS\u0020libraries\u0020used\u0020by\u0020KpaCrud.",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_hideHeadLink"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AaddPostAddCallBack\u0028\u0029",
+            "name": "addPostAddCallBack",
+            "summary": "addPostAddCallback\u0020\u002D\u0020Adds\u0020a\u0020callback\u0020function\u0020that\u0020was\u0020fired\u0020when\u0020user\u0020post\u0020the\u0020add\u0020form",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostAddCallBack"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AaddPostEditCallBack\u0028\u0029",
+            "name": "addPostEditCallBack",
+            "summary": "addPostEditCallBack\u0020\u002D\u0020Adds\u0020a\u0020callback\u0020function\u0020that\u0020was\u0020fired\u0020when\u0020user\u0020post\u0020the\u0020edit\u0020form",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostEditCallBack"
+        },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003ASQL_TABLE_SEPARATOR",
             "name": "SQL_TABLE_SEPARATOR",
             "summary": "SQL_TABLE_SEPARATOR\u0020\u002D\u0020Permit\u0020to\u0020configure\u0020separator\u0020in\u0020SQL\u0020instructions\u0020for\u0020related\u0020fields\u0020in\u0020related\u0020tables,\u0020to\u0020show\u0020it\u0020in\u0020list\/trash\u0020views",
@@ -155,6 +175,11 @@ Search.appendIndex(
             "name": "DEFAULT_FIELD_TYPE",
             "summary": "DEFAULT_FIELD_TYPE\u0020\u002D\u0020Field\u0020type\u0020used\u0020to\u0020show\u0020a\u0020textbox",
             "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#constant_DEFAULT_FIELD_TYPE"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003APASSWORD_FIELD_TYPE",
+            "name": "PASSWORD_FIELD_TYPE",
+            "summary": "PASSWORD_FIELD_TYPE\u0020\u002D\u0020Field\u0020type\u0020used\u0020to\u0020show\u0020a\u0020password\u0020field",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#constant_PASSWORD_FIELD_TYPE"
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AINVISIBLE_FIELD_TYPE",
             "name": "INVISIBLE_FIELD_TYPE",
@@ -256,15 +281,10 @@ Search.appendIndex(
             "summary": "relations\u0020\u002D\u0020Contains\u0020relation\u0020info\u0020as\u0020a\u0020table\u0020column\u0020name\u0020array\u0020to\u0020a\u0020info\u0020object,\u0020like.",
             "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_relations"
         },                {
-            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024add_css",
-            "name": "add_css",
-            "summary": "add_css\u0020\u002D\u0020Boolean\u0020to\u0020indicate\u0020if\u0020necessary\u0020to\u0020load\u0020CSS\u0020array\u0020in\u0020all\u0020CRUD\u0020views.",
-            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_add_css"
-        },                {
-            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024add_js",
-            "name": "add_js",
-            "summary": "add_js\u0020\u002D\u0020Boolean\u0020to\u0020indicate\u0020if\u0020necessary\u0020to\u0020load\u0020JS\u0020array\u0020in\u0020all\u0020CRUD\u0020views.",
-            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_add_js"
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024hidden_head_links",
+            "name": "hidden_head_links",
+            "summary": "hidden_head_links\u0020\u002D\u0020Boolean\u0020to\u0020indicate\u0020if\u0020necessary\u0020to\u0020load\u0020CSS\u0020array\u0020in\u0020all\u0020CRUD\u0020views.",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_hidden_head_links"
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024model",
             "name": "model",
@@ -275,6 +295,16 @@ Search.appendIndex(
             "name": "config",
             "summary": "config\u0020\u002D\u0020Crud\u0020configuration.",
             "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_config"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024postEditCallBack",
+            "name": "postEditCallBack",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postEditCallBack"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024postAddCallBack",
+            "name": "postAddCallBack",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postAddCallBack"
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Models\\KpaCrudModel",
             "name": "KpaCrudModel",

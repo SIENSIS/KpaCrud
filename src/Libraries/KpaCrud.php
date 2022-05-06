@@ -26,9 +26,9 @@ use SIENSIS\KpaCrud\Models\KpaCrudModel;
 /**
  * KpaCrud Library permits to generate automatically CRUD pages from a DB table
  *
- * @link changes.html  To see change log
- * @link todo.html  To see TODO file
- * @link readme.html  To see config samples and features
+ * @link ../changes.md  To see change log
+ * @link ../todo.md  To see TODO file
+ * @link ../readme.md  To see config samples and features
  * 
  * @version 1.0
  * @version 1.3         Configuration as CI4 config files
@@ -45,28 +45,35 @@ class KpaCrud
     /**
      * DEFAULT_FIELD_TYPE - Field type used to show a textbox
      * 
-     * @link readme.html To see samples
+     * @link ../readme.md To see samples
      */
     public  const DEFAULT_FIELD_TYPE = 'text';
+
+     /**
+     * PASSWORD_FIELD_TYPE - Field type used to show a password field
+     * 
+     * @link ../readme.md To see samples
+     */
+    public  const PASSWORD_FIELD_TYPE = 'password';
 
     /**
      * INVISIBLE_FIELD_TYPE - Field type used to hide a field in all kpacrud pages
      * 
-     * @link readme.html To see samples
+     * @link ../readme.md To see samples
      */
     public  const INVISIBLE_FIELD_TYPE = 'invisible';
 
     /**
      * EMAIL_FIELD_TYPE - Field type used to show an input:email and validate field content as a mail
      * 
-     * @link readme.html To see samples
+     * @link ../readme.md To see samples
      */
     public  const EMAIL_FIELD_TYPE = 'email';
 
     /**
      * CHECKBOX_FIELD_TYPE - Field type used to show a checkbox
      * 
-     * @link readme.html To see samples
+     * @link ../readme.md To see samples
      * @see KpaCrud::DEFAULT_CHECK_VALUE       You can set default check/uncheck values with setColumnsInfo
      * @see KpaCrud::DEFAULT_UNCHECK_VALUE
      * 
@@ -78,14 +85,14 @@ class KpaCrud
     /**
      * NUMBER_FIELD_TYPE - Field type used to show an input:number field and validate its content
      * 
-     * @link readme.html To see samples
+     * @link ../readme.md To see samples
      */
     public  const NUMBER_FIELD_TYPE = 'number';
 
     /**
      * RANGE_FIELD_TYPE - Field type used to show a range input, you can set more items with htmlatts property with setColumnsInfo
      * 
-     * @link readme.html To see samples
+     * @link ../readme.md To see samples
      * @see KpaCrud::setColumnsInfo()
      * 
      */
@@ -94,28 +101,28 @@ class KpaCrud
     /**
      * DATE_FIELD_TYPE - Field type used to show a date picker
      * 
-     * @link readme.html To see samples
+     * @link ../readme.md To see samples
      */
     public  const DATE_FIELD_TYPE = 'date';
 
     /**
      * DATETIME_FIELD_TYPE - Field type used to show a datetime picker
      * 
-     * @link readme.html To see samples
+     * @link ../readme.md To see samples
      */
     public  const DATETIME_FIELD_TYPE = 'datetime';
 
     /**
      * TEXTAREA_FIELD_TYPE - Field type used to show a textarea 
      * 
-     * @link readme.html To see samples
+     * @link ../readme.md To see samples
      */
     public  const TEXTAREA_FIELD_TYPE = 'textarea';
 
     /**
      * DROPDOWN_FIELD_TYPE - Field type used to show a dropdown, combined with options in setColumnsInfo method
      * 
-     * @link readme.html To see samples
+     * @link ../readme.md To see samples
      * @see KpaCrud::setColumnsInfo()
      * 
      */
@@ -487,7 +494,7 @@ class KpaCrud
      * 
      * @example setColumnsInfo(['name' => 'Employee name'])     Set Employee name as heder for field name
      * @example setColumnsInfo(['name' => ['name'=>'Employee name', 'type'=>'text'])     Set Employee name as heder for field name and textbox type for edit/add view
-     * @link readme.html  To see setColumnsInfo samples
+     * @link ../readme.md  To see setColumnsInfo samples
      *
      * @param array<string,mixed> $columns     Associative array, column_name => display_column_name or Associative array, column_name => custom_info
      * @return void

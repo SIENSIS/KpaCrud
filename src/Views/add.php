@@ -20,8 +20,8 @@
 
 use SIENSIS\KpaCrud\Libraries\KpaCrud;
 
-renderCSS($css_files,$_hidden_head_links);
-renderJS($js_files,$_hidden_head_links);
+renderCSS($css_files, $_hidden_head_links);
+renderJS($js_files, $_hidden_head_links);
 
 if (!isset($oldForm))
     $oldForm = null;
@@ -126,11 +126,11 @@ if (isset($newID)) {
                             switch ($coltype) {
                                 case strval(KpaCrud::DROPDOWN_FIELD_TYPE):
                                     $coloptions = $_data_columns[$dbfield->Field]['options'] ?? [""];
-                                    $atts = "class='form-select' id='data_". $dbfield->Field ."' onchange='checkInput(this)' ";
+                                    $atts = "class='form-select' id='data_" . $dbfield->Field . "' onchange='checkInput(this)' ";
 
-                                    $atts=$atts . implode(" ",$colhtmlatts);
-                                        
-                                    echo form_dropdown("data_" . $dbfield->Field, $coloptions, $coldefault, $atts);           
+                                    $atts = $atts . implode(" ", $colhtmlatts);
+
+                                    echo form_dropdown("data_" . $dbfield->Field, $coloptions, $coldefault, $atts);
                                     break;
                                 case strval(KpaCrud::RANGE_FIELD_TYPE):
                                     echo "\t<input type='range' name='data_" . $dbfield->Field . "' ";
@@ -151,8 +151,8 @@ if (isset($newID)) {
                                 case strval(KpaCrud::CHECKBOX_FIELD_TYPE):
                                     echo "\t<input type='checkbox' name='data_" . $dbfield->Field . "' class='form-check-input' ";
                                     echo " " .  implode(" ", $colhtmlatts), " ";
-                                    echo " value='" . KpaCrud::DEFAULT_CHECK_VALUE ."' ";
-                                    if ($coldefault==KpaCrud::DEFAULT_CHECK_VALUE) echo " checked ";
+                                    echo " value='" . KpaCrud::DEFAULT_CHECK_VALUE . "' ";
+                                    if ($coldefault == KpaCrud::DEFAULT_CHECK_VALUE) echo " checked ";
                                     echo ">";
                                     break;
                                 case strval(KpaCrud::DATE_FIELD_TYPE):
@@ -167,6 +167,13 @@ if (isset($newID)) {
                                     echo " " .  implode(" ", $colhtmlatts), " ";
                                     echo " onchange='checkInput(this)' ";
                                     echo " value='" . date('Y-m-d\TH:i', strtotime($coldefault)) . "' ";
+                                    echo " name='data_" . $dbfield->Field . "' class='form-control' >";
+                                    break;
+                                case strval(KpaCrud::PASSWORD_FIELD_TYPE):
+                                    echo "\t<input type='password' ";
+                                    echo " " .  implode(" ", $colhtmlatts), " ";
+                                    echo " onchange='checkInput(this)' ";
+                                    echo " value='" . $coldefault . "' ";
                                     echo " name='data_" . $dbfield->Field . "' class='form-control' >";
                                     break;
                                 case strval(KpaCrud::EMAIL_FIELD_TYPE):

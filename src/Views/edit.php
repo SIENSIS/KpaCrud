@@ -20,8 +20,8 @@
 
 use SIENSIS\KpaCrud\Libraries\KpaCrud;
 
-renderCSS($css_files,$_hidden_head_links);
-renderJS($js_files,$_hidden_head_links);
+renderCSS($css_files, $_hidden_head_links);
+renderJS($js_files, $_hidden_head_links);
 
 ?>
 <script>
@@ -103,9 +103,9 @@ renderJS($js_files,$_hidden_head_links);
                             switch ($coltype) {
                                 case strval(KpaCrud::DROPDOWN_FIELD_TYPE):
                                     $coloptions = $_data_columns[$dbfield->Field]['options'] ?? [""];
-                                    $atts = "class='form-select' id='data_". $dbfield->Field ."' onchange='checkInput(this)' ";
-                                    $atts=$atts . implode(" ",$colhtmlatts);
-            
+                                    $atts = "class='form-select' id='data_" . $dbfield->Field . "' onchange='checkInput(this)' ";
+                                    $atts = $atts . implode(" ", $colhtmlatts);
+
                                     echo form_dropdown("data_" . $dbfield->Field, $coloptions, $data[$dbfield->Field], $atts);
                                     break;
                                 case strval(KpaCrud::RANGE_FIELD_TYPE):
@@ -149,6 +149,17 @@ renderJS($js_files,$_hidden_head_links);
                                     echo " onchange='checkInput(this)' ";
                                     echo " value='" . date('Y-m-d\TH:i', strtotime($data[$dbfield->Field])) . "'";
                                     echo " name='data_" . $dbfield->Field . "' class='form-control' >";
+                                    break;
+                                case strval(KpaCrud::PASSWORD_FIELD_TYPE):
+                                    echo "\t<input type='password' ";
+                                    echo " " .  implode(" ", $colhtmlatts), " ";
+                                    echo " onchange='checkInput(this)' ";
+                                    echo " value='" . $data[$dbfield->Field] . "'";
+                                    echo " name='data_" . $dbfield->Field . "' class='form-control' >";
+
+                                    echo "\t<input type='hidden' ";
+                                    echo " value='" . $data[$dbfield->Field] . "'";
+                                    echo " name='olddata_" . $dbfield->Field . "' >";
                                     break;
                                 case strval(KpaCrud::EMAIL_FIELD_TYPE):
                                     echo "\t<input type='email' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'";

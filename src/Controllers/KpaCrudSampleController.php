@@ -13,15 +13,24 @@ use SIENSIS\KpaCrud\Libraries\KpaCrud;
  *                           - Shows a table whit two 1=>N relations
  *                           - Shows a table with a 1=>N relation workers=>jobs
  * 
- * @link readme.html     To view KpaCrud functions and samples, to customize your expirience
+ * @link ../readme.md     To view KpaCrud functions and samples, to customize your expirience
  *  
  * @package App\Controllers
  */
 class KpaCrudSampleController extends BaseController
 {
 
-    public function hashPassword($postData){
-        $postData['data_password']=password_hash($postData['data_password'], PASSWORD_DEFAULT);
+    public function hashNewPassword($postData)
+    {
+        $postData['data_password_hash'] = password_hash($postData['data_password_hash'], PASSWORD_DEFAULT);
+        return $postData;
+    }
+    public function hashEditPassword($postData)
+    {
+        if($postData['data_password_hash']!=$postData['olddata_password_hash']) {
+            // field has a new value. You new to generate new password
+            $postData['data_password_hash'] = password_hash($postData['data_password_hash'], PASSWORD_DEFAULT);
+        } // else field not changed, you can update with the same value
         return $postData;
     }
     public function demo_simpleTable_full()
@@ -33,8 +42,8 @@ class KpaCrudSampleController extends BaseController
 
         $crud->setColumns(['id', 'email', 'username']);
 
-        $crud->addPostAddCallBack(array($this,'hashPassword'));
-        $crud->addPostEditCallBack(array($this,'hashPassword'));
+        $crud->addPostAddCallBack(array($this, 'hashNewPassword'));
+        $crud->addPostEditCallBack(array($this, 'hashEditPassword'));
 
         /**
          * Available options:
@@ -58,18 +67,17 @@ class KpaCrudSampleController extends BaseController
         $crud->setColumnsInfo([
             'id' => ['name' => 'Codi'],
             'email' => [
-                'name' => 'eCorreu', 
+                'name' => 'eCorreu',
                 'html_atts' => [
                     'required',
                     'placeholder="Introdueix l\'adreça mail de l\'usuari"'
-                ], 
+                ],
                 'type' => KpaCrud::EMAIL_FIELD_TYPE
             ],
             'username' => [
                 'name' => 'Nom usuari',
-                'type' => KpaCrud::TEXTAREA_FIELD_TYPE,
                 'html_atts' => [
-                    "required", 
+                    "required",
                     "placeholder=\"Introdueix el nom d'usuari\""
                 ],
             ],
@@ -86,9 +94,15 @@ class KpaCrudSampleController extends BaseController
                 'html_atts' => [
                     "required",
                 ],
-                'default'=>'1',
+                'default' => '1',
                 'check_value' => '1',
                 'uncheck_value' => '0'
+            ],
+            'password_hash' => [
+                'type' => KpaCrud::PASSWORD_FIELD_TYPE,
+                'name'=> 'Password',
+                'html_atts' => [
+                ]
             ],
 
             // 'force_pass_reset' => [
@@ -105,16 +119,15 @@ class KpaCrudSampleController extends BaseController
                 'html_atts' => [
                     "required",
                 ],
-                'default'=>'0',
+                'default' => '0',
             ],
 
             'reset_expires' => [
                 'type' => KpaCrud::DATE_FIELD_TYPE,
-                'default'=> date('Y-m-d', strtotime(date("d-m-Y"). ' + 6 days'))
-                
+                'default' => date('Y-m-d', strtotime(date("d-m-Y") . ' + 6 days'))
+
             ],
             'activate_hash' => ['type' => KpaCrud::INVISIBLE_FIELD_TYPE],
-            'password_hash' => ['type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'reset_hash' => ['type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'reset_at' => ['type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'status' => ['type' => KpaCrud::INVISIBLE_FIELD_TYPE],
@@ -149,7 +162,7 @@ class KpaCrudSampleController extends BaseController
      *  return view('sample', $data);
      * </pre>
      * 
-     * @link readme.html     To show more functions and samples, to customize your expirience
+     * @link ../readme.md     To show more functions and samples, to customize your expirience
      *
      * @return void
      * 

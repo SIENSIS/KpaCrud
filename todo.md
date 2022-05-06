@@ -6,6 +6,7 @@
 
 ## DONE
 
+- [x] PASSWORD field type, only for edit or add pages. Edit page doesn't show db pass @done (22-05-06 15:55)
 - [x] Add callback post edit @done (22-05-05 20:35)
 - [x] Add callback post add @done (22-05-05 20:35)
 - [x] Disable js/css header feature @done (22-05-05 19:15)
