@@ -57,6 +57,7 @@ return [
         'recoverErr' => '<i class="fa-solid fa-triangle-exclamation"></i> Error no items recovered',
         'removedErr' => '<i class="fa-solid fa-triangle-exclamation"></i> Error no items removed',
         'notExistsErr' => '<i class="fa-solid fa-triangle-exclamation"></i> Error item {0, number} not exists',
+        'callbackCancel'=>'<i class="fa-solid fa-triangle-exclamation"></i> Error callback function cancel operation',
     ],
     'titles' => [
         'create' => 'Add item',

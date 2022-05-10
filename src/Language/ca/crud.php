@@ -57,6 +57,7 @@ return [
         'recoverErr' => '<i class="fa-solid fa-triangle-exclamation"></i> Error no s\'han recuperat els items',
         'removedErr' => '<i class="fa-solid fa-triangle-exclamation"></i> Error no s\'han eliminats els items',
         'notExistsErr' => '<i class="fa-solid fa-triangle-exclamation"></i> Error item {0, number} no existeix',
+        'callbackCancel'=>"<i class='fa-solid fa-triangle-exclamation'></i> Error callback ha cancel.lat l'operació",
     ],
     'titles' => [
         'create' => 'Afegir item',

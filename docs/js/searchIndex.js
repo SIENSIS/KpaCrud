@@ -156,15 +156,45 @@ Search.appendIndex(
             "summary": "hideHeadLinks\u0020\u002D\u0020Hides\u0020links\u0020to\u0020CSS\u0020or\u0020JS\u0020libraries\u0020used\u0020by\u0020KpaCrud.",
             "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_hideHeadLink"
         },                {
-            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AaddPostAddCallBack\u0028\u0029",
-            "name": "addPostAddCallBack",
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AaddPostAddCallback\u0028\u0029",
+            "name": "addPostAddCallback",
             "summary": "addPostAddCallback\u0020\u002D\u0020Adds\u0020a\u0020callback\u0020function\u0020that\u0020was\u0020fired\u0020when\u0020user\u0020post\u0020the\u0020add\u0020form",
-            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostAddCallBack"
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostAddCallback"
         },                {
-            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AaddPostEditCallBack\u0028\u0029",
-            "name": "addPostEditCallBack",
-            "summary": "addPostEditCallBack\u0020\u002D\u0020Adds\u0020a\u0020callback\u0020function\u0020that\u0020was\u0020fired\u0020when\u0020user\u0020post\u0020the\u0020edit\u0020form",
-            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostEditCallBack"
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AaddPostEditCallback\u0028\u0029",
+            "name": "addPostEditCallback",
+            "summary": "addPostEditCallback\u0020\u002D\u0020Adds\u0020a\u0020callback\u0020function\u0020that\u0020was\u0020fired\u0020when\u0020user\u0020post\u0020the\u0020edit\u0020form",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostEditCallback"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AisViewMode\u0028\u0029",
+            "name": "isViewMode",
+            "summary": "isViewMode\u0020\u002D\u0020This\u0020function\u0020checks\u0020if\u0020KpaCrud\u0020Library\u0020is\u0020in\u0020view\u0020item\u0020mode\u0020and\u0020return\u0020it",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isViewMode"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AisExportMode\u0028\u0029",
+            "name": "isExportMode",
+            "summary": "isExportMode\u0020\u002D\u0020This\u0020function\u0020checks\u0020if\u0020KpaCrud\u0020Library\u0020is\u0020in\u0020export\u0020or\u0020print\u0020list\u0020mode\u0020and\u0020return\u0020it",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isExportMode"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AisAddMode\u0028\u0029",
+            "name": "isAddMode",
+            "summary": "isAddMode\u0020\u002D\u0020This\u0020function\u0020checks\u0020if\u0020KpaCrud\u0020Library\u0020is\u0020in\u0020add\u0020new\u0020item\u0020mode\u0020and\u0020return\u0020it",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isAddMode"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AisEditMode\u0028\u0029",
+            "name": "isEditMode",
+            "summary": "isEditMode\u0020\u002D\u0020This\u0020function\u0020checks\u0020if\u0020KpaCrud\u0020Library\u0020is\u0020in\u0020edition\u0020item\u0020mode\u0020and\u0020return\u0020it",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isEditMode"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AisDelMode\u0028\u0029",
+            "name": "isDelMode",
+            "summary": "isDelMode\u0020\u002D\u0020This\u0020function\u0020checks\u0020if\u0020KpaCrud\u0020Library\u0020is\u0020in\u0020delete\u0020form\u0020confirm\u0020item\u0020mode\u0020and\u0020return\u0020it",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isDelMode"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AisTrashMode\u0028\u0029",
+            "name": "isTrashMode",
+            "summary": "isTrashMode\u0020\u002D\u0020This\u0020function\u0020checks\u0020if\u0020KpaCrud\u0020Library\u0020is\u0020in\u0020trahs\u0020list\u0020mode\u0020and\u0020return\u0020it",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isTrashMode"
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003ASQL_TABLE_SEPARATOR",
             "name": "SQL_TABLE_SEPARATOR",
@@ -296,15 +326,15 @@ Search.appendIndex(
             "summary": "config\u0020\u002D\u0020Crud\u0020configuration.",
             "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_config"
         },                {
-            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024postEditCallBack",
-            "name": "postEditCallBack",
-            "summary": "",
-            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postEditCallBack"
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024postEditCallback",
+            "name": "postEditCallback",
+            "summary": "postEditCallback\u0020\u002D\u0020\u0020\u0020Function\u0020to\u0020callback\u0020before\u0020executes\u0020post\u0020rutines\u0020in\u0020edit\u0020mode",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postEditCallback"
         },                {
-            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024postAddCallBack",
-            "name": "postAddCallBack",
-            "summary": "",
-            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postAddCallBack"
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024postAddCallback",
+            "name": "postAddCallback",
+            "summary": "postAddCallback\u0020\u002D\u0020\u0020\u0020Function\u0020to\u0020callback\u0020before\u0020executes\u0020post\u0020rutines\u0020in\u0020add\u0020mode",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postAddCallback"
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Models\\KpaCrudModel",
             "name": "KpaCrudModel",

@@ -6,6 +6,7 @@
 - [How to set relation N<=>M](#how-to-set-relation-nm)
 - [How to change bootstrap, jquery or CSS/JS head links](#how-to-change-bootstrap-jquery-or-cssjs-head-links)
 - [How to set a callback to store hashed password](#how-to-set-a-callback-to-store-hashed-password)
+- [How to custom parameters according KpaCrud view mode](#how-to-custom-parameters-according-kpacrud-view-mode)
 
 
 # Sample simple table CRUD
@@ -300,3 +301,24 @@ Then you need to set the crud callback in your controller.
     $crud->addPostAddCallBack(array($this, 'hashNewPassword'));
     $crud->addPostEditCallBack(array($this, 'hashEditPassword'));
 ```
+
+# How to custom parameters according KpaCrud view mode
+
+You can customize KpaCrud aspect according KpaCrud view mode (list, add, del, export, print...), to do this you need to use functions `isViewMode`, `isExportMode`, `isAddMode`, `isEditMode`, `isDelMode`, `isTrashMode`.
+
+```php
+$crud = new KpaCrud(); 
+
+$crud->setTable('users');
+$crud->setPrimaryKey('id');
+
+if ($crud->isExportMode()){
+    $crud->setColumns([ 'username','email','active']);
+    $crud->addWhere('users.active=1');
+} else {
+
+    $crud->setColumns(['id', 'email', 'username']);
+}
+```
+
+In the sample above KpaCrud exports columns `username`, `email` and `active` database field, in the order described, also the sample only exports or prints active users. Otherwise in other views (list, edit, add, trash...), showns all data without filtering and `id`, `email`, `username` with this order.  

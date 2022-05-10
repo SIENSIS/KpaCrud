@@ -3,6 +3,7 @@
   - [Install with composer](#install-with-composer)
   - [Install manually](#install-manually)
 - [Constructor](#constructor)
+- [Routes file](#routes-file)
 - [Config file parameters](#config-file-parameters)
 - [Method setConfig](#method-setconfig)
 - [Method setTable](#method-settable)
@@ -25,6 +26,7 @@
     - [Dropdown field type](#dropdown-field-type)
 - [Method hideHeadLink](#method-hideheadlink)
 - [Method addPostAddCallBack and addPostEditCallBack](#method-addpostaddcallback-and-addposteditcallback)
+- [Functions isViewMode, isExportMode, isAddMode, isEditMode, isDelMode, isTrashMode](#functions-isviewmode-isexportmode-isaddmode-iseditmode-isdelmode-istrashmode)
 - [Library Exceptions](#library-exceptions)
 
 # KpaCrud Library
@@ -116,6 +118,14 @@ With this sample you KpaCrud library loads `listView` defined parameters.
 ```php
 $crud = new KpaCrud('listView'); //loads listView configuration
 ```
+# Routes file
+
+KpaCrud library works with GET and POST methods, you need to create a GET and POST route to your controller function.
+
+```php
+$routes->match(['get','post'],'/route/to/crud', 'SampleKpaCrudController::demo_function');
+```
+POST Method is used by KpaCrud in `Add submit`, `Delete confirm` and `Edit submit`.
 
 # Config file parameters
 In the file `App\Config\KpaCrud.php` you can can store parameters collections identified with a name and the collection parameter used as default.
@@ -433,19 +443,24 @@ If you need to hide CSS/JS from head, you can use `hideHeadLink` function. Every
 | css-datatables-boot | Datatables CSS for bootstrap theme     |
 | css-fontawesome     | Fontawesome CSS file                   |
 
-See [Samples file](samples.md) for a sample
+See ["How to change bootstrap, jquery or CSS/JS head links"](samples.md#how-to-change-bootstrap-jquery-or-cssjs-head-links) for a sample.
 
 # Method addPostAddCallBack and addPostEditCallBack
 
 If you need to get post data to change anythig before `KpaCrud` uses this info to store it in database, you need to set an add or edit callback. 
 
-The function will receive post data and they must return post data modified.
+The function will receive post data and they must return post data modified or **`null`** if you need to cancel event, in this case `KpaCrud` showns a cancel message like: **` Error callback function cancel operation`**
 
 Post data fields will use the name according this structure: 
 
 > data_ + DATABASE_FIELD_NAME
 
-See [Samples file](samples.md) for a sample
+See ["How to set a callback to store hashed password"](samples.md#how-to-set-a-callback-to-store-hashed-password) for a sample.
+
+# Functions isViewMode, isExportMode, isAddMode, isEditMode, isDelMode, isTrashMode
+
+See 
+["How to custom parameters according KpaCrud view mode"](samples.md#how-to-custom-parameters-according-kpacrud-view-mode) for a sample.
 
 # Library Exceptions
 

@@ -23,7 +23,7 @@ class KpaCrudSampleController extends BaseController
     public function hashNewPassword($postData)
     {
         $postData['data_password_hash'] = password_hash($postData['data_password_hash'], PASSWORD_DEFAULT);
-        return $postData;
+        return $postData; // if return null, edit process will be cancelled
     }
     public function hashEditPassword($postData)
     {
@@ -31,7 +31,7 @@ class KpaCrudSampleController extends BaseController
             // field has a new value. You new to generate new password
             $postData['data_password_hash'] = password_hash($postData['data_password_hash'], PASSWORD_DEFAULT);
         } // else field not changed, you can update with the same value
-        return $postData;
+        return $postData;  // if return null, edit process will be cancelled
     }
     public function demo_simpleTable_full()
     {
@@ -39,8 +39,14 @@ class KpaCrudSampleController extends BaseController
 
         $crud->setTable('users');
         $crud->setPrimaryKey('id');
+        
+        if ($crud->isExportMode()){
+            $crud->setColumns([ 'username','email','active']);
+            $crud->addWhere('users.active=1');
+        } else {
 
-        $crud->setColumns(['id', 'email', 'username']);
+            $crud->setColumns(['id', 'email', 'username']);
+        }
 
         $crud->addPostAddCallBack(array($this, 'hashNewPassword'));
         $crud->addPostEditCallBack(array($this, 'hashEditPassword'));

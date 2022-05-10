@@ -49,7 +49,7 @@ class KpaCrud
      */
     public  const DEFAULT_FIELD_TYPE = 'text';
 
-     /**
+    /**
      * PASSWORD_FIELD_TYPE - Field type used to show a password field
      * 
      * @link ../readme.md To see samples
@@ -290,8 +290,21 @@ class KpaCrud
      */
     protected $output = null;
 
-    public $postEditCallBack = null;
-    public $postAddCallBack = null;
+    /**
+     * postEditCallback -   Function to callback before executes post rutines in edit mode
+     *
+     * @var callable    Function + namespace information
+     * @since 1.4.2a
+     */
+    public $postEditCallback = null;
+
+    /**
+     * postAddCallback -   Function to callback before executes post rutines in add mode
+     *
+     * @var callable    Function + namespace information
+     * @since 1.4.2a
+     */
+    public $postAddCallback = null;
 
     public function __construct($configName = null)
     {
@@ -561,22 +574,22 @@ class KpaCrud
 
         $this->model->relation1ToN($this->relations);
 
-        if ($this->request->getGet('view') == 'item') {
+        if ($this->isViewMode()) {
 
             return $this->renderView();
-        } elseif ($this->request->getGet('edit') && $this->config['editable']) {
+        } elseif ($this->isEditMode() && $this->config['editable']) {
 
             return $this->renderEdit();
-        } elseif ($this->request->getGet('del') && $this->config['removable']) {
+        } elseif ($this->isDelMode() && $this->config['removable']) {
 
             return $this->renderDel();
-        } elseif ($this->request->getGet('add') && $this->config['add_button']) {
+        } elseif ($this->isAddMode() && $this->config['add_button']) {
 
             return $this->renderAdd();
-        } elseif ($this->request->getGet('export')) {
+        } elseif ($this->isExportMode()) {
 
             $this->renderExport();
-        } elseif ($this->request->getGet('trash') == 'list' && $this->config['recycled_button'] && $this->config['useSoftDeletes']) {
+        } elseif ($this->isTrashMode() == 'list' && $this->config['recycled_button'] && $this->config['useSoftDeletes']) {
 
             if ($this->request->getPost('trashop') == 'recover')
                 return $this->renderTrashRecover();
@@ -669,21 +682,90 @@ class KpaCrud
      * 
      * @since 1.4.1a
      */
-    public function addPostAddCallBack($callbackFunc)
+    public function addPostAddCallback($callbackFunc)
     {
-        $this->postAddCallBack = $callbackFunc;
+        $this->postAddCallback = $callbackFunc;
     }
     /**
-     * addPostEditCallBack - Adds a callback function that was fired when user post the edit form
+     * addPostEditCallback - Adds a callback function that was fired when user post the edit form
      *
      * @param  [mixed] $callbackFunc    Callback function data information (namespace, class, function name....)
      * 
      * @since 1.4.1a
      */
-    public function addPostEditCallBack($callbackFunc)
+    public function addPostEditCallback($callbackFunc)
     {
-        $this->postEditCallBack = $callbackFunc;
+        $this->postEditCallback = $callbackFunc;
     }
+
+
+    /**
+     * isViewMode - This function checks if KpaCrud Library is in view item mode and return it
+     *
+     * @return boolean  True if KpaCrud in view mode
+     * @since 1.4.2a
+     */
+    public function isViewMode()
+    {
+        return $this->request->getGet('view') == 'item';
+    }
+    /**
+     * isExportMode - This function checks if KpaCrud Library is in export or print list mode and return it
+     *
+     * @return boolean  True if KpaCrud in export or print mode
+     * @since 1.4.2a
+     */
+    public function isExportMode()
+    {
+        return $this->request->getGet('export');
+    }
+    /**
+     * isAddMode - This function checks if KpaCrud Library is in add new item mode and return it
+     *
+     * @return boolean  True if KpaCrud in add new item mode
+     * @since 1.4.2a
+     */
+    public function isAddMode()
+    {
+        return $this->request->getGet('add');
+    }
+    /**
+     * isEditMode - This function checks if KpaCrud Library is in edition item mode and return it
+     *
+     * @return boolean  True if KpaCrud in edition mode
+     * @since 1.4.2a
+     */
+
+    public function isEditMode()
+    {
+        return $this->request->getGet('edit');
+    }
+    /**
+     * isDelMode - This function checks if KpaCrud Library is in delete form confirm item mode and return it
+     *
+     * @return boolean  True if KpaCrud in delete form confirm mode
+     * @since 1.4.2a
+     */
+
+    public function isDelMode()
+    {
+        return $this->request->getGet('del');
+    }
+    /**
+     * isTrashMode - This function checks if KpaCrud Library is in trahs list mode and return it
+     *
+     * @return boolean  True if KpaCrud in trash list mode
+     * @since 1.4.2a
+     */
+    public function isTrashMode()
+    {
+        return $this->request->getGet('trash');
+    }
+
+
+
+    /************************************************************************************/
+
 
     /**
      * @ignore
@@ -756,14 +838,27 @@ class KpaCrud
 
         if ($this->request->getPost('op') == 'add') {
             $postData = $this->request->getPost();
-            if ($this->postAddCallBack !== null) {
-                $postData =  call_user_func($this->postAddCallBack, $postData);
+            if ($this->postAddCallback !== null) {
+                $postData =  call_user_func($this->postAddCallback, $postData);
             }
-            $newID = $this->model->addItem($postData, $this->data_fields);
-            $data['newID'] = $newID;
-            $view = 'SIENSIS\KpaCrud\Views\add';
-            if ($newID < 0) {
-                $data['oldForm'] = $this->request->getPost();
+
+            if ($postData != null) {
+
+                $newID = $this->model->addItem($postData, $this->data_fields);
+                $data['newID'] = $newID;
+                $view = 'SIENSIS\KpaCrud\Views\add';
+                if ($newID < 0) {
+                    $data['oldForm'] = $this->request->getPost();
+                }
+            } else {
+                session()->setFlashdata('alert', lang('crud.alerts.callbackCancel'));
+                session()->setFlashdata('alert_type', "err");
+
+                $response = \Config\Services::response();
+                $response
+                    ->redirect(base_url($this->request->getPath()))
+                    ->send();
+                return null;
             }
         } else {
             $view = 'SIENSIS\KpaCrud\Views\add';
@@ -833,28 +928,40 @@ class KpaCrud
         if ($data['data'] != null) {
             if ($this->request->getPost('op') == 'edit') {
                 $postData = $this->request->getPost();
-                if ($this->postAddCallBack !== null) {
-                    $postData =  call_user_func($this->postEditCallBack, $postData);
+                if ($this->postAddCallback !== null) {
+                    $postData =  call_user_func($this->postEditCallback, $postData);
                 }
-                $updated = $this->model->updateItem($postData, $this->data_fields, $this->request->getGet(), $this->data_columns);
+                if ($postData != null) {
 
-                if ($updated) {
-                    $id = implode(', ', $queryIDs);
-                    $data['alert'] = lang('crud.alerts.updatedOk', [$id]);
-                    $data['alert_type'] = 'ok';
+                    $updated = $this->model->updateItem($postData, $this->data_fields, $this->request->getGet(), $this->data_columns);
+
+                    if ($updated) {
+                        $id = implode(', ', $queryIDs);
+                        $data['alert'] = lang('crud.alerts.updatedOk', [$id]);
+                        $data['alert_type'] = 'ok';
+                    } else {
+                        $id = implode(', ', $queryIDs);
+                        $data['alert'] = lang('crud.alerts.updatedErr', [$id]);
+                        $data['alert_type'] = 'err';
+                    }
+                    session()->setFlashdata('alert', $data['alert']);
+                    session()->setFlashdata('alert_type', $data['alert_type']);
+
+                    $response = \Config\Services::response();
+                    $response
+                        ->redirect(base_url($this->request->getPath()))
+                        ->send();
+                    return null;
                 } else {
-                    $id = implode(', ', $queryIDs);
-                    $data['alert'] = lang('crud.alerts.updatedErr', [$id]);
-                    $data['alert_type'] = 'err';
-                }
-                session()->setFlashdata('alert', $data['alert']);
-                session()->setFlashdata('alert_type', $data['alert_type']);
+                    session()->setFlashdata('alert', lang('crud.alerts.callbackCancel'));
+                    session()->setFlashdata('alert_type', "err");
 
-                $response = \Config\Services::response();
-                $response
-                    ->redirect(base_url($this->request->getPath()))
-                    ->send();
-                return null;
+                    $response = \Config\Services::response();
+                    $response
+                        ->redirect(base_url($this->request->getPath()))
+                        ->send();
+                    return null;
+                }
             } else {
                 $data['tableFields'] = $this->data_fields;
                 $view = 'SIENSIS\KpaCrud\Views\edit';

@@ -166,7 +166,7 @@
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="changes.html"> <p>To see change log</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../changes.md"> <p>To see change log</p>
  </a>
                     
                                     </dd>
@@ -174,7 +174,7 @@
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="todo.html"> <p>To see TODO file</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../todo.md"> <p>To see TODO file</p>
  </a>
                     
                                     </dd>
@@ -182,7 +182,7 @@
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see config samples and features</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see config samples and features</p>
  </a>
                     
                                     </dd>
@@ -335,18 +335,18 @@
 <dd>TEXTAREA_FIELD_TYPE - Field type used to show a textarea</dd>
 
                     <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postAddCallBack">$postAddCallBack</a>
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postAddCallback">$postAddCallback</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: callable            </span>
 </dt>
-<dd></dd>
+<dd>postAddCallback -   Function to callback before executes post rutines in add mode</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postEditCallBack">$postEditCallBack</a>
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postEditCallback">$postEditCallback</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: callable            </span>
 </dt>
-<dd></dd>
+<dd>postEditCallback -   Function to callback before executes post rutines in edit mode</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_config">$config</a>
@@ -447,18 +447,18 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostAddCallBack">addPostAddCallBack()</a>
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostAddCallback">addPostAddCallback()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>addPostAddCallback - Adds a callback function that was fired when user post the add form</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostEditCallBack">addPostEditCallBack()</a>
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostEditCallback">addPostEditCallback()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>addPostEditCallBack - Adds a callback function that was fired when user post the edit form</dd>
+<dd>addPostEditCallback - Adds a callback function that was fired when user post the edit form</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addWhere">addWhere()</a>
@@ -473,6 +473,48 @@
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>hideHeadLinks - Hides links to CSS or JS libraries used by KpaCrud.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isAddMode">isAddMode()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>isAddMode - This function checks if KpaCrud Library is in add new item mode and return it</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isDelMode">isDelMode()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>isDelMode - This function checks if KpaCrud Library is in delete form confirm item mode and return it</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isEditMode">isEditMode()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>isEditMode - This function checks if KpaCrud Library is in edition item mode and return it</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isExportMode">isExportMode()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>isExportMode - This function checks if KpaCrud Library is in export or print list mode and return it</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isTrashMode">isTrashMode()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>isTrashMode - This function checks if KpaCrud Library is in trahs list mode and return it</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isViewMode">isViewMode()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>isViewMode - This function checks if KpaCrud Library is in view item mode and return it</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_output">output()</a>
@@ -591,7 +633,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -660,7 +702,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -703,7 +745,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -775,7 +817,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -847,7 +889,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -898,7 +940,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -941,7 +983,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -984,7 +1026,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -1027,7 +1069,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -1070,7 +1112,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -1150,7 +1192,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see samples</p>
  </a>
                     
                                     </dd>
@@ -1172,31 +1214,46 @@ or define a configuration value individually</dd>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_postAddCallBack">
-        $postAddCallBack
-        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postAddCallBack" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_postAddCallback">
+        $postAddCallback
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postAddCallback" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">294</span>
+    <span class="phpdocumentor-element-found-in__line">307</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">postAddCallback -   Function to callback before executes post rutines in add mode</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$postAddCallBack</span>
+        <span class="phpdocumentor-signature__type">callable</span>
+    <span class="phpdocumentor-signature__name">$postAddCallback</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
+    
+        <section class="phpdocumentor-description"><p>Function + namespace information</p>
+</section>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.4.2a</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
 
 </article>
                     <article
@@ -1206,31 +1263,46 @@ or define a configuration value individually</dd>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_postEditCallBack">
-        $postEditCallBack
-        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postEditCallBack" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_postEditCallback">
+        $postEditCallback
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postEditCallback" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">293</span>
+    <span class="phpdocumentor-element-found-in__line">299</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">postEditCallback -   Function to callback before executes post rutines in edit mode</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$postEditCallBack</span>
+        <span class="phpdocumentor-signature__type">callable</span>
+    <span class="phpdocumentor-signature__name">$postEditCallback</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
+    
+        <section class="phpdocumentor-description"><p>Function + namespace information</p>
+</section>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.4.2a</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
 
 </article>
                     <article
@@ -1794,7 +1866,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">296</span>
+    <span class="phpdocumentor-element-found-in__line">309</span>
 
     </aside>
 
@@ -1831,14 +1903,14 @@ or define a configuration value individually</dd>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_addPostAddCallBack">
-        addPostAddCallBack()
-        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostAddCallBack" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_addPostAddCallback">
+        addPostAddCallback()
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostAddCallback" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">672</span>
+    <span class="phpdocumentor-element-found-in__line">685</span>
 
     </aside>
 
@@ -1846,7 +1918,7 @@ or define a configuration value individually</dd>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">addPostAddCallBack</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callbackFunc</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">addPostAddCallback</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callbackFunc</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -1889,22 +1961,22 @@ or define a configuration value individually</dd>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_addPostEditCallBack">
-        addPostEditCallBack()
-        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostEditCallBack" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_addPostEditCallback">
+        addPostEditCallback()
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostEditCallback" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">683</span>
+    <span class="phpdocumentor-element-found-in__line">696</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">addPostEditCallBack - Adds a callback function that was fired when user post the edit form</p>
+        <p class="phpdocumentor-summary">addPostEditCallback - Adds a callback function that was fired when user post the edit form</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">addPostEditCallBack</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callbackFunc</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">addPostEditCallback</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callbackFunc</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -1954,7 +2026,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">638</span>
+    <span class="phpdocumentor-element-found-in__line">651</span>
 
     </aside>
 
@@ -2022,7 +2094,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">661</span>
+    <span class="phpdocumentor-element-found-in__line">674</span>
 
     </aside>
 
@@ -2093,6 +2165,300 @@ or define a configuration value individually</dd>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_isAddMode">
+        isAddMode()
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isAddMode" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">728</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">isAddMode - This function checks if KpaCrud Library is in add new item mode and return it</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">isAddMode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.4.2a</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>True if KpaCrud in add new item mode</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_isDelMode">
+        isDelMode()
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isDelMode" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">750</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">isDelMode - This function checks if KpaCrud Library is in delete form confirm item mode and return it</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">isDelMode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.4.2a</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>True if KpaCrud in delete form confirm mode</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_isEditMode">
+        isEditMode()
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isEditMode" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">739</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">isEditMode - This function checks if KpaCrud Library is in edition item mode and return it</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">isEditMode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.4.2a</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>True if KpaCrud in edition mode</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_isExportMode">
+        isExportMode()
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isExportMode" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">718</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">isExportMode - This function checks if KpaCrud Library is in export or print list mode and return it</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">isExportMode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.4.2a</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>True if KpaCrud in export or print mode</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_isTrashMode">
+        isTrashMode()
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isTrashMode" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">760</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">isTrashMode - This function checks if KpaCrud Library is in trahs list mode and return it</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">isTrashMode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.4.2a</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>True if KpaCrud in trash list mode</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_isViewMode">
+        isViewMode()
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isViewMode" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">708</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">isViewMode - This function checks if KpaCrud Library is in view item mode and return it</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">isViewMode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.4.2a</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>True if KpaCrud in view mode</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_output">
         output()
         <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_output" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2100,7 +2466,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">333</span>
+    <span class="phpdocumentor-element-found-in__line">346</span>
 
     </aside>
 
@@ -2147,7 +2513,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">547</span>
+    <span class="phpdocumentor-element-found-in__line">560</span>
 
     </aside>
 
@@ -2194,7 +2560,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">472</span>
+    <span class="phpdocumentor-element-found-in__line">485</span>
 
     </aside>
 
@@ -2283,7 +2649,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">505</span>
+    <span class="phpdocumentor-element-found-in__line">518</span>
 
     </aside>
 
@@ -2335,7 +2701,7 @@ or define a configuration value individually</dd>
                     <span class="phpdocumentor-tag__name">link</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                                        <a class="phpdocumentor-tag-link" href="readme.html"> <p>To see setColumnsInfo samples</p>
+                                                                                                        <a class="phpdocumentor-tag-link" href="../readme.md"> <p>To see setColumnsInfo samples</p>
  </a>
                     
                                     </dd>
@@ -2378,7 +2744,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">351</span>
+    <span class="phpdocumentor-element-found-in__line">364</span>
 
     </aside>
 
@@ -2473,7 +2839,7 @@ or define a configuration value individually</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">412</span>
+    <span class="phpdocumentor-element-found-in__line">425</span>
 
     </aside>
 
@@ -2530,7 +2896,7 @@ or define a configuration value individually</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">453</span>
+    <span class="phpdocumentor-element-found-in__line">466</span>
 
     </aside>
 
@@ -2589,7 +2955,7 @@ or define a configuration value individually</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">620</span>
+    <span class="phpdocumentor-element-found-in__line">633</span>
 
     </aside>
 
@@ -2692,7 +3058,7 @@ or define a configuration value individually</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">534</span>
+    <span class="phpdocumentor-element-found-in__line">547</span>
 
     </aside>
 
@@ -2757,7 +3123,7 @@ or define a configuration value individually</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">426</span>
+    <span class="phpdocumentor-element-found-in__line">439</span>
 
     </aside>
 

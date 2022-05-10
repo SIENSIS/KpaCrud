@@ -1,3 +1,12 @@
+# SIENSIS KpaCrud v1.4.2a Build 20220510
+
+## Done
+  
+  - Added route readme sample
+  - Added functions isViewMode, isExportMode, isAddMode, isEditMode, isDelMode, isTrashMode
+  - Added cancel post event feature via callback in EditCallback and AddCallback
+
+__Version 1.4.1a (Build:20220510)__
 # SIENSIS KpaCrud v1.4.1a Build 20220506
 
 ## Done
@@ -91,27 +100,3 @@ __Version 1.3a Build 20220408__
   - KpaCrud library 
  
 __Version 1.2a Build 20220407__
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
