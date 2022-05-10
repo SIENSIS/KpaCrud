@@ -459,6 +459,10 @@ See ["How to set a callback to store hashed password"](samples.md#how-to-set-a-c
 
 # Functions isViewMode, isExportMode, isAddMode, isEditMode, isDelMode, isTrashMode
 
+The functions functions `isViewMode`, `isExportMode`, `isAddMode`, `isEditMode`, `isDelMode`, `isTrashMode` permits you to know KpaCrud mode, to customize KpaCrud aspect.
+
+**Sample**: You need to export all database fields but in list mode you would like to show only id and description fields.
+
 See 
 ["How to custom parameters according KpaCrud view mode"](samples.md#how-to-custom-parameters-according-kpacrud-view-mode) for a sample.
 
