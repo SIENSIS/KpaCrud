@@ -27,6 +27,7 @@
 - [Method hideHeadLink](#method-hideheadlink)
 - [Method addPostAddCallBack and addPostEditCallBack](#method-addpostaddcallback-and-addposteditcallback)
 - [Functions isViewMode, isExportMode, isAddMode, isEditMode, isDelMode, isTrashMode](#functions-isviewmode-isexportmode-isaddmode-iseditmode-isdelmode-istrashmode)
+- [Method addItemFunction](#method-additemfunction)
 - [Library Exceptions](#library-exceptions)
 
 # KpaCrud Library
@@ -465,6 +466,17 @@ The functions functions `isViewMode`, `isExportMode`, `isAddMode`, `isEditMode`,
 
 See 
 ["How to custom parameters according KpaCrud view mode"](samples.md#how-to-custom-parameters-according-kpacrud-view-mode) for a sample.
+
+# Method addItemFunction
+
+This function permits to declare a new icon function in every register. The function used as callback may be defined in your controllers.
+
+The callback function used may returns a view as string. KpaCrud library uses this html information to show them in KpaCrud interface.
+
+If you need a function to be called afterly, as post page or other like this, you can  define invisible functions.
+
+See 
+[How to add a function for every register](samples.md#how-to-add-a-function-for-every-register) for a sample.
 
 # Library Exceptions
 

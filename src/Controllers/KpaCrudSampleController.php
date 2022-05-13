@@ -27,11 +27,54 @@ class KpaCrudSampleController extends BaseController
     }
     public function hashEditPassword($postData)
     {
-        if($postData['data_password_hash']!=$postData['olddata_password_hash']) {
+        if ($postData['data_password_hash'] != $postData['olddata_password_hash']) {
             // field has a new value. You new to generate new password
             $postData['data_password_hash'] = password_hash($postData['data_password_hash'], PASSWORD_DEFAULT);
         } // else field not changed, you can update with the same value
         return $postData;  // if return null, edit process will be cancelled
+    }
+    public function myCustomPage($obj)
+    {
+        $html = "<div class=\"container-lg p-4\">";
+        $html .= "<form method='post' action='".base_url($this->request->getPath())."?". $this->request->getUri()->getQuery() ."'>";
+        $html .= csrf_field()  ."<input type='hidden' name='test' value='ToSend'>";
+        $html .= "<div class=\"bg-secondary p-2 text-white\">";
+        $html .= "	<h1>View item</h1>";
+        $html .= "</div>";
+        $html .= "	<div style=\"margin-top:20px\" class=\"border bg-light\">";
+        $html .= "		<div class=\"d-grid\" style=\"margin-top:20px\">";
+        $html .= "			<div class=\"p-2 \">	";
+        $html .= "				<label>Username</label>	";
+        $html .= "				<div class=\"form-control bg-light \">";
+        $html .= $obj['username'];
+        $html .= "				</div>";
+        $html .= "			</div>";
+        $html .= "";
+        $html .= "			<div class=\"p-2 \">	";
+        $html .= "				<label>eCorreu</label>	";
+        $html .= "				<div class=\"form-control bg-light\">";
+        $html .= $obj['email'];
+        $html .= "				</div>";
+        $html .= "			</div>";
+        $html .= "			";
+        $html .= "		</div>";
+        $html .= "	</div>";
+        $html .= "<div class='pt-2'><input type='submit' value='Envia'></div></form>";
+        $html .= "</div>";
+
+
+        // $html = view('view_route/view_name');
+
+        return $html;
+    }
+    public function myCustomPagePost($obj)
+    {
+        // $obj contains info about register if you repeat querystring received in MyCustomPage
+        $html ='<h1>Operation ok</h1>';
+        /*
+        Do something with this->request->getPost information
+        */
+        return $html;
     }
     public function demo_simpleTable_full()
     {
@@ -39,9 +82,9 @@ class KpaCrudSampleController extends BaseController
 
         $crud->setTable('users');
         $crud->setPrimaryKey('id');
-        
-        if ($crud->isExportMode()){
-            $crud->setColumns([ 'username','email','active']);
+
+        if ($crud->isExportMode()) {
+            $crud->setColumns(['username', 'email', 'active']);
             $crud->addWhere('users.active=1');
         } else {
 
@@ -50,6 +93,11 @@ class KpaCrudSampleController extends BaseController
 
         $crud->addPostAddCallBack(array($this, 'hashNewPassword'));
         $crud->addPostEditCallBack(array($this, 'hashEditPassword'));
+
+        // Create an button icon in every register
+        $crud->addItemFunction('mailing', 'fa-paper-plane', array($this, 'myCustomPage'), "Enviar un mail");
+        // Create an invisible named function in KpaCrud to call after
+        $crud->addItemFunction('mpost', '', array($this, 'myCustomPagePost'), "",false);
 
         /**
          * Available options:
@@ -106,9 +154,8 @@ class KpaCrudSampleController extends BaseController
             ],
             'password_hash' => [
                 'type' => KpaCrud::PASSWORD_FIELD_TYPE,
-                'name'=> 'Password',
-                'html_atts' => [
-                ]
+                'name' => 'Password',
+                'html_atts' => []
             ],
 
             // 'force_pass_reset' => [

@@ -1,3 +1,11 @@
+# SIENSIS KpaCrud v1.4.3a Build 20220513
+
+## Done
+  - Added custom function item
+  - Fixed minor errors
+
+__Version 1.4.3a (Build:20220513)_
+
 # SIENSIS KpaCrud v1.4.2a Build 20220510
 
 ## Done
@@ -6,7 +14,8 @@
   - Added functions isViewMode, isExportMode, isAddMode, isEditMode, isDelMode, isTrashMode
   - Added cancel post event feature via callback in EditCallback and AddCallback
 
-__Version 1.4.1a (Build:20220510)__
+__Version 1.4.2a (Build:20220510)__
+
 # SIENSIS KpaCrud v1.4.1a Build 20220506
 
 ## Done

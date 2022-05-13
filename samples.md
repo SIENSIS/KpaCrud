@@ -7,6 +7,7 @@
 - [How to change bootstrap, jquery or CSS/JS head links](#how-to-change-bootstrap-jquery-or-cssjs-head-links)
 - [How to set a callback to store hashed password](#how-to-set-a-callback-to-store-hashed-password)
 - [How to custom parameters according KpaCrud view mode](#how-to-custom-parameters-according-kpacrud-view-mode)
+- [How to add a function for every register](#how-to-add-a-function-for-every-register)
 
 
 # Sample simple table CRUD
@@ -322,3 +323,76 @@ if ($crud->isExportMode()){
 ```
 
 In the sample above KpaCrud exports columns `username`, `email` and `active` database field, in the order described, also the sample only exports or prints active users. Otherwise in other views (list, edit, add, trash...), showns all data without filtering and `id`, `email`, `username` with this order.  
+
+# How to add a function for every register
+
+The callback function used may returns a view as string. KpaCrud library uses this html information to show them in KpaCrud interface.
+
+```php
+ $crud = new KpaCrud(); //loads default configuration
+
+$crud->setTable('users');
+$crud->setPrimaryKey('id');
+
+$crud->setColumns(['id', 'email', 'username']);
+
+// Create an button icon in every register
+$crud->addItemFunction('mailing', 'fa-paper-plane', array($this, 'myCustomPage'), "Send mail");
+
+```
+
+The callback function will receive all register information as associative array and they will return a view as string like:
+
+```php
+public function myCustomPage($obj)
+{
+    $html = "<div class=\"container-lg p-4\">";
+    $html .= "<form method='post' action='".base_url($this->request->getPath())."?". $this->request->getUri()->getQuery() ."'>";
+    $html .= csrf_field()  ."<input type='hidden' name='test' value='ToSend'>";
+    $html .= "<div class=\"bg-secondary p-2 text-white\">";
+    $html .= "	<h1>View item</h1>";
+    $html .= "</div>";
+    $html .= "	<div style=\"margin-top:20px\" class=\"border bg-light\">";
+    $html .= "		<div class=\"d-grid\" style=\"margin-top:20px\">";
+    $html .= "			<div class=\"p-2 \">	";
+    $html .= "				<label>Username</label>	";
+    $html .= "				<div class=\"form-control bg-light \">";
+    $html .= $obj['username'];
+    $html .= "				</div>";
+    $html .= "			</div>";
+    $html .= "";
+    $html .= "			<div class=\"p-2 \">	";
+    $html .= "				<label>eCorreu</label>	";
+    $html .= "				<div class=\"form-control bg-light\">";
+    $html .= $obj['email'];
+    $html .= "				</div>";
+    $html .= "			</div>";
+    $html .= "			";
+    $html .= "		</div>";
+    $html .= "	</div>";
+    $html .= "<div class='pt-2'><input type='submit' value='Envia'></div></form>";
+    $html .= "</div>";
+
+    // You can load view info from view file and return to KpaCrud library
+    // $html = view('view_route/view_name');
+
+    return $html;
+}
+```
+
+If you need to call a function as POST you need previously declare as invisible item callback, like:
+
+```php
+// Create an invisible named function in KpaCrud to call after
+$crud->addItemFunction('mpost', '', array($this, 'myCustomPagePost'), "",false);
+
+public function myCustomPagePost($obj)
+{
+    // $obj contains info about register if you repeat querystring received in MyCustomPage
+    $html ='<h1>Operation ok</h1>';
+    /*
+    Do something with this->request->getPost information
+    */
+    return $html;
+}
+```

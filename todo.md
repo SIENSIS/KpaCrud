@@ -1,11 +1,11 @@
 
 ## TODO
-- [ ] Add additional function/button for every item in table list
 - [ ] Add command to install sample and controller sample to project
 
 
 ## DONE
 
+- [x] Add additional function/button for every item in table list @done (22-05-13 17:25)
 - [x] Update callback to permit cancel post in edit or add callbacks @done (22-05-05 20:39)
 - [x] Add inEditMode, inAdd... @done (22-05-10 19:16)
 - [x] PASSWORD field type, only for edit or add pages. Edit page doesn't show db pass @done (22-05-06 15:55)

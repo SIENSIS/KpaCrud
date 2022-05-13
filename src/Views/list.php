@@ -19,8 +19,8 @@
  * @ignore
  */
 
-renderCSS($css_files,$_hidden_head_links);
-renderJS($js_files,$_hidden_head_links);
+renderCSS($css_files, $_hidden_head_links);
+renderJS($js_files, $_hidden_head_links);
 
 $alert = session()->getFlashdata('alert');
 $alert_type = session()->getFlashdata('alert_type');
@@ -40,7 +40,7 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
 ?>
   <div class="d-flex justify-content-end">
 
-    <?php if ($config['add_button']==true) : ?>
+    <?php if ($config['add_button'] == true) : ?>
       &nbsp;<a href="<?php echo base_url($_route . '?add=item') ?>" class="btn btn-info" title="<?= lang('crud.help.btnAdd') ?>"><?= lang('crud.toolbars.btnAdd'); ?></a>
     <?php endif; ?>
 
@@ -58,7 +58,7 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
 
     <?php endif; ?>
 
-    <?php if ($config['exportXLS']==true) : ?>
+    <?php if ($config['exportXLS'] == true) : ?>
       &nbsp;<a href="<?php echo base_url($_route . '?export=xls') ?>" class="btn btn-info" title="<?= lang('crud.help.btnExport') ?>"><?= lang('crud.toolbars.btnExport'); ?></a>
     <?php endif; ?>
 
@@ -117,7 +117,7 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
       <tr>
         <?php
         if ($config['numerate']) echo "<th>" . lang('crud.colHeadNitem') . "</th>";
-        
+
         foreach ($_data_header as $dbname) {
           $colname = $_data_columns[$dbname]['name'] ?? ucfirst($dbname);
           echo "<th>" . $colname . "</th>";
@@ -162,6 +162,19 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
               if ($config['removable'])
                 echo "<a href='" . base_url($_route . '?del=item' . $idQuery) . "' class='btn  btn-sm text-danger' title='" . lang('crud.help.btnDelItem') . "'><i class='fa-solid fa-trash'></i></a>" . PHP_EOL;
             }
+
+            if (count($_arrItemFunctions) > 0) {
+              foreach ($_arrItemFunctions as $name => $itemFunc) {
+
+                if ($itemFunc['visible']) {
+                  echo "<a href='" . base_url($_route . '?customf=' . $name . $idQuery);
+                  echo "' class='btn  btn-sm text-primary' title='" . $itemFunc['description'];
+                  echo "'><i class='fa-solid " . $itemFunc['icon'] . "'></i></a>" . PHP_EOL;
+                }
+              }
+            }
+
+
             echo "</td>";
             $nRow++;
             ?>
@@ -221,7 +234,10 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
 
   $(document).ready(function() {
     $('#data-list-<?= $_table ?>').DataTable({
-      lengthMenu: [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "<?=lang('crud.allItems');?>"]],
+      lengthMenu: [
+        [5, 10, 25, 50, 100, -1],
+        [5, 10, 25, 50, 100, "<?= lang('crud.allItems'); ?>"]
+      ],
       iDisplayLength: '<?= $config['defaultPageSize'] ?>',
       stateSave: '<?= $config['rememberState'] ?>',
       /*

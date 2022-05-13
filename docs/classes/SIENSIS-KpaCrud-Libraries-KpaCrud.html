@@ -335,6 +335,13 @@
 <dd>TEXTAREA_FIELD_TYPE - Field type used to show a textarea</dd>
 
                     <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_arrItemFunctions">$arrItemFunctions</a>
+    <span>
+                        &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postAddCallback">$postAddCallback</a>
     <span>
                         &nbsp;: callable            </span>
@@ -445,6 +452,13 @@
                                 &nbsp;: mixed    </span>
 </dt>
 <dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addItemFunction">addItemFunction()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>addItemFunction - This function permits to declare a new item function, this function may be defined in your controllers, you can also define invisible functions if you want to call after</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostAddCallback">addPostAddCallback()</a>
@@ -1214,6 +1228,40 @@ or define a configuration value individually</dd>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="property_arrItemFunctions">
+        $arrItemFunctions
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_arrItemFunctions" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">311</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$arrItemFunctions</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_postAddCallback">
         $postAddCallback
         <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postAddCallback" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1866,7 +1914,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">309</span>
+    <span class="phpdocumentor-element-found-in__line">313</span>
 
     </aside>
 
@@ -1903,6 +1951,101 @@ or define a configuration value individually</dd>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_addItemFunction">
+        addItemFunction()
+        <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addItemFunction" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">794</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">addItemFunction - This function permits to declare a new item function, this function may be defined in your controllers, you can also define invisible functions if you want to call after</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addItemFunction</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$icon</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callbackFunc</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$description</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bVisible</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$name</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Function alias name</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$icon</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Font-awesome icon</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$callbackFunc</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Callback function data information (namespace, class, function name....)</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$description</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Function description used to show as tooltip in button created in every register</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$bVisible</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Defines if this callback is visible in the register list view or is a user function callable</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">1.4.3a</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_addPostAddCallback">
         addPostAddCallback()
         <a href="classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addPostAddCallback" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1910,7 +2053,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">685</span>
+    <span class="phpdocumentor-element-found-in__line">700</span>
 
     </aside>
 
@@ -1968,7 +2111,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">696</span>
+    <span class="phpdocumentor-element-found-in__line">711</span>
 
     </aside>
 
@@ -2026,7 +2169,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">651</span>
+    <span class="phpdocumentor-element-found-in__line">666</span>
 
     </aside>
 
@@ -2094,7 +2237,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">674</span>
+    <span class="phpdocumentor-element-found-in__line">689</span>
 
     </aside>
 
@@ -2172,7 +2315,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">728</span>
+    <span class="phpdocumentor-element-found-in__line">743</span>
 
     </aside>
 
@@ -2221,7 +2364,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">750</span>
+    <span class="phpdocumentor-element-found-in__line">765</span>
 
     </aside>
 
@@ -2270,7 +2413,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">739</span>
+    <span class="phpdocumentor-element-found-in__line">754</span>
 
     </aside>
 
@@ -2319,7 +2462,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">718</span>
+    <span class="phpdocumentor-element-found-in__line">733</span>
 
     </aside>
 
@@ -2368,7 +2511,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">760</span>
+    <span class="phpdocumentor-element-found-in__line">775</span>
 
     </aside>
 
@@ -2417,7 +2560,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">708</span>
+    <span class="phpdocumentor-element-found-in__line">723</span>
 
     </aside>
 
@@ -2466,7 +2609,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">346</span>
+    <span class="phpdocumentor-element-found-in__line">350</span>
 
     </aside>
 
@@ -2513,7 +2656,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">560</span>
+    <span class="phpdocumentor-element-found-in__line">564</span>
 
     </aside>
 
@@ -2560,7 +2703,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">485</span>
+    <span class="phpdocumentor-element-found-in__line">489</span>
 
     </aside>
 
@@ -2649,7 +2792,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">518</span>
+    <span class="phpdocumentor-element-found-in__line">522</span>
 
     </aside>
 
@@ -2744,7 +2887,7 @@ or define a configuration value individually</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">364</span>
+    <span class="phpdocumentor-element-found-in__line">368</span>
 
     </aside>
 
@@ -2839,7 +2982,7 @@ or define a configuration value individually</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">425</span>
+    <span class="phpdocumentor-element-found-in__line">429</span>
 
     </aside>
 
@@ -2896,7 +3039,7 @@ or define a configuration value individually</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">466</span>
+    <span class="phpdocumentor-element-found-in__line">470</span>
 
     </aside>
 
@@ -2955,7 +3098,7 @@ or define a configuration value individually</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">633</span>
+    <span class="phpdocumentor-element-found-in__line">648</span>
 
     </aside>
 
@@ -3058,7 +3201,7 @@ or define a configuration value individually</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">547</span>
+    <span class="phpdocumentor-element-found-in__line">551</span>
 
     </aside>
 
@@ -3123,7 +3266,7 @@ or define a configuration value individually</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Libraries/KpaCrud.php"><a href="files/src-libraries-kpacrud.html"><abbr title="src/Libraries/KpaCrud.php">KpaCrud.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">439</span>
+    <span class="phpdocumentor-element-found-in__line">443</span>
 
     </aside>
 

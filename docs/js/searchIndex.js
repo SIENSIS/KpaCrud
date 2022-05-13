@@ -46,6 +46,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/SIENSIS-KpaCrud-Controllers-KpaCrudSampleController.html#method_hashEditPassword"
         },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Controllers\\KpaCrudSampleController\u003A\u003AmyCustomPage\u0028\u0029",
+            "name": "myCustomPage",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Controllers-KpaCrudSampleController.html#method_myCustomPage"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Controllers\\KpaCrudSampleController\u003A\u003AmyCustomPagePost\u0028\u0029",
+            "name": "myCustomPagePost",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Controllers-KpaCrudSampleController.html#method_myCustomPagePost"
+        },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Controllers\\KpaCrudSampleController\u003A\u003Ademo_simpleTable_full\u0028\u0029",
             "name": "demo_simpleTable_full",
             "summary": "",
@@ -196,6 +206,11 @@ Search.appendIndex(
             "summary": "isTrashMode\u0020\u002D\u0020This\u0020function\u0020checks\u0020if\u0020KpaCrud\u0020Library\u0020is\u0020in\u0020trahs\u0020list\u0020mode\u0020and\u0020return\u0020it",
             "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_isTrashMode"
         },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AaddItemFunction\u0028\u0029",
+            "name": "addItemFunction",
+            "summary": "addItemFunction\u0020\u002D\u0020This\u0020function\u0020permits\u0020to\u0020declare\u0020a\u0020new\u0020item\u0020function,\u0020this\u0020function\u0020may\u0020be\u0020defined\u0020in\u0020your\u0020controllers,\u0020you\u0020can\u0020also\u0020define\u0020invisible\u0020functions\u0020if\u0020you\u0020want\u0020to\u0020call\u0020after",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addItemFunction"
+        },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003ASQL_TABLE_SEPARATOR",
             "name": "SQL_TABLE_SEPARATOR",
             "summary": "SQL_TABLE_SEPARATOR\u0020\u002D\u0020Permit\u0020to\u0020configure\u0020separator\u0020in\u0020SQL\u0020instructions\u0020for\u0020related\u0020fields\u0020in\u0020related\u0020tables,\u0020to\u0020show\u0020it\u0020in\u0020list\/trash\u0020views",
@@ -335,6 +350,11 @@ Search.appendIndex(
             "name": "postAddCallback",
             "summary": "postAddCallback\u0020\u002D\u0020\u0020\u0020Function\u0020to\u0020callback\u0020before\u0020executes\u0020post\u0020rutines\u0020in\u0020add\u0020mode",
             "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_postAddCallback"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003A\u0024arrItemFunctions",
+            "name": "arrItemFunctions",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#property_arrItemFunctions"
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Models\\KpaCrudModel",
             "name": "KpaCrudModel",

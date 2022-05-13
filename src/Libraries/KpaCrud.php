@@ -306,6 +306,10 @@ class KpaCrud
      */
     public $postAddCallback = null;
 
+
+
+    public $arrItemFunctions = [];
+
     public function __construct($configName = null)
     {
         helper('SIENSIS\KpaCrud\Helpers\crudrender');
@@ -610,8 +614,19 @@ class KpaCrud
             } else {
                 return $this->renderList();
             }
-        } else {
+        } elseif ($this->request->getGet('customf')) {
+            // call custom function
+            $itemFunc = $this->arrItemFunctions[$this->request->getGet('customf')] ?? [];
 
+            if (count($itemFunc) > 0) {
+                $data = $this->_pre_render();
+                $queryIDs = $this->getQueryID();
+                $obj = $this->model->getItem($queryIDs);
+                $data['content'] = call_user_func($itemFunc['func'], $obj);
+
+                return $this->_render($itemFunc['view'], $data);
+            }
+        } else {
             return $this->renderList();
         }
     }
@@ -763,6 +778,30 @@ class KpaCrud
     }
 
 
+
+
+    /**
+     * addItemFunction - This function permits to declare an item function, this function may be defined in your controllers, you can also define invisible functions if you want to call after 
+     *
+     * @param  string  $name                  Function alias name
+     * @param  string  $icon                  Font-awesome icon
+     * @param  mixed  $callbackFunc           Callback function data information (namespace, class, function name....)
+     * @param  string  $description           Function description used to show as tooltip in button created in every register
+     * @param  boolean $bVisible                Defines if this callback is visible in the register list view or is a user function callable
+     * 
+     * @since 1.4.3a
+     */
+    public function addItemFunction($name, $icon, $callbackFunc, $description, $bVisible = true)
+    {
+        $itemFunction['icon'] = $icon;
+        $itemFunction['func'] = $callbackFunc;
+        $itemFunction['description'] = $description;
+        $itemFunction['view'] = 'SIENSIS\KpaCrud\Views\custom';
+        $itemFunction['visible'] = $bVisible;
+
+
+        $this->arrItemFunctions[$name] = $itemFunction;
+    }
 
     /************************************************************************************/
 
@@ -1162,6 +1201,7 @@ class KpaCrud
 
         $data['_hidden_head_links'] = $this->hidden_head_links;
 
+        $data['_arrItemFunctions'] = $this->arrItemFunctions;
 
         $data['primaryKey'] = $this->model->getPrimaryKey();
         $data['config'] = $this->config;
