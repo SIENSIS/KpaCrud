@@ -313,7 +313,7 @@ class KpaCrud
     public function __construct($configName = null)
     {
         helper('SIENSIS\KpaCrud\Helpers\crudrender');
-        $configFile = config('kpacrud');
+        $configFile = config('KpaCrud');
 
         $default = $configFile->configDefaultName;
         $this->config = $configFile->$configName ?? $configFile->$default;
@@ -368,7 +368,7 @@ class KpaCrud
     public function setConfig($config)
     {
         if (is_string($config)) {
-            $configFile = config('kpacrud');
+            $configFile = config('KpaCrud');
             $default = $configFile->configDefaultName;
             $config = $configFile->$config ?? $configFile->$default;
         }
