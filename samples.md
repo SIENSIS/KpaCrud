@@ -346,9 +346,12 @@ The callback function will receive all register information as associative array
 ```php
 public function myCustomPage($obj)
 {
+    $this->request->getUri()->stripQuery('customf');
+    $this->request->getUri()->addQuery('customf', 'mpost');
+
     $html = "<div class=\"container-lg p-4\">";
-    $html .= "<form method='post' action='".base_url($this->request->getPath())."?". $this->request->getUri()->getQuery() ."'>";
-    $html .= csrf_field()  ."<input type='hidden' name='test' value='ToSend'>";
+    $html .= "<form method='post' action='" . base_url($this->request->getPath()) . "?" . $this->request->getUri()->getQuery() . "'>";
+    $html .= csrf_field()  . "<input type='hidden' name='test' value='ToSend'>";
     $html .= "<div class=\"bg-secondary p-2 text-white\">";
     $html .= "	<h1>View item</h1>";
     $html .= "</div>";

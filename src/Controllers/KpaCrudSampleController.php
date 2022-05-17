@@ -35,9 +35,12 @@ class KpaCrudSampleController extends BaseController
     }
     public function myCustomPage($obj)
     {
+        $this->request->getUri()->stripQuery('customf');
+        $this->request->getUri()->addQuery('customf', 'mpost');
+
         $html = "<div class=\"container-lg p-4\">";
-        $html .= "<form method='post' action='".base_url($this->request->getPath())."?". $this->request->getUri()->getQuery() ."'>";
-        $html .= csrf_field()  ."<input type='hidden' name='test' value='ToSend'>";
+        $html .= "<form method='post' action='" . base_url($this->request->getPath()) . "?" . $this->request->getUri()->getQuery() . "'>";
+        $html .= csrf_field()  . "<input type='hidden' name='test' value='ToSend'>";
         $html .= "<div class=\"bg-secondary p-2 text-white\">";
         $html .= "	<h1>View item</h1>";
         $html .= "</div>";
@@ -62,7 +65,7 @@ class KpaCrudSampleController extends BaseController
         $html .= "<div class='pt-2'><input type='submit' value='Envia'></div></form>";
         $html .= "</div>";
 
-
+        // You can load view info from view file and return to KpaCrud library
         // $html = view('view_route/view_name');
 
         return $html;
@@ -70,7 +73,8 @@ class KpaCrudSampleController extends BaseController
     public function myCustomPagePost($obj)
     {
         // $obj contains info about register if you repeat querystring received in MyCustomPage
-        $html ='<h1>Operation ok</h1>';
+        $html = '<h1>Operation ok</h1>';
+
         /*
         Do something with this->request->getPost information
         */
@@ -97,7 +101,7 @@ class KpaCrudSampleController extends BaseController
         // Create an button icon in every register
         $crud->addItemFunction('mailing', 'fa-paper-plane', array($this, 'myCustomPage'), "Enviar un mail");
         // Create an invisible named function in KpaCrud to call after
-        $crud->addItemFunction('mpost', '', array($this, 'myCustomPagePost'), "",false);
+        $crud->addItemFunction('mpost', '', array($this, 'myCustomPagePost'), "", false);
 
         /**
          * Available options:
