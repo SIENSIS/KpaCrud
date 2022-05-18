@@ -1,10 +1,10 @@
 
 ## TODO
-- [ ] Add command to install sample and controller sample to project
 
 
 ## DONE
 
+- [x] Add command to install sample and controller sample to project @done (22-05-18 19:42)
 - [x] Add additional function/button for every item in table list @done (22-05-13 17:25)
 - [x] Update callback to permit cancel post in edit or add callbacks @done (22-05-05 20:39)
 - [x] Add inEditMode, inAdd... @done (22-05-10 19:16)

@@ -2,6 +2,7 @@
 - [Install](#install)
   - [Install with composer](#install-with-composer)
   - [Install manually](#install-manually)
+- [Publish command](#publish-command)
 - [Constructor](#constructor)
 - [Routes file](#routes-file)
 - [Config file parameters](#config-file-parameters)
@@ -104,7 +105,24 @@ public $psr4 = [
 > 
 > Constant **`DIRECTORY_SEPARATOR`** is used to prevent path problems in Linux or Windows servers
 > 
+# Publish command
 
+`KpaCrud` has their command `kpacrud:publish` to generate automatically a sample controller, a custom config file and the KpaCrud lang files into your App folder.
+
+To generate this files, you need to execute this command:
+
+```dos
+> php spark kpacrud:publish
+Publish demo Controller? [y, n]:
+Publish Config file? [y, n]:
+Publish Language file? [y, n]:
+```
+
+If files already exists, publish command ask you for confirmation. Otherwise if you sure to overwrite files, you can call `kpacrud:publish` with `-f` option, like:
+
+```dos
+> php spark kpacrud:publish -f
+```
 
 # Constructor
 
@@ -178,6 +196,8 @@ even, you can change only a [parameter](#config-file-parameters), like:
 $crud->setConfig(['editable'=>false]);                     // Sets editable configuration to false
 $crud->setConfig(['editable'=>false,'removable'=>false]);  //Sets editable and removable config parameter to false 
 ```
+
+See also [How to create your custom App\KpaCrud config file](samples.md#how-to-create-your-custom-appkpacrud-config-file)
 
 # Method setTable
 

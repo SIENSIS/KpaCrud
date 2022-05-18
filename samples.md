@@ -8,6 +8,8 @@
 - [How to set a callback to store hashed password](#how-to-set-a-callback-to-store-hashed-password)
 - [How to custom parameters according KpaCrud view mode](#how-to-custom-parameters-according-kpacrud-view-mode)
 - [How to add a function for every register](#how-to-add-a-function-for-every-register)
+- [How to create your custom App\KpaCrud config file](#how-to-create-your-custom-appkpacrud-config-file)
+- [How to create your custom App\KpaCrud config file (manually)](#how-to-create-your-custom-appkpacrud-config-file-manually)
 
 
 # Sample simple table CRUD
@@ -399,3 +401,31 @@ public function myCustomPagePost($obj)
     return $html;
 }
 ```
+# How to create your custom App\KpaCrud config file 
+
+You can use `kpacrud:publish` to generate automatically a controller sample, a config file to customize or the lang files to also customize it.
+
+To generate this files, you need to execute this command:
+
+```dos
+> php spark kpacrud:publish
+Publish demo Controller? [y, n]:
+Publish Config file? [y, n]:
+Publish Language file? [y, n]:
+```
+
+If files already exists, publish command ask you for confirmation. Otherwise if you sure to overwrite files, you can call `kpacrud:publish` with `-f` option, like:
+
+```dos
+> php spark kpacrud:publish -f
+```
+
+# How to create your custom App\KpaCrud config file (manually)
+
+You can create your custom KpaCrud config file, following this steps:
+
+1. Copy `SIENSIS\KpaCrud\Config\KpaCrud.php` file into you `App\Config` folder
+2. Modify namespace to `namespace Config;`
+3. Modify class definition to `class KpaCrud extends \SIENSIS\KpaCrud\Config\KpaCrud`
+
+Now you have a custom config file where you can add new policies or change default ones independent of library updates.

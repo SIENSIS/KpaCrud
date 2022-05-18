@@ -208,7 +208,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003AaddItemFunction\u0028\u0029",
             "name": "addItemFunction",
-            "summary": "addItemFunction\u0020\u002D\u0020This\u0020function\u0020permits\u0020to\u0020declare\u0020a\u0020new\u0020item\u0020function,\u0020this\u0020function\u0020may\u0020be\u0020defined\u0020in\u0020your\u0020controllers,\u0020you\u0020can\u0020also\u0020define\u0020invisible\u0020functions\u0020if\u0020you\u0020want\u0020to\u0020call\u0020after",
+            "summary": "addItemFunction\u0020\u002D\u0020This\u0020function\u0020permits\u0020to\u0020declare\u0020an\u0020item\u0020function,\u0020this\u0020function\u0020may\u0020be\u0020defined\u0020in\u0020your\u0020controllers,\u0020you\u0020can\u0020also\u0020define\u0020invisible\u0020functions\u0020if\u0020you\u0020want\u0020to\u0020call\u0020after",
             "url": "classes/SIENSIS-KpaCrud-Libraries-KpaCrud.html#method_addItemFunction"
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Libraries\\KpaCrud\u003A\u003ASQL_TABLE_SEPARATOR",
@@ -491,15 +491,95 @@ Search.appendIndex(
             "summary": "deletedField\u0020\u002D\u0020Column\u0020name\u0020used\u0020to\u0020save\u0020soft\u0020delete\u0020state.",
             "url": "classes/SIENSIS-KpaCrud-Models-KpaCrudModel.html#property_deletedField"
         },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish",
+            "name": "Publish",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003Arun\u0028\u0029",
+            "name": "run",
+            "summary": "Displays\u0020the\u0020help\u0020for\u0020the\u0020spark\u0020cli\u0020script\u0020itself.",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#method_run"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003ApublishController\u0028\u0029",
+            "name": "publishController",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#method_publishController"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003ApublishConfig\u0028\u0029",
+            "name": "publishConfig",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#method_publishConfig"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003ApublishLanguage\u0028\u0029",
+            "name": "publishLanguage",
+            "summary": "",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#method_publishLanguage"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003AreplaceNamespace\u0028\u0029",
+            "name": "replaceNamespace",
+            "summary": "Replaces\u0020the\u0020Myth\\Auth\u0020namespace\u0020in\u0020the\u0020published\nfile\u0020with\u0020the\u0020applications\u0020current\u0020namespace.",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#method_replaceNamespace"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003AdetermineSourcePath\u0028\u0029",
+            "name": "determineSourcePath",
+            "summary": "Determines\u0020the\u0020current\u0020source\u0020path\u0020from\u0020which\u0020all\u0020other\u0020files\u0020are\u0020located.",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#method_determineSourcePath"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003AwriteFile\u0028\u0029",
+            "name": "writeFile",
+            "summary": "Write\u0020a\u0020file,\u0020catching\u0020any\u0020exceptions\u0020and\u0020showing\u0020a\nnicely\u0020formatted\u0020error.",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#method_writeFile"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003A\u0024group",
+            "name": "group",
+            "summary": "The\u0020group\u0020the\u0020command\u0020is\u0020lumped\u0020under\nwhen\u0020listing\u0020commands.",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#property_group"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "The\u0020Command\u0027s\u0020name",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#property_name"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003A\u0024description",
+            "name": "description",
+            "summary": "the\u0020Command\u0027s\u0020short\u0020description",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#property_description"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003A\u0024usage",
+            "name": "usage",
+            "summary": "the\u0020Command\u0027s\u0020usage",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#property_usage"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003A\u0024arguments",
+            "name": "arguments",
+            "summary": "the\u0020Command\u0027s\u0020Arguments",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#property_arguments"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003A\u0024options",
+            "name": "options",
+            "summary": "the\u0020Command\u0027s\u0020Options",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#property_options"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003A\u0024sourcePath",
+            "name": "sourcePath",
+            "summary": "The\u0020path\u0020to\u0020SIENSIS\\KpaCrud\\src\u0020directory.",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#property_sourcePath"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands\\Publish\u003A\u003A\u0024viewsPublished",
+            "name": "viewsPublished",
+            "summary": "Whether\u0020the\u0020Views\u0020were\u0020published\u0020for\u0020local\u0020use.",
+            "url": "classes/SIENSIS-KpaCrud-Commands-Publish.html#property_viewsPublished"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
         },                {
-            "fqsen": "\\SIENSIS\\KpaCrud\\Config",
-            "name": "Config",
+            "fqsen": "\\SIENSIS\\KpaCrud\\Commands",
+            "name": "Commands",
             "summary": "",
-            "url": "namespaces/siensis-kpacrud-config.html"
+            "url": "namespaces/siensis-kpacrud-commands.html"
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud",
             "name": "KpaCrud",
@@ -510,6 +590,11 @@ Search.appendIndex(
             "name": "SIENSIS",
             "summary": "",
             "url": "namespaces/siensis.html"
+        },                {
+            "fqsen": "\\SIENSIS\\KpaCrud\\Config",
+            "name": "Config",
+            "summary": "",
+            "url": "namespaces/siensis-kpacrud-config.html"
         },                {
             "fqsen": "\\SIENSIS\\KpaCrud\\Controllers",
             "name": "Controllers",

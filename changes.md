@@ -1,7 +1,17 @@
+# SIENSIS KpaCrud v1.4.4a Build 20220518
+
+## Done
+  - Add `kpacrud:publish` command
+  - Fixed config filename for Unix/Linux systems
+  - Fixed minor errors
+
+__Version 1.4.4a (Build:20220518)_
+
 # SIENSIS KpaCrud v1.4.3a Build 20220513
 
 ## Done
   - Added custom function item
+  - Added new samples
   - Fixed minor errors
 
 __Version 1.4.3a (Build:20220513)_
