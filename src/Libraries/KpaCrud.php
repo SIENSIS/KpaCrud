@@ -663,10 +663,16 @@ class KpaCrud
      *
      * @version 1.3.0.1
      */
-    public function addWhere($key, $value = null)
+    public function addWhere($key, $value = null, $ANDconcat=true)
     {
-        $this->model->addWhere($key, $value);
+        if ($ANDconcat)
+            $this->model->addWhere($key, $value);
+        else
+            $this->model->orWhere($key,$value);
     }
+
+
+    
 
     /**
      * hideHeadLinks - Hides links to CSS or JS libraries used by KpaCrud. 
@@ -1024,7 +1030,6 @@ class KpaCrud
         $data['data'] = $this->model->getItems();
 
         $view = 'SIENSIS\KpaCrud\Views\list';
-
 
         return $this->_render($view, $data);
     }

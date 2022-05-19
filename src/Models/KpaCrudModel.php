@@ -368,8 +368,15 @@ class KpaCrudModel extends Model
         $this->addSelects($relations);
 
         foreach ($relations as $fieldName => $data) {
-            $condition = "`$this->table`.`$fieldName`=`{$data['relatedTable']}`.`{$data['relatedField']}`";
-            $this->builder->join($data['relatedTable'], $condition);
+
+            if ($this->table==$data['relatedTable']){
+                $tablename = "rel".$data['relatedTable'];
+                $condition = "`$this->table`.`$fieldName`=`$tablename`.`{$data['relatedField']}`";
+                $this->builder->where($condition);
+            }else {
+                $condition = "`$this->table`.`$fieldName`=`{$data['relatedTable']}`.`{$data['relatedField']}`";
+                $this->builder->join($data['relatedTable'], $condition);
+            }
         }
 
         return $this;
@@ -414,6 +421,20 @@ class KpaCrudModel extends Model
         $this->builder->where($key, $value, true);
     }
 
+    
+    /**
+     * orWhere - Adds where clause to query builder concatenated with OR conjuntion, usefull to show filtered data
+     * 
+     * @param mixed $key            Query expression, name of field, or associative array
+     * @param mixed|null $value     If a single key, they compare with this value
+     *
+     * @version 1.4.5
+     */
+    public function orWhere($key, $value = null)
+    {
+        $this->builder->orWhere($key, $value);
+    }
+
     /**
      * @ignore
      */
@@ -434,8 +455,12 @@ class KpaCrudModel extends Model
 
             foreach ($fieldsRelatedTable as $field) {
                 $as = $data['relatedTable'] . KpaCrud::SQL_TABLE_SEPARATOR . $field->Field;
-                $this->builder->select("{$data['relatedTable']}.{$field->Field} as $as");
+                $selTablename="rel" . $data['relatedTable'];
+
+                $this->builder->select("$selTablename.{$field->Field} as $as");
             }
+
+            $this->builder->from ($data['relatedTable'] . " as rel" . $data['relatedTable']);
         }
     }
 } 

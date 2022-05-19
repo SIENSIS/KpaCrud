@@ -107,13 +107,14 @@ public $psr4 = [
 > 
 # Publish command
 
-`KpaCrud` has their command `kpacrud:publish` to generate automatically a sample controller, a custom config file and the KpaCrud lang files into your App folder.
+`KpaCrud` has their command `kpacrud:publish` to generate automatically a sample controller, a view sample, a custom config file and the KpaCrud lang files into your App folder.
 
 To generate this files, you need to execute this command:
 
 ```dos
 > php spark kpacrud:publish
 Publish demo Controller? [y, n]:
+Publish Views? [y, n]:
 Publish Config file? [y, n]:
 Publish Language file? [y, n]:
 ```
@@ -274,6 +275,17 @@ They can display more than a relation, like example.
 
 This method permits to filter data show in the KpaCrud admin table. You can 
 set filter as an associative array, or you can set SQL where expression as string. 
+
+The third parameter permits you to use OR conjuntion in a where clause
+
+```php
+    $crud->addWhere ("id","3");
+    $curd->addWhere ("id","4", true);
+```
+This clause generates 
+```sql
+WHERE id=3 OR id=4
+```
 
 >:warning: **WARNING!!**
 >

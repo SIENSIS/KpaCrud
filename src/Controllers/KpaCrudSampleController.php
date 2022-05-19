@@ -537,4 +537,48 @@ class KpaCrudSampleController extends BaseController
         $data['title'] = 'Demo relation 1N';
         return view('\SIENSIS\KpaCrud\Views\sample\sample', $data);
     }
+/**
+     * demo_relation1N - Demo to shows how to get a table CRUD pages, where table has a unique relation
+     * 
+     * <pre>
+     *  $crud = new KpaCrud();                          // loads default configuration    
+     * 
+     *  $crud->setTable('treecat');                        // set table name
+     * 
+     *  $crud->setPrimaryKey('id');                     // set primary key
+     * 
+     *  $crud->setRelation('pare', 'treecat', 'id', 'desc');
+     * 
+     *  $crud->setColumns(['desc', 'treecat__desc']);
+     * 
+     *  $crud->setColumnsInfo([
+     *     'treecat__desc' => 'Parent',
+     *  ]);
+     * 
+     *  $data['output'] = $crud->render();              // renders view
+     *  return view('sample', $data);
+     * </pre>
+     *
+     * @return void
+     * 
+     * @version 1.4.5
+     */
+    public function demo_selfrelation1N()
+    {
+        $crud = new KpaCrud();
+        $crud->setTable('treecat');
+        $crud->setPrimaryKey('id');
+
+        $crud->setRelation('pare', 'treecat', 'id', 'desc');
+
+        $crud->setColumns(['desc', 'treecat__desc']);
+        
+       $crud->setColumnsInfo([
+          'treecat__desc' => 'Parent',
+       ]);
+        $data['output'] = $crud->render();
+
+        $data['title'] = 'Demo self- relation 1N';
+        return view('\SIENSIS\KpaCrud\Views\sample\sample', $data);
+    }
 }

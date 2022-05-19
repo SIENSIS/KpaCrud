@@ -1,8 +1,16 @@
+# SIENSIS KpaCrud v1.4.5a Build 202205__
+
+## Done
+  - Add orWhere function
+  - Fixed addRelation to permit self relations (Thanks N.Estudillo)
+  - Add self relation sample into controller
+  - Fixed publish command, to publish sample view
+
 # SIENSIS KpaCrud v1.4.4a Build 20220518
 
 ## Done
   - Add `kpacrud:publish` command
-  - Fixed config filename for Unix/Linux systems
+  - Fixed config filename for Unix/Linux systems (Thanks J.Navarro)
   - Fixed minor errors
 
 __Version 1.4.4a (Build:20220518)_
@@ -31,7 +39,7 @@ __Version 1.4.2a (Build:20220510)__
 ## Done
 
 - Fixed add/edit redirect
-- Fixed configuration load problem if config file in app/config folder
+- Fixed configuration load problem if config file in app/config folder 
 - Added add and edit callback
 - Added a method that permits to hide some CSS+JS files
 - Added password field type and PASSWORD_FIELD_TYPE constant
