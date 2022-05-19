@@ -1,10 +1,13 @@
-# SIENSIS KpaCrud v1.4.5a Build 202205__
+# SIENSIS KpaCrud v1.4.5a Build 20220519
 
 ## Done
   - Add orWhere function
   - Fixed addRelation to permit self relations (Thanks N.Estudillo)
   - Add self relation sample into controller
   - Fixed publish command, to publish sample view
+
+__Version 1.4.5a (Build:20220519)_
+
 
 # SIENSIS KpaCrud v1.4.4a Build 20220518
 
