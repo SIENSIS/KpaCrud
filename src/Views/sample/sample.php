@@ -55,6 +55,9 @@
                     <a class="nav-link" href="<?=base_url('/samplekpcrud/1n');?>">Relation 1N</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?=base_url('/samplekpcrud/self1n');?>">Selft relation 1N</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('/samplekpcrud/multikey');?>">MultiKey</a>
                 </li>
                 <li class="nav-item">

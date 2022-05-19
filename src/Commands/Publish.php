@@ -1,4 +1,6 @@
-<?php namespace SIENSIS\KpaCrud\Commands;
+<?php
+
+namespace SIENSIS\KpaCrud\Commands;
 
 use Config\Autoload;
 use CodeIgniter\CLI\CLI;
@@ -78,20 +80,23 @@ class Publish extends BaseCommand
 
 
         // Controller
-        if (CLI::prompt('Publish demo Controller?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish demo Controller?', ['y', 'n']) == 'y') {
             $this->publishController();
         }
 
+        // Views
+        if (CLI::prompt('Publish Views?', ['y', 'n']) == 'y') {
+            $this->publishViews();
+            $this->viewsPublished = true;
+        }
+
         // Config
-        if (CLI::prompt('Publish Config file?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish Config file?', ['y', 'n']) == 'y') {
             $this->publishConfig();
         }
 
         // Language
-        if (CLI::prompt('Publish Language file?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish Language file?', ['y', 'n']) == 'y') {
             $this->publishLanguage();
         }
     }
@@ -102,10 +107,46 @@ class Publish extends BaseCommand
 
         $content = file_get_contents($path);
         $content = $this->replaceNamespace($content, 'SIENSIS\KpaCrud\Controllers', 'Controllers');
+        $content = str_replace('\SIENSIS\KpaCrud\Views\sample\sample', "kpacrud/sample", $content);
 
-        $this->writeFile("Controllers/KpaCrudSampleController.php", $content);
+        $this->writeFile("Controllers/KpaCrudSampleController.php", $content)       
     }
 
+    protected function publishViews()
+    {
+        $map = directory_map($this->sourcePath . '/Views/sample');
+        $prefix = '';
+
+        foreach ($map as $key => $view)
+        {
+            if (is_array($view))
+            {
+                $oldPrefix = $prefix;
+                $prefix .= $key;
+
+                foreach ($view as $file)
+                {
+                    $this->publishView($file, $prefix);
+                }
+
+                $prefix = $oldPrefix;
+
+                continue;
+            }
+
+            $this->publishView($view, $prefix);
+        }
+    }
+
+    protected function publishView($view, string $prefix = '')
+    {
+        $path = "{$this->sourcePath}/Views/{$prefix}{$view}";
+		$namespace = defined('APP_NAMESPACE') ? APP_NAMESPACE : 'App';
+
+        $content = file_get_contents($path);
+
+        $this->writeFile("Views/kpacrud/{$prefix}{$view}", $content);
+    }
 
     protected function publishConfig()
     {
@@ -122,11 +163,11 @@ class Publish extends BaseCommand
     protected function publishLanguage()
     {
         $path = "{$this->sourcePath}/Language/en/crud.php";
-        
+
         $content = file_get_contents($path);
-        
+
         $this->writeFile("Language/en/crud.php", $content);
-        
+
         $path = "{$this->sourcePath}/Language/ca/crud.php";
         $content = file_get_contents($path);
         $this->writeFile("Language/ca/crud.php", $content);
@@ -137,7 +178,7 @@ class Publish extends BaseCommand
     //--------------------------------------------------------------------
 
     /**
-     * Replaces the Myth\Auth namespace in the published
+     * Replaces the SIENSIS\KpaCrud namespace in the published
      * file with the applications current namespace.
      *
      * @param string $contents
@@ -162,8 +203,7 @@ class Publish extends BaseCommand
     {
         $this->sourcePath = realpath(__DIR__ . '/../');
 
-        if ($this->sourcePath == '/' || empty($this->sourcePath))
-        {
+        if ($this->sourcePath == '/' || empty($this->sourcePath)) {
             CLI::error('Unable to determine the correct source directory. Bailing.');
             exit();
         }
@@ -184,28 +224,22 @@ class Publish extends BaseCommand
         $filename = $appPath . $path;
         $directory = dirname($filename);
 
-        if (! is_dir($directory))
-        {
+        if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
 
-        if (file_exists($filename))
-        {
+        if (file_exists($filename)) {
             $overwrite = (bool) CLI::getOption('f');
 
-            if (! $overwrite && CLI::prompt("  File '{$path}' already exists in destination. Overwrite?", ['n', 'y']) === 'n')
-            {
+            if (!$overwrite && CLI::prompt("  File '{$path}' already exists in destination. Overwrite?", ['n', 'y']) === 'n') {
                 CLI::error("  Skipped {$path}. If you wish to overwrite, please use the '-f' option or reply 'y' to the prompt.");
                 return;
             }
         }
 
-        if (write_file($filename, $content))
-        {
+        if (write_file($filename, $content)) {
             CLI::write(CLI::color('  Created: ', 'green') . $path);
-        }
-        else
-        {
+        } else {
             CLI::error("  Error creating {$path}.");
         }
     }
