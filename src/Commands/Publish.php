@@ -109,7 +109,7 @@ class Publish extends BaseCommand
         $content = $this->replaceNamespace($content, 'SIENSIS\KpaCrud\Controllers', 'Controllers');
         $content = str_replace('\SIENSIS\KpaCrud\Views\sample\sample', "kpacrud/sample", $content);
 
-        $this->writeFile("Controllers/KpaCrudSampleController.php", $content)       
+        $this->writeFile("Controllers/KpaCrudSampleController.php", $content);       
     }
 
     protected function publishViews()
