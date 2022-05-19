@@ -140,7 +140,7 @@ class Publish extends BaseCommand
 
     protected function publishView($view, string $prefix = '')
     {
-        $path = "{$this->sourcePath}/Views/{$prefix}{$view}";
+        $path = "{$this->sourcePath}/Views/sample/{$prefix}{$view}";
 		$namespace = defined('APP_NAMESPACE') ? APP_NAMESPACE : 'App';
 
         $content = file_get_contents($path);
