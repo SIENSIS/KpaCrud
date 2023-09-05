@@ -46,7 +46,7 @@
 You need to add `SIENSIS/KpaCrud` require with composer tool.
 
 ```dos
-> composer require siensis/kpcrud:dev-master
+> composer require siensis/kpacrud:dev-master
 ```
 
 **Option 2:**
