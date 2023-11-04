@@ -1151,7 +1151,7 @@ class KpaCrud
 
             $response = \Config\Services::response();
             $response
-                ->redirect($this->request->getPath())
+                ->redirect(base_url($this->request->getPath()))
                 ->send();
             return null;
         } else {
