@@ -374,8 +374,9 @@ class KpaCrudModel extends Model
                 $condition = "`$this->table`.`$fieldName`=`$tablename`.`{$data['relatedField']}`";
                 $this->builder->where($condition);
             }else {
-                $condition = "`$this->table`.`$fieldName`=`{$data['relatedTable']}`.`{$data['relatedField']}`";
-                $this->builder->join($data['relatedTable'], $condition);
+                $relatedTableName="rel" . $data['relatedTable'];
+                $condition = "`$this->table`.`$fieldName`=`$relatedTableName`.`{$data['relatedField']}`";
+                $this->builder->join($data['relatedTable'] . " as " . $relatedTableName, $condition);
             }
         }
 
@@ -460,7 +461,7 @@ class KpaCrudModel extends Model
                 $this->builder->select("$selTablename.{$field->Field} as $as");
             }
 
-            $this->builder->from ($data['relatedTable'] . " as rel" . $data['relatedTable']);
+            //$this->builder->from ($data['relatedTable'] . " as rel" . $data['relatedTable']);
         }
     }
 } 
