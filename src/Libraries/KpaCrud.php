@@ -810,6 +810,28 @@ class KpaCrud
         $this->arrItemFunctions[$name] = $itemFunction;
     }
 
+    /**
+     * getQueryID - This function returns an array with primary key name and value
+     *
+     * @return array<string,string>  Array with primary key name and value
+     * @throws none
+     *
+     * @since 1.5
+     * @author JMFXR <dev@siensis.com>
+     */
+    public function getQueryID()
+    {
+        $queryIDs = array();
+
+        foreach ((array)$this->model->getPrimaryKey() as $key) {
+            $value = $this->request->getGet(str_rot13($key));
+            if ($value != null) {
+                $queryIDs[$this->table . "." . $key] = str_rot13($value);
+            }
+        }
+        return $queryIDs;
+    }
+
     /************************************************************************************/
 
 
@@ -826,21 +848,7 @@ class KpaCrud
         }
         return $IDsToQuery;
     }
-    /**
-     * @ignore
-     */
-    protected function getQueryID()
-    {
-        $queryIDs = array();
-
-        foreach ((array)$this->model->getPrimaryKey() as $key) {
-            $value = $this->request->getGet(str_rot13($key));
-            if ($value != null) {
-                $queryIDs[$this->table . "." . $key] = str_rot13($value);
-            }
-        }
-        return $queryIDs;
-    }
+    
     /**
      * @ignore
      */
