@@ -83,6 +83,7 @@ class KpaCrud extends BaseConfig
 
         // top right toolbar
         'add_button' =>  true,
+        'show_button' => true,
         'recycled_button' =>  true,
         'exportXLS' =>   true,
         'print' =>   true,
@@ -124,6 +125,7 @@ class KpaCrud extends BaseConfig
         'rememberState' =>   false,
 
         'add_button' =>  false,
+        'show_button' => false,
         'recycled_button' =>  false,
         'exportXLS' =>   true,
         'print' =>   true,
@@ -162,6 +164,7 @@ class KpaCrud extends BaseConfig
         'rememberState' =>   false,
 
         'add_button' =>  false,
+        'show_button' => false,
         'recycled_button' =>  false,
         'exportXLS' =>   true,
         'print' =>   true,
