@@ -167,6 +167,7 @@ In the file `App\Config\KpaCrud.php` you can can store parameters collections id
 | rememberState      | boolean |    false     | Defines if table remembers last order column, search, etc                                                                   |
 | **Right toolbar**  |
 | add_button         | boolean |     true     | Enables add button in top right toolbar                                                                                     |
+| show_button         | boolean |     true     | Enables show button in list items                                                                                          |
 | recycled_button    | boolean |     true     | Enables trash buttons in top right toolbar (Empty trash, show trash)                                                        |
 | exportXLS          | boolean |     true     | Enables export XLS button in top right toolbar                                                                              |
 | print              | boolean |     true     | Enables print button in top right toolbar                                                                                   |
