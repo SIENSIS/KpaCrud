@@ -122,7 +122,7 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
           $colname = $_data_columns[$dbname]['name'] ?? ucfirst($dbname);
           echo "<th>" . $colname . "</th>";
         }
-        if ($config['show_button']||$config['editable'] || $config['removable']) 
+        if ($config['show_button']||$config['editable'] || $config['removable'] || count($_arrItemFunctions) > 0) 
           echo '<th>&nbsp;</th>'; 
         ?>
       </tr>
@@ -154,7 +154,7 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
               $idQuery .= "&" . str_rot13($key) . "=" . str_rot13($row[$key]);
             }
 
-            if ($config['show_button']||$config['editable'] || $config['removable']) echo "<td>";
+            if ($config['show_button']||$config['editable'] || $config['removable'] || count($_arrItemFunctions) > 0) echo "<td>";
 
             if ($config['show_button']){
               echo "<a href='" . base_url($_route . '?view=item' . $idQuery) . "' class='btn btn-sm text-info' title='" . lang('crud.help.btnShowItem') . "'><i class='fa-solid fa-eye'></i></a>" . PHP_EOL;
@@ -178,7 +178,7 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
               }
             }
 
-            if ($config['show_button']||$config['editable'] || $config['removable']) echo "</td>";
+            if ($config['show_button']||$config['editable'] || $config['removable'] || count($_arrItemFunctions) > 0) echo "</td>";
             $nRow++;
             ?>
           </tr>
