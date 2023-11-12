@@ -397,6 +397,7 @@ class KpaCrud
 
         // top right toolbar
         $this->config['add_button'] = $config['add_button'] ?? $this->config['add_button'] ?? true;
+        $this->config['show_button'] = $config['show_button'] ?? $this->config['show_button'] ?? true;
         $this->config['recycled_button'] = $config['recycled_button'] ?? $this->config['recycled_button'] ?? true;
         $this->config['exportXLS'] =  $config['exportXLS'] ??  $this->config['exportXLS'] ?? true;
         $this->config['print'] =  $config['print'] ??  $this->config['print'] ?? true;
