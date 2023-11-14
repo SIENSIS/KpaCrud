@@ -664,16 +664,45 @@ class KpaCrud
      *
      * @version 1.3.0.1
      */
-    public function addWhere($key, $value = null, $ANDconcat=true)
+    public function addWhere($key, $value = null, $ANDconcat = true)
     {
         if ($ANDconcat)
             $this->model->addWhere($key, $value);
         else
-            $this->model->orWhere($key,$value);
+            $this->model->orWhere($key, $value);
+    }
+
+    /**
+     * orderBy - Adds order by clause to database query, usefull to show ordered data
+     *
+     * @param [type] $key
+     * @param [type] $value
+     * @return void
+     *      
+     * @since 1.5
+     * @author JMFXR <dev@siensis.com>
+     */
+    public function orderBy($key, $value = null)
+    {
+        $this->model->orderBy($key, $value);
+    }
+
+    /**
+     * limit - Adds limit clause to database query, usefull to show limited data
+     *
+     * @param [type] $limit
+     * @param integer $offset
+     * @return void
+     * 
+     * @since 1.5
+     * @author JMFXR <dev@siensis.com>
+     */
+    public function limit($limit, $offset = 0)
+    {
+        $this->model->limit($limit, $offset);
     }
 
 
-    
 
     /**
      * hideHeadLinks - Hides links to CSS or JS libraries used by KpaCrud. 
@@ -848,7 +877,7 @@ class KpaCrud
         }
         return $IDsToQuery;
     }
-    
+
     /**
      * @ignore
      */
