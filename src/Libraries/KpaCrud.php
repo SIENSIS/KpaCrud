@@ -813,9 +813,6 @@ class KpaCrud
         return $this->request->getGet('trash');
     }
 
-
-
-
     /**
      * addItemFunction - This function permits to declare an item function, this function may be defined in your controllers, you can also define invisible functions if you want to call after 
      *
@@ -834,7 +831,33 @@ class KpaCrud
         $itemFunction['description'] = $description;
         $itemFunction['view'] = 'SIENSIS\KpaCrud\Views\custom';
         $itemFunction['visible'] = $bVisible;
+        $itemFunction['type']='callback';
 
+
+        $this->arrItemFunctions[$name] = $itemFunction;
+    }
+
+    
+    /**
+     * addItemLink - This function permits to declare an item function, this function may be defined in your controllers, you can also define invisible functions if you want to call after 
+     *
+     * @param  string  $name                  Function alias name
+     * @param  string  $icon                  Font-awesome icon
+     * @param  string  $link                  Link for each item in list (with itemID as parameter)
+     * @param  string  $description           Function description used to show as tooltip in button created in every register
+     * @param  boolean $bVisible              Defines if this callback is visible in the register list view or is a user function callable
+     * 
+     * @since 1.5
+     */
+
+    public function addItemLink($name, $icon, $link,$description,$bVisible=true)
+    {
+        $itemFunction['icon'] = $icon;
+        $itemFunction['func'] = $link;
+        $itemFunction['description'] = $description;
+        $itemFunction['view'] = 'SIENSIS\KpaCrud\Views\custom';
+        $itemFunction['visible'] = $bVisible;
+        $itemFunction['type']='link';
 
         $this->arrItemFunctions[$name] = $itemFunction;
     }
