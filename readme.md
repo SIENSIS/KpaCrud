@@ -531,7 +531,13 @@ If you need a function to be called afterly, as post page or other like this, yo
 
 See 
 [How to add a function for every register](samples.md#how-to-add-a-function-for-every-register) for a sample.
+# Method addItemLink 
+This function permits to declare a new icon link for every register. The function used as callback may be defined in your controllers.
 
+```php
+        $crud->addItemLink('view', 'fa-file-o', base_url('route/to/link'), 'Tooltip for icon button');
+        // GENERATES <a href="ROUTE/[IDs_SEPARETED_BY_SLASH]" title="HELP TEXT">ICON</a>
+```
 # Library Exceptions
 
 
