@@ -12,6 +12,7 @@
 - [Method setColumns](#method-setcolumns)
 - [Method setRelation](#method-setrelation)
 - [Method addWhere](#method-addwhere)
+- [Method limit](#method-limit)
 - [Method setColumnsInfo](#method-setcolumnsinfo)
   - [Available parameters](#available-parameters)
   - [Set field name](#set-field-name)
@@ -291,7 +292,27 @@ WHERE id=3 OR id=4
 >:warning: **WARNING!!**
 >
 >If you use parameters with this function, you need to check it to avoid SQL injection
+# Method limit  
+This method adds limit clause to database query, usefull to show limited data. Sintax as codeigniter querybuilder limit function
+```php
+  $crud->limit(10);   // Produces: LIMIT 10
 
+  $crud->limit(10, 20);  // Produces: LIMIT 20, 10
+```
+
+# Method orderBy  
+This method Adds order by clause to database query, usefull to show ordered data. Sintax as codeigniter querybuilder limit function
+```php
+  $crud->orderBy('title', 'DESC');  // Produces: ORDER BY `title` DESC
+
+  $crud->orderBy('title DESC, name ASC');  // Produces: ORDER BY `title` DESC, `name` ASC
+
+  $crud->orderBy('title', 'DESC');  $builder->orderBy('name', 'ASC');   // Produces: ORDER BY `title` DESC, `name` ASC
+
+  $crud->orderBy('title', 'RANDOM');  // Produces: ORDER BY RAND()
+
+  $crud->orderBy(42, 'RANDOM');  // Produces: ORDER BY RAND(42)
+```
 
 # Method setColumnsInfo
 
