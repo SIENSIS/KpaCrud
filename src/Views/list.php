@@ -122,7 +122,8 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
           $colname = $_data_columns[$dbname]['name'] ?? ucfirst($dbname);
           echo "<th>" . $colname . "</th>";
         }
-        echo '<th>&nbsp;</th>'; // View always visible
+        if ($config['show_button'] || $config['editable'] || $config['removable'] || count($_arrItemFunctions) > 0)
+          echo '<th>&nbsp;</th>';
         ?>
       </tr>
     </thead>
@@ -153,8 +154,11 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
               $idQuery .= "&" . str_rot13($key) . "=" . str_rot13($row[$key]);
             }
 
-            echo "<td>";
-            echo "<a href='" . base_url($_route . '?view=item' . $idQuery) . "' class='btn btn-sm text-info' title='" . lang('crud.help.btnShowItem') . "'><i class='fa-solid fa-eye'></i></a>" . PHP_EOL;
+            if ($config['show_button'] || $config['editable'] || $config['removable'] || count($_arrItemFunctions) > 0) echo "<td>";
+
+            if ($config['show_button']) {
+              echo "<a href='" . base_url($_route . '?view=item' . $idQuery) . "' class='btn btn-sm text-info' title='" . lang('crud.help.btnShowItem') . "'><i class='fa-solid fa-eye'></i></a>" . PHP_EOL;
+            }
 
             if ($config['editable'] || $config['removable']) {
               if ($config['editable'])
@@ -164,18 +168,28 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
             }
 
             if (count($_arrItemFunctions) > 0) {
+
               foreach ($_arrItemFunctions as $name => $itemFunc) {
 
                 if ($itemFunc['visible']) {
-                  echo "<a href='" . base_url($_route . '?customf=' . $name . $idQuery);
-                  echo "' class='btn  btn-sm text-primary' title='" . $itemFunc['description'];
-                  echo "'><i class='fa-solid " . $itemFunc['icon'] . "'></i></a>" . PHP_EOL;
+                  if ($itemFunc['type'] == 'callback') {
+                    echo "<a href='" . base_url($_route . '?customf=' . $name . $idQuery);
+                    echo "' class='btn  btn-sm text-primary' title='" . $itemFunc['description'];
+                    echo "'><i class='fa-solid " . $itemFunc['icon'] . "'></i></a>" . PHP_EOL;
+                  } else { //type == 'link
+                    $urlID = "";
+                    foreach ($primaryKey as $key) {
+                      $urlID .= "/" . $row[$key];
+                    }
+                    echo "<a href='" . $itemFunc['func'] . $urlID;
+                    echo "' class='btn  btn-sm text-primary' title='" . $itemFunc['description'];
+                    echo "'><i class='fa-solid " . $itemFunc['icon'] . "'></i></a>" . PHP_EOL;
+                  }
                 }
               }
             }
 
-
-            echo "</td>";
+            if ($config['show_button'] || $config['editable'] || $config['removable'] || count($_arrItemFunctions) > 0) echo "</td>";
             $nRow++;
             ?>
           </tr>
