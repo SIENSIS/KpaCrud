@@ -30,6 +30,7 @@
 - [Method addPostAddCallBack and addPostEditCallBack](#method-addpostaddcallback-and-addposteditcallback)
 - [Functions isViewMode, isExportMode, isAddMode, isEditMode, isDelMode, isTrashMode](#functions-isviewmode-isexportmode-isaddmode-iseditmode-isdelmode-istrashmode)
 - [Method addItemFunction](#method-additemfunction)
+- [Method addItemLink](#method-additemlink)
 - [Library Exceptions](#library-exceptions)
 
 # KpaCrud Library
