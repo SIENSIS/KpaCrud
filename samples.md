@@ -284,10 +284,12 @@ You need to declare the callback function, like:
     /* hashEditPassword - used to store hashed password if user change it in edit form */
     public function hashEditPassword($postData)
     {
-        if($postData['data_password_hash']!=$postData['olddata_password_hash']) {
+        if($postData['data_password_hash']!='') {
             // field has a new value. You new to generate new password
             $postData['data_password_hash'] = password_hash($postData['data_password_hash'], PASSWORD_DEFAULT);
-        } // else field not changed, you can update with the same value
+        } else { field not changed, you needn't to update
+            unset($postData['data_password']);
+        }
         return $postData;
     }
 ```
