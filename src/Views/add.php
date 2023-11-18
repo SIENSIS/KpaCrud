@@ -57,6 +57,17 @@ if (isset($newID)) {
             obj.classList.add('is-valid');
         }
     }
+    function togglePassword(obj) {
+        if (obj.type === "password") {
+            obj.type = "text";
+            obj.nextElementSibling.classList.remove('fa-eye-slash');
+            obj.nextElementSibling.classList.add('fa-eye');
+        } else {
+            obj.type = "password";
+            obj.nextElementSibling.classList.remove('fa-eye');
+            obj.nextElementSibling.classList.add('fa-eye-slash');
+        }
+    }
 </script>
 
 <div style="margin-top:20px" class="border bg-light">
@@ -170,11 +181,16 @@ if (isset($newID)) {
                                     echo " name='data_" . $dbfield->Field . "' class='form-control' >";
                                     break;
                                 case strval(KpaCrud::PASSWORD_FIELD_TYPE):
+                                    echo '<div class="input-group">';
+
                                     echo "\t<input type='password' ";
                                     echo " " .  implode(" ", $colhtmlatts), " ";
                                     echo " onchange='checkInput(this)' ";
                                     echo " value='" . $coldefault . "' ";
                                     echo " name='data_" . $dbfield->Field . "' class='form-control' >";
+                                    echo "<span class='btn fa fa-eye-slash' onclick='togglePassword(this.previousElementSibling)'></span>";
+
+                                    echo '</div>';
                                     break;
                                 case strval(KpaCrud::EMAIL_FIELD_TYPE):
                                     echo "\t<input type='email' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'";
