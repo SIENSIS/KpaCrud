@@ -181,7 +181,14 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
                     foreach ($primaryKey as $key) {
                       $urlID .= "/" . $row[$key];
                     }
-                    echo "<a href='" . $itemFunc['func'] . $urlID;
+                    if (is_array($itemFunc['func']))
+                      if ($itemFunc['func'][1]=='hash')
+                        echo "<a href='" . base_url($itemFunc['func'][0] . '/' . md5($urlID));
+                      else
+                        echo "<a href='" . base_url($itemFunc['func'][0] . '/'. $urlID);
+                    else{
+                      echo "<a href='" . $itemFunc['func'] . $urlID;
+                    }
                     echo "' class='btn  btn-sm text-primary' title='" . $itemFunc['description'];
                     echo "'><i class='fa-solid " . $itemFunc['icon'] . "'></i></a>" . PHP_EOL;
                   }
