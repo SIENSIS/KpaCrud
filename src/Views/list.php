@@ -179,17 +179,19 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
                   } else { //type == 'link
                     $urlID = "";
                     foreach ($primaryKey as $key) {
-                      $urlID .= "/" . $row[$key];
+                      if (is_array($itemFunc['func'])) {
+                        if ($itemFunc['func'][1] == 'hash')   //FIXED: hash with multiple keys
+                          $urlID .= "/" . md5($row[$key]);
+                        else
+                          $urlID .= "/" . $row[$key];
+                      } else
+                        $urlID .= "/" . $row[$key];
                     }
-
                     if (is_array($itemFunc['func']))
-                      if ($itemFunc['func'][1]=='hash')   //FIXME: hash with multiple keys
-                        echo "<a href='" . $itemFunc['func'][0] . md5($urlID);
-                      else
-                        echo "<a href='" . $itemFunc['func'][0] .  $urlID;
-                    else{
+                      echo "<a href='" . $itemFunc['func'][0] . $urlID;
+                    else
                       echo "<a href='" . $itemFunc['func'] . $urlID;
-                    }
+
                     echo "' class='btn  btn-sm text-primary' title='" . $itemFunc['description'];
                     echo "'><i class='fa-solid " . $itemFunc['icon'] . "'></i></a>" . PHP_EOL;
                   }
