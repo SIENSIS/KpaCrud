@@ -36,6 +36,17 @@ renderJS($js_files, $_hidden_head_links);
             obj.classList.add('is-valid');
         }
     }
+    function togglePassword(obj) {
+        if (obj.type === "password") {
+            obj.type = "text";
+            obj.nextElementSibling.classList.remove('fa-eye-slash');
+            obj.nextElementSibling.classList.add('fa-eye');
+        } else {
+            obj.type = "password";
+            obj.nextElementSibling.classList.remove('fa-eye');
+            obj.nextElementSibling.classList.add('fa-eye-slash');
+        }
+    }
 </script>
 <div style="margin-top:20px" class="border bg-light">
     <form method="post" id="edit_item" name="edit_item" action="<?= base_url($_route . '?edit=item' . $id) ?>">
@@ -151,15 +162,18 @@ renderJS($js_files, $_hidden_head_links);
                                     echo " name='data_" . $dbfield->Field . "' class='form-control' >";
                                     break;
                                 case strval(KpaCrud::PASSWORD_FIELD_TYPE):
+                                    $colhtmlatts = array_diff($colhtmlatts, array("required")); //remove required
+
+                                    echo '<div class="input-group">';
+                                    
                                     echo "\t<input type='password' ";
                                     echo " " .  implode(" ", $colhtmlatts), " ";
                                     echo " onchange='checkInput(this)' ";
-                                    echo " value='" . $data[$dbfield->Field] . "'";
+                                    echo " value=''";
                                     echo " name='data_" . $dbfield->Field . "' class='form-control' >";
+                                    echo "<span class='btn fa fa-eye-slash' onclick='togglePassword(this.previousElementSibling)'></span>";
 
-                                    echo "\t<input type='hidden' ";
-                                    echo " value='" . $data[$dbfield->Field] . "'";
-                                    echo " name='olddata_" . $dbfield->Field . "' >";
+                                    echo '</div>';
                                     break;
                                 case strval(KpaCrud::EMAIL_FIELD_TYPE):
                                     echo "\t<input type='email' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'";
