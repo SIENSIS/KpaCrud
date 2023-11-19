@@ -225,12 +225,12 @@ class KpaCrudModel extends Model
                 if (isset($post["data_" . $field->Field])) $insert_array[$field->Field] = $post["data_" . $field->Field];
             }
 
-            $insert = $this->insert($insert_array);
+            $insert = $this->ignore(true)->insert($insert_array);
             if ($insert) {
                 return $this->db->insertID();
             }
         } catch (\Exception $e) {
-            return -1;
+            throw $e;
         }
     }
     /**
