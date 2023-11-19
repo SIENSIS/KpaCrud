@@ -23,7 +23,9 @@ return [
     'btnUpdate'    => 'Update',
     'btnCancel'    => 'Cancel',
     'btnGoBack'    => 'Go list',
-
+    'btnGenerate' => 'Generate',
+    'btnShowHide' => 'Show/hide',
+    
     'colHeadNitem'    => 'N.Item',
     'allItems'  => 'All items',
 
