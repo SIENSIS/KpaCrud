@@ -20,6 +20,7 @@
 
 namespace SIENSIS\KpaCrud\Libraries;
 
+use Exception;
 use ReflectionClass;
 use SIENSIS\KpaCrud\Models\KpaCrudModel;
 
@@ -831,13 +832,13 @@ class KpaCrud
         $itemFunction['description'] = $description;
         $itemFunction['view'] = 'SIENSIS\KpaCrud\Views\custom';
         $itemFunction['visible'] = $bVisible;
-        $itemFunction['type']='callback';
+        $itemFunction['type'] = 'callback';
 
 
         $this->arrItemFunctions[$name] = $itemFunction;
     }
 
-    
+
     /**
      * addItemLink - This function permits to declare an item function, this function may be defined in your controllers, you can also define invisible functions if you want to call after 
      *
@@ -850,14 +851,14 @@ class KpaCrud
      * @since 1.5
      */
 
-    public function addItemLink($name, $icon, $link,$description,$bVisible=true)
+    public function addItemLink($name, $icon, $link, $description, $bVisible = true)
     {
         $itemFunction['icon'] = $icon;
         $itemFunction['func'] = $link;
         $itemFunction['description'] = $description;
         $itemFunction['view'] = 'SIENSIS\KpaCrud\Views\custom';
         $itemFunction['visible'] = $bVisible;
-        $itemFunction['type']='link';
+        $itemFunction['type'] = 'link';
 
         $this->arrItemFunctions[$name] = $itemFunction;
     }
@@ -950,11 +951,34 @@ class KpaCrud
 
             if ($postData != null) {
 
-                $newID = $this->model->addItem($postData, $this->data_fields);
-                $data['newID'] = $newID;
-                $view = 'SIENSIS\KpaCrud\Views\add';
-                if ($newID < 0) {
-                    $data['oldForm'] = $this->request->getPost();
+                try {
+
+                    $newID = $this->model->addItem($postData, $this->data_fields);
+                    $data['newID'] = $newID;
+                    $view = 'SIENSIS\KpaCrud\Views\add';
+                    if ($newID < 0) {
+                        $data['oldForm'] = $this->request->getPost();
+                    } else {
+                        $data['alert'] = lang('crud.alerts.addErr', [$newID]);
+                        $data['alert_type'] = 'err';
+                        session()->setFlashdata('alert', $data['alert']);
+                        session()->setFlashdata('alert_type', $data['alert_type']);
+                        $response = \Config\Services::response();
+                        $response
+                            ->redirect(base_url($this->request->getPath()))
+                            ->send();
+                    }
+                } catch (\Exception $e) {
+                    $data['alert'] = lang('crud.alerts.addErr', [$e->getMessage()]);
+                    $data['alert_type'] = 'err';
+                    session()->setFlashdata('alert', $data['alert']);
+                    session()->setFlashdata('alert_type', $data['alert_type']);
+                    $response = \Config\Services::response();
+
+                    $response
+                        ->redirect(base_url($this->request->getPath()))
+                        ->send();
+                    return null;
                 }
             } else {
                 session()->setFlashdata('alert', lang('crud.alerts.callbackCancel'));
