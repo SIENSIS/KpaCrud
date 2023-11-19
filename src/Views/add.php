@@ -60,12 +60,23 @@ if (isset($newID)) {
     function togglePassword(obj) {
         if (obj.type === "password") {
             obj.type = "text";
-            obj.nextElementSibling.classList.remove('fa-eye-slash');
-            obj.nextElementSibling.classList.add('fa-eye');
+            obj.nextElementSibling.childNodes[0].classList.remove('fa-eye-slash');
+            obj.nextElementSibling.childNodes[0].classList.add('fa-eye');
         } else {
             obj.type = "password";
-            obj.nextElementSibling.classList.remove('fa-eye');
-            obj.nextElementSibling.classList.add('fa-eye-slash');
+            obj.nextElementSibling.childNodes[0].classList.remove('fa-eye');
+            obj.nextElementSibling.childNodes[0].classList.add('fa-eye-slash');
+        }
+    }
+    function generatePassword(obj) {
+        var length = 8,
+            charset = "abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789@#$*+~.",
+            retVal = "";
+        if (obj.minLength>0) length = parseInt(obj.minLength);
+
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+            obj.value = retVal;
         }
     }
 </script>
@@ -188,8 +199,13 @@ if (isset($newID)) {
                                     echo " onchange='checkInput(this)' ";
                                     echo " value='" . $coldefault . "' ";
                                     echo " name='data_" . $dbfield->Field . "' class='form-control' >";
-                                    echo "<span class='btn fa fa-eye-slash' onclick='togglePassword(this.previousElementSibling)'></span>";
-
+                                    
+                                    echo "<div class='btn' onclick='togglePassword(this.previousElementSibling)'>";
+                                    echo "<span class='fa fa-eye-slash' ></span> ".lang('crud.btnShowHide')."</div>";
+                                    
+                                    echo "<div class='btn' onclick='generatePassword(this.previousElementSibling.previousElementSibling)'>";
+                                    echo "<span class='fa fa-random'></span> ".lang('crud.btnGenerate')."</div>";
+                                    
                                     echo '</div>';
                                     break;
                                 case strval(KpaCrud::EMAIL_FIELD_TYPE):
