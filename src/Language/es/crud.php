@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Language file from CA language. Catalan 
+ * Language file from ES language. SPANISH
  * 
  * @version 1.2
  * @author JMFXR <dev@siensis.com> 
@@ -23,6 +23,8 @@ return [
     'btnUpdate'    => 'Actualizar',
     'btnCancel'    => 'Cancelar',
     'btnGoBack'    => 'Ir a lista',
+    'btnGenerate' => 'Generar',
+    'btnShowHide' => 'Mostrar/ocultar',
 
     'colHeadNitem'    => 'N.Item',
     'allItems'  => 'Todos los items',
