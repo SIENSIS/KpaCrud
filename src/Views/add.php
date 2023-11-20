@@ -139,6 +139,13 @@ if (isset($newID)) {
                             'id'    => "data_" . $dbfield->Field,
                         ];
 
+                        if (isset($_data_columns[$dbfield->Field]['excludes']))
+                        {
+                            foreach ($_data_columns[$dbfield->Field]['excludes'] as $exclude)
+                            {
+                                unset($options[$exclude]);
+                            }
+                        }
                         echo form_dropdown("data_" . $dbfield->Field, $options, null, $atts);
                         echo "</div>";
                     } elseif ($dbfield->Extra != 'auto_increment') { //IF is normal column
