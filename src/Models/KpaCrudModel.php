@@ -220,21 +220,28 @@ class KpaCrudModel extends Model
     {
         try {
             $insert_array = array();
+            // search if item exists
+            $where_array = array();
+            foreach ((array)$this->primaryKey as $key) {
+                $where_array[$key] = $post["data_" . $key];
+            }
+            $query = $this->builder->where($where_array)->get()->getRowArray();
 
+            if ($query != null) {
+                return -1;
+            }
             foreach ((array)$data_fields as $field) {
                 if (isset($post["data_" . $field->Field])) $insert_array[$field->Field] = $post["data_" . $field->Field];
             }
-
             $insert = $this->ignore(true)->insert($insert_array);
 
-            if ($insert) {
-                return $this->db->insertID();
-            } else 
-                return -1;
+            return $this->db->insertID();
         } catch (\Exception $e) {
             throw $e;
         }
     }
+
+
     /**
      * updateItem - Function to update item into BBDD, uses data from POST request and Keys from GET request.
      *
