@@ -70,7 +70,7 @@ renderJS($js_files, $_hidden_head_links);
         <div class="d-grid" style="margin-top:20px">
             <?php
             foreach ($tableFields as $dbfield) {
-
+              
                 if ($config['useTimestamps'] == true) {
 
                     // show all fields
@@ -116,6 +116,13 @@ renderJS($js_files, $_hidden_head_links);
                             'id'    => "data_" . $dbfield->Field,
                         ];
 
+                        if (isset($_data_columns[$dbfield->Field]['excludes']))
+                        {
+                            foreach ($_data_columns[$dbfield->Field]['excludes'] as $exclude)
+                            {
+                                unset($options[$exclude]);
+                            }
+                        }
                         echo form_dropdown("data_" . $dbfield->Field, $options, $data[$dbfield->Field], $atts);
                         echo "</div>";
                     } elseif ($dbfield->Extra != 'auto_increment') { //IF is normal column
