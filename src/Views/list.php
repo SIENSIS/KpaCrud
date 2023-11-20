@@ -135,20 +135,24 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
         $nRow = 1;
         foreach ($data as $row) :
 
-
           foreach ($primaryKey as $key) {
             $rowID[$key] = $row[$key];
           }
-
         ?>
           <tr id='item-<?= $nRow ?>' data-kpc-id='<?= json_encode($rowID) ?>'>
             <?php
             if ($config['numerate']) echo "<td>" . $nRow . "</td>";
 
             foreach ($_data_header as $dbname) {
-              echo "<td>" . $row[$dbname] . "</td>";
+              if (($_data_columns[$dbname]['type'] ?? '') == 'checkbox') {
+                if ($row[$dbname] == ($_data_columns[$dbname]['check_value'] ?? ''))
+                  echo "<td><span class='fas fa-check-square'></span></td>";
+                else
+                  echo "<td><span class='far fa-square'></span></td>";
+              } else {
+                echo "<td>" . $row[$dbname] . "</td>";
+              }
             }
-
             $idQuery = "";
             foreach ($primaryKey as $key) {
               $idQuery .= "&" . str_rot13($key) . "=" . str_rot13($row[$key]);
