@@ -331,6 +331,7 @@ The function setColumnsInfo permits to customize every database field.
 | uncheck_value | `string,bool,integer` | Value stored when a checkbox is unchecked. __DEFAULT=0__                                                                                                                                                                                                   |
 | html_atts     |    `array[string]`    | Others html attributes to add to field, like: required, placeholder, pattern, title, min, max, step...                                                                                                                                                     |
 | options       |        `array`        | Options to show in a dropdown field                                                                                                                                                                                                                        |
+| excludes      |        `array`        | Values that are excluded to show into field                                                                                                                                                                                                                |
 
 ## Set field name
 
