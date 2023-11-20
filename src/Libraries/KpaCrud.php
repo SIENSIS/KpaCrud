@@ -952,13 +952,10 @@ class KpaCrud
             if ($postData != null) {
 
                 try {
-
                     $newID = $this->model->addItem($postData, $this->data_fields);
                     $data['newID'] = $newID;
                     $view = 'SIENSIS\KpaCrud\Views\add';
                     if ($newID < 0) {
-                        $data['oldForm'] = $this->request->getPost();
-                    } else {
                         $data['alert'] = lang('crud.alerts.addErr', [$newID]);
                         $data['alert_type'] = 'err';
                         session()->setFlashdata('alert', $data['alert']);
