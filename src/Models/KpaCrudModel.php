@@ -226,9 +226,11 @@ class KpaCrudModel extends Model
             }
 
             $insert = $this->ignore(true)->insert($insert_array);
+
             if ($insert) {
                 return $this->db->insertID();
-            }
+            } else 
+                return -1;
         } catch (\Exception $e) {
             throw $e;
         }
