@@ -946,11 +946,11 @@ class KpaCrud
         if ($this->request->getPost('op') == 'add') {
             $postData = $this->request->getPost();
             if ($this->postAddCallback !== null) {
+                d($postData);
                 $postData =  call_user_func($this->postAddCallback, $postData);
             }
 
             if ($postData != null) {
-
                 try {
                     $newID = $this->model->addItem($postData, $this->data_fields);
                     $data['newID'] = $newID;
