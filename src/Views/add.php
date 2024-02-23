@@ -230,6 +230,12 @@ if (isset($newID)) {
                                     echo  $coldefault;
                                     echo "</textarea>";
                                     break;
+                                case strval(KpaCrud::READONLY_FIELD_TYPE):
+                                    echo "\t<input type='text'  ";
+                                    echo " " .  implode(" ", $colhtmlatts), " ";
+                                    echo " value='" . $coldefault . "' ";
+                                    echo " class='form-control' readonly>";
+                                    break;
                                 default:
                                     echo "\t<input type='text' name='data_" . $dbfield->Field . "' ";
                                     echo " " .  implode(" ", $colhtmlatts), " ";
