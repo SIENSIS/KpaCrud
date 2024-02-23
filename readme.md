@@ -325,7 +325,7 @@ The function setColumnsInfo permits to customize every database field.
 | Parameter     |         Type          | Description                                                                                                                                                                                                                                                |
 | ------------- | :-------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name          |       `string`        | Field name to show user in pages                                                                                                                                                                                                                           |
-| type          |       `string`        | Availables field types are: DEFAULT_FIELD_TYPE, INVISIBLE_FIELD_TYPE, EMAIL_FIELD_TYPE, CHECKBOX_FIELD_TYPE,NUMBER_FIELD_TYPE, RANGE_FIELD_TYPE, DATE_FIELD_TYPE, DATETIME_FIELD_TYPE, TEXTAREA_FIELD_TYPE [(Check field types)](#field-types-and-samples) |
+| type          |       `string`        | Availables field types are: DEFAULT_FIELD_TYPE, READONLY_FIELD_TYPE, INVISIBLE_FIELD_TYPE, EMAIL_FIELD_TYPE, CHECKBOX_FIELD_TYPE,NUMBER_FIELD_TYPE, RANGE_FIELD_TYPE, DATE_FIELD_TYPE, DATETIME_FIELD_TYPE, TEXTAREA_FIELD_TYPE [(Check field types)](#field-types-and-samples) |
 | default       |       `string`        | Field default value in add page                                                                                                                                                                                                                            |
 | check_value   | `string,bool,integer` | Value stored when a checkbox is checked. __DEFAULT=1__                                                                                                                                                                                                     |
 | uncheck_value | `string,bool,integer` | Value stored when a checkbox is unchecked. __DEFAULT=0__                                                                                                                                                                                                   |
@@ -398,7 +398,15 @@ This field will be invisible in all views
     'type' => KpaCrud::INVISIBLE_FIELD_TYPE
 ],
 ```
+### Make a field **READ ONLY** 
 
+This field will be read only in add or edit view
+
+```php
+'dbfieldname' => [
+    'type' => KpaCrud::READONLY_FIELD_TYPE
+],
+```
 ### Checkbox field
 
 ```php
