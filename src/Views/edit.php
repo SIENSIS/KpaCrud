@@ -162,8 +162,6 @@ renderJS($js_files, $_hidden_head_links);
                                         echo "checked='checked' >";
                                     else
                                         echo ">";
-
-                                    echo "&nbsp;</div>";
                                     break;
                                 case strval(KpaCrud::DATE_FIELD_TYPE):
                                     echo "\t<input type='date' ";
