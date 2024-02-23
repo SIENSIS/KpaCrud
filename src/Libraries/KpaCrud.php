@@ -129,6 +129,13 @@ class KpaCrud
      */
     public  const DROPDOWN_FIELD_TYPE = 'dropdown';
 
+    /**
+     * READONLY_FIELD_TYPE - Field type used to show a readonly field
+     * 
+     * @link ../readme.md To see samples
+     */
+    public const READONLY_FIELD_TYPE = 'readonly';
+
     public const DEFAULT_CHECK_VALUE = '1';
     public const DEFAULT_UNCHECK_VALUE = '0';
 
