@@ -41,17 +41,17 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
   <div class="d-flex justify-content-end">
 
     <?php if ($config['add_button'] == true) : ?>
-      &nbsp;<a href="<?php echo base_url($_route . '?add=item') ?>" class="btn btn-info" title="<?= lang('crud.help.btnAdd') ?>"><?= lang('crud.toolbars.btnAdd'); ?></a>
+      &nbsp;<a href="<?php echo base_url($_route . '?add=item') ?>" id='list-btn-add' class="btn btn-info" title="<?= lang('crud.help.btnAdd') ?>"><?= lang('crud.toolbars.btnAdd'); ?></a>
     <?php endif; ?>
 
     <?php if ($config['recycled_button'] && $config['useSoftDeletes']) : ?>
 
       <div class="dropdown show">
 
-        &nbsp;<a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= lang('crud.toolbars.btnRecycled'); ?></a>
+        &nbsp;<a class="btn btn-info dropdown-toggle" href="#" id='list-btn-recycled' role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= lang('crud.toolbars.btnRecycled'); ?></a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a href="<?php echo base_url($_route . '?trash=list') ?>" class="dropdown-item" title="<?= lang('crud.help.btnRecycled') ?>"><?= lang('crud.toolbars.btnShowRecycled'); ?></a>
+          <a href="<?php echo base_url($_route . '?trash=list') ?>" id='list-btn-trash'  class="dropdown-item" title="<?= lang('crud.help.btnRecycled') ?>"><?= lang('crud.toolbars.btnShowRecycled'); ?></a>
           <a class="dropdown-item" href="#" id="btnEmpty"><?= lang('crud.toolbars.btnEmpty'); ?></a>
         </div>
       </div>
@@ -59,11 +59,11 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
     <?php endif; ?>
 
     <?php if ($config['exportXLS'] == true) : ?>
-      &nbsp;<a href="<?php echo base_url($_route . '?export=xls') ?>" class="btn btn-info" title="<?= lang('crud.help.btnExport') ?>"><?= lang('crud.toolbars.btnExport'); ?></a>
+      &nbsp;<a href="<?php echo base_url($_route . '?export=xls') ?>" id='list-btn-exportxls' class="btn btn-info" title="<?= lang('crud.help.btnExport') ?>"><?= lang('crud.toolbars.btnExport'); ?></a>
     <?php endif; ?>
 
     <?php if ($config['print']) { ?>
-      &nbsp;<a href="#" onclick="doPrint();" class="btn btn-info" title="<?= lang('crud.help.btnPrint') ?>"><?= lang('crud.toolbars.btnPrint'); ?></a>
+      &nbsp;<a href="#" onclick="doPrint();" class="btn btn-info" id='list-btn-print' title="<?= lang('crud.help.btnPrint') ?>"><?= lang('crud.toolbars.btnPrint'); ?></a>
       <script>
         function doPrint() {
           var h = 700,
