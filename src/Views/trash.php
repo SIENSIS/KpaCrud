@@ -48,15 +48,15 @@ if ($config['exportXLS'] || $config['print']) { ?>
 
   <div class="d-flex justify-content-end">
 
-    &nbsp;<a href="<?php echo base_url($_route) ?>" class="btn btn-info mb-2 rounded-pill" title="<?= lang('crud.help.btnList') ?>"><?= lang('crud.toolbars.btnList'); ?></a>
+    &nbsp;<a href="<?php echo base_url($_route) ?>" id='trash-btn-list' class="btn btn-info mb-2 rounded-pill" title="<?= lang('crud.help.btnList') ?>"><?= lang('crud.toolbars.btnList'); ?></a>
 
 
     <?php if ($config['exportXLS']) : ?>
-      &nbsp;<a href="<?php echo base_url($_route . '?export=xls') ?>" class="btn btn-info mb-2 rounded-pill" title="<?= lang('crud.help.btnExport') ?>"><?= lang('crud.toolbars.btnExport'); ?></a>
+      &nbsp;<a href="<?php echo base_url($_route . '?export=xls') ?>" id='trash-btn-exportxls' class="btn btn-info mb-2 rounded-pill" title="<?= lang('crud.help.btnExport') ?>"><?= lang('crud.toolbars.btnExport'); ?></a>
     <?php endif; ?>
 
     <?php if ($config['print']) { ?>
-      &nbsp;<a href="#" onclick="doPrint();" class="btn btn-info mb-2 rounded-pill" title="<?= lang('crud.help.btnPrint') ?>"><?= lang('crud.toolbars.btnPrint'); ?></a>
+      &nbsp;<a href="#" onclick="doPrint();" id='trash-btn-print' class="btn btn-info mb-2 rounded-pill" title="<?= lang('crud.help.btnPrint') ?>"><?= lang('crud.toolbars.btnPrint'); ?></a>
       <script>
         function doPrint() {
           var h = window.top.outerHeight,
@@ -86,9 +86,9 @@ if ($config['exportXLS'] || $config['print']) { ?>
 ?>
 
 <div class="mt-3">
-  <button id="btnRecover" disabled><?= lang('crud.toolbars.btnRecover'); ?></button>
-  <button id="btnRemove" disabled><?= lang('crud.toolbars.btnRemovePermanently'); ?></button>
-  <button id="btnEmpty" <?= count($data) > 0 ? '' : 'disabled'; ?>><?= lang('crud.toolbars.btnEmpty'); ?></button>
+  <button id="btnRecover" disabled id='trash-btn-recover' ><?= lang('crud.toolbars.btnRecover'); ?></button>
+  <button id="btnRemove" disabled id='trash-btn-remove' ><?= lang('crud.toolbars.btnRemovePermanently'); ?></button>
+  <button id="btnEmpty" <?= count($data) > 0 ? '' : 'disabled'; ?> id='trash-btn-empty' ><?= lang('crud.toolbars.btnEmpty'); ?></button>
 
 </div>
 <div class="mt-3">
