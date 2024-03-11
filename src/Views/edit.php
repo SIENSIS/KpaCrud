@@ -36,7 +36,6 @@ renderJS($js_files, $_hidden_head_links);
             obj.classList.add('is-valid');
         }
     }
-
     function togglePassword(obj) {
         if (obj.type === "password") {
             obj.type = "text";
@@ -48,12 +47,11 @@ renderJS($js_files, $_hidden_head_links);
             obj.nextElementSibling.childNodes[0].classList.add('fa-eye-slash');
         }
     }
-
     function generatePassword(obj) {
         var length = 8,
             charset = "abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789@#$*+~.",
             retVal = "";
-        if (obj.minLength > 0) length = parseInt(obj.minLength);
+        if (obj.minLength>0) length = parseInt(obj.minLength);
 
         for (var i = 0, n = charset.length; i < length; ++i) {
             retVal += charset.charAt(Math.floor(Math.random() * n));
@@ -72,7 +70,7 @@ renderJS($js_files, $_hidden_head_links);
         <div class="d-grid" style="margin-top:20px">
             <?php
             foreach ($tableFields as $dbfield) {
-
+              
                 if ($config['useTimestamps'] == true) {
 
                     // show all fields
@@ -118,8 +116,10 @@ renderJS($js_files, $_hidden_head_links);
                             'id'    => "data_" . $dbfield->Field,
                         ];
 
-                        if (isset($_data_columns[$dbfield->Field]['excludes'])) {
-                            foreach ($_data_columns[$dbfield->Field]['excludes'] as $exclude) {
+                        if (isset($_data_columns[$dbfield->Field]['excludes']))
+                        {
+                            foreach ($_data_columns[$dbfield->Field]['excludes'] as $exclude)
+                            {
                                 unset($options[$exclude]);
                             }
                         }
@@ -162,6 +162,8 @@ renderJS($js_files, $_hidden_head_links);
                                         echo "checked='checked' >";
                                     else
                                         echo ">";
+
+                                    echo "&nbsp;</div>";
                                     break;
                                 case strval(KpaCrud::DATE_FIELD_TYPE):
                                     echo "\t<input type='date' ";
@@ -181,18 +183,18 @@ renderJS($js_files, $_hidden_head_links);
                                     $colhtmlatts = array_diff($colhtmlatts, array("required")); //remove required
 
                                     echo '<div class="input-group">';
-
+                                    
                                     echo "\t<input type='password' ";
                                     echo " " .  implode(" ", $colhtmlatts), " ";
                                     echo " onchange='checkInput(this)' ";
                                     echo " value=''";
                                     echo " name='data_" . $dbfield->Field . "' class='form-control' >";
-
+                                    
                                     echo "<div class='btn' onclick='togglePassword(this.previousElementSibling)'>";
-                                    echo "<span class='fa fa-eye-slash' ></span> " . lang('crud.btnShowHide') . "</div>";
-
+                                    echo "<span class='fa fa-eye-slash' ></span> ".lang('crud.btnShowHide')."</div>";
+                                    
                                     echo "<div class='btn' onclick='generatePassword(this.previousElementSibling.previousElementSibling)'>";
-                                    echo "<span class='fa fa-random'></span> " . lang('crud.btnGenerate') . "</div>";
+                                    echo "<span class='fa fa-random'></span> ".lang('crud.btnGenerate')."</div>";
 
                                     echo '</div>';
                                     break;
@@ -210,11 +212,6 @@ renderJS($js_files, $_hidden_head_links);
                                     echo " class='form-control'>";
                                     echo $data[$dbfield->Field];
                                     echo "</textarea>";
-                                    break;
-                                case strval(KpaCrud::READONLY_FIELD_TYPE):
-                                    echo "\t<input type='text' readonly";
-                                    echo " " .  implode(" ", $colhtmlatts), " ";
-                                    echo " class='form-control' value='" . $data[$dbfield->Field] . "'>";
                                     break;
                                 default:
                                     echo "\t<input type='text' name='data_" . $dbfield->Field . "' ";
@@ -238,8 +235,8 @@ renderJS($js_files, $_hidden_head_links);
             ?>
 
             <div class="p-3 bg-secondary mt-5">
-                <button type="submit" class="btn btn-primary btn-block"><?= lang('crud.btnUpdate'); ?></button>
-                <a href="<?= base_url($_route) ?>" class="btn btn-light btn-block"><?= lang('crud.btnCancel'); ?></a>
+                <button type="submit" id='edit-btn-update' class="btn btn-primary btn-block"><?= lang('crud.btnUpdate'); ?></button>
+                <a href="<?= base_url($_route) ?>" id='edit-btn-cancel' class="btn btn-light btn-block"><?= lang('crud.btnCancel'); ?></a>
             </div>
         </div>
 
