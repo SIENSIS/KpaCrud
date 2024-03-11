@@ -108,7 +108,7 @@ renderJS($js_files,$_hidden_head_links);
         ?>
 
         <div class="p-3 bg-secondary mt-5">
-            <a href="<?= base_url($_route) ?>" class="btn btn-light btn-block"><?= lang('crud.btnGoBack'); ?></a>
+            <a href="<?= base_url($_route) ?>" id='view-btn-goback' class="btn btn-light btn-block"><?= lang('crud.btnGoBack'); ?></a>
         </div>
     </div>
 
