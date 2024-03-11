@@ -31,13 +31,13 @@ if (isset($newID)) {
     if ($newID < 0) {
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert" id="my">';
         echo lang('crud.alerts.addErr');
-        echo "\t<button type='button' class='btn-close' data-dismiss='alert' aria-label='Close' onclick=\"$('.alert').hide()\">";
+        echo "\t<button type='button' id='add-btn-close' class='btn-close' data-dismiss='alert' aria-label='Close' onclick=\"$('.alert').hide()\">";
         echo "\t</button>";
         echo "</div>";
     } else {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert" id="my">';
         echo lang('crud.alerts.addOk', [$newID]);
-        echo "\t<button type='button' class='btn-close' data-dismiss='alert' aria-label='Close' onclick=\"$('.alert').hide()\">";
+        echo "\t<button type='button' id='add-btn-close' class='btn-close' data-dismiss='alert' aria-label='Close' onclick=\"$('.alert').hide()\">";
         echo "\t</button>";
         echo "</div>";
     }
@@ -230,12 +230,6 @@ if (isset($newID)) {
                                     echo  $coldefault;
                                     echo "</textarea>";
                                     break;
-                                case strval(KpaCrud::READONLY_FIELD_TYPE):
-                                    echo "\t<input type='text'  ";
-                                    echo " " .  implode(" ", $colhtmlatts), " ";
-                                    echo " value='" . $coldefault . "' ";
-                                    echo " class='form-control' readonly>";
-                                    break;
                                 default:
                                     echo "\t<input type='text' name='data_" . $dbfield->Field . "' ";
                                     echo " " .  implode(" ", $colhtmlatts), " ";
@@ -256,11 +250,11 @@ if (isset($newID)) {
         <div class="d-grid p-3 bg-secondary mt-5">
             <div class="row">
                 <div class="col-sm">
-                    <button type="submit" class="btn btn-primary btn-block"><?= lang('crud.btnSave'); ?></button>
-                    <a href="<?= base_url($_route) ?>" class="btn btn-light btn-block"><?= lang('crud.btnCancel'); ?></a>
+                    <button type="submit" id='add-btn-save' class="btn btn-primary btn-block"><?= lang('crud.btnSave'); ?></button>
+                    <a href="<?= base_url($_route) ?>" id='add-btn-cancel' class="btn btn-light btn-block"><?= lang('crud.btnCancel'); ?></a>
                 </div>
                 <div class="col-sm-2">
-                    <a href="<?= base_url($_route) ?>" class="btn btn-light btn-block "><?= lang('crud.btnGoBack'); ?></a>
+                    <a href="<?= base_url($_route) ?>" id='add-btn-goback' class="btn btn-light btn-block "><?= lang('crud.btnGoBack'); ?></a>
                 </div>
             </div>
         </div>
