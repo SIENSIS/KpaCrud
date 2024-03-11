@@ -113,10 +113,9 @@ renderJS($js_files, $_hidden_head_links);
 
 
             <div class="p-3 bg-secondary mt-5">
-                <button type="submit" class="btn btn-primary btn-block"><?= lang('crud.btnDelete'); ?></button>
-                <a href="<?= base_url($_route) ?>" class="btn btn-light btn-block"><?= lang('crud.btnCancel'); ?></a>
+                <button type="submit" id='delete-btn-delete' class="btn btn-primary btn-block"><?= lang('crud.btnDelete'); ?></button>
+                <a href="<?= base_url($_route) ?>" id='delete-btn-cancel' class="btn btn-light btn-block"><?= lang('crud.btnCancel'); ?></a>
             </div>
         </div>
 
     </form>
-</div>
