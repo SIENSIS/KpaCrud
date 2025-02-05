@@ -189,22 +189,17 @@ class KpaCrudModel extends Model
      */
     public function getFields($tablename = null)
     {
-        /*
-        $fields = $this->db->getFieldData($this->table);
-        foreach ($fields as $field) {
-            public default ->
-            public max_length -> integer 
-            public name -> string 
-            public nullable -> boolean 
-            public primary_key -> integer 
-            public type -> string 
-        }
-        */
-
         if ($tablename == null)
-            return $this->db->query("SHOW COLUMNS FROM `{$this->table}`")->getResultObject();
+            $fields= $this->db->query("SHOW COLUMNS FROM `{$this->table}`")->getResultObject();
         else
-            return $this->db->query("SHOW COLUMNS FROM `{$tablename}`")->getResultObject();
+            $fields= $this->db->query("SHOW COLUMNS FROM `{$tablename}`")->getResultObject();
+
+        if($this->useTimestamps || $this->useSoftDeletes){
+            $fields = array_filter($fields, function($field){
+                return $field->Field != $this->createdField && $field->Field != $this->updatedField && $field->Field != $this->deletedField;
+            });
+        }
+        return $fields;
     }
     /**
      * addItem - Add item to table, inserts data from a form with fields required by table.
@@ -216,27 +211,39 @@ class KpaCrudModel extends Model
      * 
      * @see \Codeigniter\Database\BaseConnection
      */
-    public function addItem($post, $data_fields)
+    public function addItem($post, $data_fields, $column_info)
     {
         try {
             $insert_array = array();
             // search if item exists
             $where_array = array();
             foreach ((array)$this->primaryKey as $key) {
-                $where_array[$key] = $post["data_" . $key];
+                if (isset($post["data_" . $key]))
+                    $where_array[$key] = $post["data_" . $key];
             }
-            $query = $this->builder->where($where_array)->get()->getRowArray();
+            if (count($where_array) != 0) {
+                $query = $this->builder->where($where_array)->get()->getRowArray();
+            } else
+                $query = null;
 
             if ($query != null) {
                 return -1;
             }
             foreach ((array)$data_fields as $field) {
-                if (isset($post["data_" . $field->Field])) $insert_array[$field->Field] = $post["data_" . $field->Field];
+                if (isset($post["data_" . $field->Field])) {
+                    $nullable = $column_info[$field->Field]['nullable'] ?? false;
+                    if ($nullable && $post["data_" . $field->Field] == $nullable) {
+                        $insert_array[$field->Field] = null;
+                    } else {
+                        $insert_array[$field->Field] = $post["data_" . $field->Field];
+                    }
+                }
             }
             $insert = $this->ignore(true)->insert($insert_array);
 
             return $this->db->insertID();
         } catch (\Exception $e) {
+            dd($e);
             throw $e;
         }
     }
@@ -258,23 +265,39 @@ class KpaCrudModel extends Model
         foreach ((array)$this->primaryKey as $key) {
             $where_array[$key] = str_rot13($get[str_rot13($key)]);
         }
-        // d($post);
+
         foreach ((array)$data_fields as $field) {
 
-            $coltype = $column_info[$field->Field]['type'] ?? KpaCrud::DEFAULT_FIELD_TYPE;
-            if ($coltype != KpaCrud::INVISIBLE_FIELD_TYPE) {
-                if (isset($post["data_" . $field->Field])) {
-                    $update_array[$field->Field] = $post["data_" . $field->Field];
-                } elseif ($coltype == 'checkbox') {
-                    $val = $column_info[$field->Field]['uncheck_value'] ?? $field->Default ?? KpaCrud::DEFAULT_UNCHECK_VALUE;
-                    $update_array[$field->Field] = $val;
+            if (!$this->isTimestamp($field)) {
+                $coltype = $column_info[$field->Field]['type'] ?? KpaCrud::DEFAULT_FIELD_TYPE;
+                $nullable = $column_info[$field->Field]['nullable'] ?? false;
+                $fieldValue = $post["data_" . $field->Field] ?? false;
+
+                if ($coltype != KpaCrud::INVISIBLE_FIELD_TYPE) {
+
+                    if ($coltype == 'checkbox') {
+                        if ($nullable && $post["data_" . $field->Field] == $nullable)
+                            $val = null;
+                        else
+                            $val = $column_info[$field->Field]['check_value'] ?? $field->Default ?? KpaCrud::DEFAULT_CHECK_VALUE;
+                        $val = $column_info[$field->Field]['uncheck_value'] ?? $field->Default ?? KpaCrud::DEFAULT_UNCHECK_VALUE;
+                        $update_array[$field->Field] = $val;
+                    } else 
+                    if ($fieldValue == $nullable) {
+                        $update_array[$field->Field] = null;
+                    } elseif ($fieldValue == '' && $nullable) {
+                        $update_array[$field->Field] = null;
+                    } else {
+                        $update_array[$field->Field] = $fieldValue;
+                    }
                 }
             }
         }
+        if ($this->useSoftDeletes)
+            $this->setUpdatedField($update_array, date("Y-m-d H:i:s"));
 
         $updated = $this->where($where_array)->set($update_array)->update();
-        
-        // dd($update_array,$updated);
+
         return $updated;
     }
     /**
@@ -378,12 +401,12 @@ class KpaCrudModel extends Model
 
         foreach ($relations as $fieldName => $data) {
 
-            if ($this->table==$data['relatedTable']){
-                $tablename = "rel".$data['relatedTable'];
+            if ($this->table == $data['relatedTable']) {
+                $tablename = "rel" . $data['relatedTable'];
                 $condition = "`$this->table`.`$fieldName`=`$tablename`.`{$data['relatedField']}`";
                 $this->builder->where($condition);
-            }else {
-                $relatedTableName="rel" . $data['relatedTable'];
+            } else {
+                $relatedTableName = "rel" . $data['relatedTable'];
                 $condition = "`$this->table`.`$fieldName`=`$relatedTableName`.`{$data['relatedField']}`";
                 $this->builder->join($data['relatedTable'] . " as " . $relatedTableName, $condition);
             }
@@ -431,7 +454,7 @@ class KpaCrudModel extends Model
         $this->builder->where($key, $value, true);
     }
 
-    
+
     /**
      * orWhere - Adds where clause to query builder concatenated with OR conjuntion, usefull to show filtered data
      * 
@@ -465,13 +488,26 @@ class KpaCrudModel extends Model
 
             foreach ($fieldsRelatedTable as $field) {
                 $as = $data['relatedTable'] . KpaCrud::SQL_TABLE_SEPARATOR . $field->Field;
-                $selTablename="rel" . $data['relatedTable'];
+                $selTablename = "rel" . $data['relatedTable'];
 
                 $this->builder->select("$selTablename.{$field->Field} as $as");
             }
 
             //$this->builder->from ($data['relatedTable'] . " as rel" . $data['relatedTable']);
         }
+    }
+    /**
+     * check if a field is a timestamp createdField or updatedField
+     *
+     * @param [type] $field
+     * @return boolean
+     * 
+     * @ignore 
+     */
+    protected function isTimestamp($field)
+    {
+        if (!$this->useTimestamps) return false;
+        return $field->Field == $this->createdField || $field->Field == $this->updatedField;
     }
 } 
 /* End of file CrudGenModel.php (20220318) */
