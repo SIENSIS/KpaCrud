@@ -959,7 +959,7 @@ class KpaCrud
 
             if ($postData != null) {
                 try {
-                    $newID = $this->model->addItem($postData, $this->data_fields);
+                    $newID = $this->model->addItem($postData, $this->data_fields,$this->data_columns);
                     $data['newID'] = $newID;
                     $view = 'SIENSIS\KpaCrud\Views\add';
                     if ($newID < 0) {
