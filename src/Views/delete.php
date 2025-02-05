@@ -86,8 +86,14 @@ renderJS($js_files, $_hidden_head_links);
                         switch ($coltype) {
                             case strval(KpaCrud::DROPDOWN_FIELD_TYPE):
                                 $coloptions = $_data_columns[$dbfield->Field]['options'] ?? [""];
-                                $display = $data[$dbfield->Field];
-                                echo "\t<div class='form-control bg-light' >" . $coloptions[$display] . "&nbsp;</div>";
+                                $display = $data[$dbfield->Field] ?? '';
+
+                                if (isset($coloptions[$display])) {
+                                    $display = $coloptions[$display];
+                                } else {
+                                    $display = '-';
+                                }
+                                echo "\t<div class='form-control bg-light' >" . $display . "&nbsp;</div>";
                                 break;
                             case strval(KpaCrud::CHECKBOX_FIELD_TYPE):
                                 $chkvalue = $_data_columns[$dbfield->Field]['check_value'] ?? KpaCrud::DEFAULT_CHECK_VALUE;
@@ -97,13 +103,15 @@ renderJS($js_files, $_hidden_head_links);
                                     echo "&nbsp;<input class='form-check-input' type='checkbox' disabled readonly>";
                                 break;
                             default:
-                                echo "\t<div class='form-control bg-light' >" . $data[$dbfield->Field] . "&nbsp;</div>";
+                                $display = $data[$dbfield->Field] ?? '-';
+                                echo "\t<div class='form-control bg-light' >" . $display . "&nbsp;</div>";
                         }
                         echo "</div>";
-                    } else {                                        // IF is primary key
+                    } else {        
+                        $display = $data[$dbfield->Field] ?? '-';                                // IF is primary key
                         echo "<div class='p-2 '>";
                         echo "\t<label>" . $colname . "</label>";
-                        echo "\t<div class='form-control bg-light '>" . $data[$dbfield->Field] . "&nbsp;</div>";
+                        echo "\t<div class='form-control bg-light '>" . $display . "&nbsp;</div>";
                         echo "</div>";
                     }
                 }
