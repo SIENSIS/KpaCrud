@@ -105,6 +105,7 @@ renderJS($js_files, $_hidden_head_links);
             {
                 $colname = $_data_columns[$dbfield->Field]['name'] ?? ucfirst($dbfield->Field);
                 $coltype = $_data_columns[$dbfield->Field]['type'] ?? KpaCrud::DEFAULT_FIELD_TYPE;
+                $nullable = $_data_columns[$dbfield->Field]['nullable'] ?? false;
                 $colhtmlatts = $_data_columns[$dbfield->Field]['html_atts'] ?? [""];
                 if ($coltype != KpaCrud::INVISIBLE_FIELD_TYPE) {
                     if (isset($_relations[$dbfield->Field])) {      // IF RELATED field
@@ -169,14 +170,18 @@ renderJS($js_files, $_hidden_head_links);
                                     echo "\t<input type='date' ";
                                     echo " " .  implode(" ", $colhtmlatts), " ";
                                     echo " onchange='checkInput(this)' ";
-                                    echo " value='" . date('Y-m-d', strtotime($data[$dbfield->Field])) . "'";
+                                    if ($nullable && $data[$dbfield->Field]==null) echo "value=''";
+                                    else
+                                        echo " value='" . date('Y-m-d', strtotime($data[$dbfield->Field])) . "'";
                                     echo " name='data_" . $dbfield->Field . "' class='form-control' >";
                                     break;
                                 case strval(KpaCrud::DATETIME_FIELD_TYPE):
                                     echo "\t<input type='datetime-local' ";
                                     echo " " .  implode(" ", $colhtmlatts), " ";
                                     echo " onchange='checkInput(this)' ";
-                                    echo " value='" . date('Y-m-d\TH:i', strtotime($data[$dbfield->Field])) . "'";
+                                    if ($nullable && $data[$dbfield->Field]==null) echo "value=''";
+                                    else
+                                        echo " value='" . date('Y-m-d\TH:i', strtotime($data[$dbfield->Field])) . "'";
                                     echo " name='data_" . $dbfield->Field . "' class='form-control' >";
                                     break;
                                 case strval(KpaCrud::PASSWORD_FIELD_TYPE):
