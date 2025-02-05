@@ -1,3 +1,12 @@
+# SIENSIS KpaCrud v1.4.6a Build 20250205
+
+## Done
+  - Add nullable field option
+  - Fixed edition for create_at / update_at /delete_at
+
+__Version 1.4.6a (Build:20250205)_
+
+
 # SIENSIS KpaCrud v1.4.5a Build 20220519
 
 ## Done
