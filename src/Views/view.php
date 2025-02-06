@@ -5,9 +5,9 @@
  * 
  * @package KpaCrud\Views
  * 
- * @version 1.2
+ * @version 1.2.1
  * @author JMFXR <dev@siensis.com> 
- * @copyright 2022 SIENSIS Dev
+ * @copyright 2025 SIENSIS Dev
  * @license MIT
  *
  * This source file is subject to the MIT license that is bundled
@@ -82,8 +82,13 @@ renderJS($js_files,$_hidden_head_links);
                     switch ($coltype) {
                         case strval(KpaCrud::DROPDOWN_FIELD_TYPE):
                             $coloptions = $_data_columns[$dbfield->Field]['options'] ?? [""];
-                            $display=$data[$dbfield->Field];
-                            echo "\t<div class='form-control bg-light' >" . $coloptions[$display] . "&nbsp;</div>";
+                            $display = $data[$dbfield->Field] ?? '';
+                            if (isset($coloptions[$display])) {
+                                $display = $coloptions[$display];
+                            } else {
+                                $display = '-';
+                            }
+                            echo "\t<div class='form-control bg-light' >" . $display . "&nbsp;</div>";
                             break;
                         case strval(KpaCrud::CHECKBOX_FIELD_TYPE):
                             $chkvalue = $_data_columns[$dbfield->Field]['check_value'] ?? KpaCrud::DEFAULT_CHECK_VALUE;
