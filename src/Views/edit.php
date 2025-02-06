@@ -5,9 +5,9 @@
  * 
  * @package KpaCrud\Views
  * 
- * @version 1.2
+ * @version 1.2.1
  * @author JMFXR <dev@siensis.com> 
- * @copyright 2022 SIENSIS Dev
+ * @copyright 2025 SIENSIS Dev
  * @license MIT
  *
  * This source file is subject to the MIT license that is bundled
