@@ -452,7 +452,9 @@ class KpaCrud
     public function setTable($tableName, $loadPrimaryKeys = false)
     {
         $db = \Config\Database::connect();
-
+        $prefix= $db->DBPrefix;
+        $tableName = $prefix.$tableName;
+	    
         if ($tableName == null) {
             throw new \Exception(lang('crud.exceptions.tableNull'), 1);
             die;
