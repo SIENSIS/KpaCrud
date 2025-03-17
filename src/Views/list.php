@@ -186,6 +186,10 @@ if ($config['add_button'] || $config['exportXLS'] || $config['recycled_button'] 
                       if (is_array($itemFunc['func'])) {
                         if ($itemFunc['func'][1] == 'hash')   //FIXED: hash with multiple keys
                           $urlID .= "/" . md5($row[$key]);
+                        elseif ($itemFunc['func'][1]=='hashquery')
+                          $urlID .= md5($row[$key]);
+                        elseif ($itemFunc['func'][1]=='queryid')
+                          $urlID .= $row[$key];
                         else
                           $urlID .= "/" . $row[$key];
                       } else

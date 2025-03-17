@@ -547,11 +547,16 @@ This function permits to declare a new icon link for every register. The functio
 
 ```php
         $crud->addItemLink('view', 'fa-file-o', base_url('route/to/link'), 'Tooltip for icon button');
-        // GENERATES <a href="ROUTE/[IDs_SEPARETED_BY_SLASH]" title="HELP TEXT">ICON</a>
+        // GENERATES <a href="route/to/link/[IDs_SEPARETED_BY_SLASH]" title="HELP TEXT">ICON</a>
 
         $crud->addItemLink('show', 'fa-file-o', [base_url('route/to/link'),'hash'], 'Tooltip for icon button'));
-        // GENERATES <a href="ROUTE/[IDs_SEPARETED_BY_SLASH_HASHED]" title="HELP TEXT">ICON</a>
+        // GENERATES <a href="route/to/link/[IDs_SEPARETED_BY_SLASH_HASHED]" title="HELP TEXT">ICON</a>
+        
+        $crud->addItemLink('show', 'fa-file-o', [base_url('route/to/link?param='),'hashquery'], 'Tooltip for icon button'));
+        // GENERATES <a href="route/to/link?param=ID_HASH" title="HELP TEXT">ICON</a>
 
+        $crud->addItemLink('show', 'fa-file-o', [base_url('route/to/link?param='),'queryid'], 'Tooltip for icon button'));
+        // GENERATES <a href="route/to/link?param=ID" title="HELP TEXT">ICON</a>
 ```
 # Library Exceptions
 
