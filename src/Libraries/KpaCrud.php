@@ -658,6 +658,10 @@ class KpaCrud
      */
     public function setRelation($fieldName, $relatedTable, $relatedField, $display_as = null)
     {
+        $db = \Config\Database::connect();
+        $prefix= $db->DBPrefix;
+        $relatedTable = $prefix.$relatedTable;
+
         $this->relations[$fieldName] = array(
             "relatedTable" => $relatedTable,
             "relatedField" => $relatedField,
