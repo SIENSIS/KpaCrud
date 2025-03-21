@@ -278,9 +278,13 @@ class KpaCrudModel extends Model
                     if ($coltype == 'checkbox') {
                         if ($nullable && $post["data_" . $field->Field] == $nullable)
                             $val = null;
-                        else
-                            $val = $column_info[$field->Field]['check_value'] ?? $field->Default ?? KpaCrud::DEFAULT_CHECK_VALUE;
-                        $val = $column_info[$field->Field]['uncheck_value'] ?? $field->Default ?? KpaCrud::DEFAULT_UNCHECK_VALUE;
+                        else{
+                            if(isset($post["data_" . $field->Field])){
+                                $val = $column_info[$field->Field]['check_value'] ?? $field->Default ?? KpaCrud::DEFAULT_CHECK_VALUE;
+                            }else{
+                                $val = $column_info[$field->Field]['uncheck_value'] ?? $field->Default ?? KpaCrud::DEFAULT_UNCHECK_VALUE;
+                            }
+                        }
                         $update_array[$field->Field] = $val;
                     } else 
                     if ($fieldValue == $nullable) {
