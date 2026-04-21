@@ -232,7 +232,7 @@ class KpaCrudModel extends Model
             foreach ((array)$data_fields as $field) {
                 if (isset($post["data_" . $field->Field])) {
                     $nullable = $column_info[$field->Field]['nullable'] ?? false;
-                    if ($nullable && $post["data_" . $field->Field] == $nullable) {
+                    if ($nullable!==false && $post["data_" . $field->Field] == $nullable) {
                         $insert_array[$field->Field] = null;
                     } else {
                         $insert_array[$field->Field] = $post["data_" . $field->Field];
